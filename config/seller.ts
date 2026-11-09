@@ -14,5 +14,5 @@ export const OFFICIAL_SELLER = {
   email: "0xm4ngli@gmail.com",
   privacyEmail: "0xm4ngli@gmail.com",
   jurisdiction: "Greece",
-  address: "",
+  address: "Kavala, 65400, Greece",
 } as const;
