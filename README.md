@@ -36,7 +36,8 @@ This code is not a mock checkout. A customer can place a real order, reserve sto
 - Delivery address and contact email collected only for fulfilment.
 - Stock reservation while awaiting transfer (7 days), automatic release on expiry/cancel.
 - Order history in the account area.
-- Admin APIs to list pending orders, mark a transfer paid, or cancel an order.
+- Admin dashboard at `/admin` for real products, stock, orders and bank-transfer matching.
+- Admin APIs for automation; the dashboard uses the same protected endpoints.
 - Order emails through Resend when configured.
 
 ### Accounts and privacy
@@ -152,9 +153,31 @@ BANK_COUNTRY=GR
 - Never ask for card numbers, banking passwords or one-time codes. The store never does.
 - The IBAN is intentionally public under this project’s source-available licence. Treat it as sensitive anyway: fraudsters can copy a public page and change the account. Customers should verify against the official repository. Forks must keep the official donation notice.
 
-### Matching a transfer (admin)
+### Managing real products
 
-List pending orders:
+Once `ADMIN_TOKEN` is set and the app is deployed, open:
+
+```text
+https://your-domain/admin
+```
+
+Enter the token. From there you can:
+
+- add a real product with its actual SKU, price, stock, description, specs, photo and source;
+- edit any product (editing a seeded item turns it into your manual catalogue);
+- delete a product;
+- remove the entire seeded starter catalogue with one click;
+- see pending bank transfers and mark them paid or cancel them.
+
+Only add stock you can actually fulfil. The storefront shows the price and
+available quantity immediately. A price change records a new price observation
+for the engine; no historical data is invented.
+
+The CLI/API import remains available for supplier feeds.
+
+### Matching a transfer (admin API)
+
+The dashboard is easiest. For automation, list pending orders:
 
 ```bash
 curl -H "Authorization: Bearer $ADMIN_TOKEN" \
@@ -267,7 +290,7 @@ See [`.env.example`](./.env.example). Nothing in `.env.local` or `.env.productio
 | `DATA_DIR` | Local SQLite directory. |
 | `CART_SECRET` | HMAC key for guest cart cookie. |
 | `BANK_*` | Optional overrides for the official account in `config/donation.ts`. |
-| `ADMIN_TOKEN` | Bearer token for admin order/feed APIs. |
+| `ADMIN_TOKEN` | Admin dashboard login and bearer token for admin order/product/feed APIs. Required for live order management. |
 | `CRON_SECRET` | Authorises the daily stock-release cron. |
 | `ALLOW_DEMO_CATALOG_ORDERS` | Leave false. Enables real transfers for demo-marked products only if you really mean it. |
 | `CATALOG_IS_DEMO` | Marks seeded products as demo and disables their checkout. |
@@ -305,7 +328,7 @@ A daily Vercel Cron (`vercel.json`) calls `/api/cron/release-orders` to release 
 - `Origin`/`Host` checks on state-changing APIs.
 - Prepared SQL statements only.
 - Zod validation and body-size limits.
-- Admin routes require a bearer token compared in constant time.
+- Admin routes require either the bearer token or an HttpOnly admin session cookie signed with `ADMIN_TOKEN`; comparisons are constant-time.
 - CSP, HSTS, frame denial, nosniff, referrer and permissions policies.
 - In-memory rate limiting for single instances; use Redis/edge limiting if you scale horizontally.
 

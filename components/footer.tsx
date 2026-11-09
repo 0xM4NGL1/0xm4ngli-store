@@ -154,6 +154,9 @@ export function Footer() {
             >
               Source code
             </a>
+            <Link href="/admin" className="hover:text-cyan-200">
+              Admin
+            </Link>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { adminConfigured, isAdminSession } from "@/lib/admin";
 import { AdminLoginForm } from "@/components/admin-login-form";
@@ -18,7 +19,7 @@ export default async function AdminLoginPage() {
       description="This area manages products, orders and bank-transfer matching. It is protected by ADMIN_TOKEN."
       footer={
         <p>
-          Not the operator? Return to the <a href="/" className="font-semibold text-cyan-200">storefront</a>.
+          Not the operator? Return to the <Link href="/" className="font-semibold text-cyan-200">storefront</Link>.
         </p>
       }
     >

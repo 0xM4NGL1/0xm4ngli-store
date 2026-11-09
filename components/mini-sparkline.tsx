@@ -5,11 +5,13 @@ export function MiniSparkline({
   color = "#22d3ee",
   width = 220,
   height = 58,
+  className = "h-14 w-full",
 }: {
   points: PricePoint[];
   color?: string;
   width?: number;
   height?: number;
+  className?: string;
 }) {
   if (points.length < 2) {
     return (
@@ -41,7 +43,7 @@ export function MiniSparkline({
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
-      className="h-14 w-full"
+      className={className}
       aria-hidden="true"
       focusable="false"
     >

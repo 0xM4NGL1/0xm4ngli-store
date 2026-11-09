@@ -19,6 +19,7 @@ export default function robots(): MetadataRoute.Robots {
           "/wishlist",
           "/newsletter/",
           "/account-deleted",
+          "/admin",
         ],
       },
     ],
