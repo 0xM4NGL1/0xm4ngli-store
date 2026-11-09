@@ -1,0 +1,25 @@
+{
+  "currency": "EUR",
+  "observedAt": "2026-11-09T12:00:00.000Z",
+  "purgeDemo": false,
+  "products": [
+    {
+      "sku": "EXAMPLE-001",
+      "slug": "example-product",
+      "name": "Example Product",
+      "brand": "Example",
+      "category": "accessories",
+      "description": "A complete example of the authorised feed format used to update prices and record observations.",
+      "specs": {
+        "Warranty": "2 years",
+        "Colour": "Black"
+      },
+      "price": 99.9,
+      "compareAt": 129.9,
+      "stock": 25,
+      "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=1400&q=85",
+      "featured": false,
+      "sourceUrl": "https://example.com/products/example-product"
+    }
+  ]
+}

@@ -1,21 +1,93 @@
-MIT License
+0xm4ngli Source-Available License 1.0
+SPDX-License-Identifier: LicenseRef-0xm4ngli-1.0
 
-Copyright (c) 2026 0xm4ngli
+Copyright (c) 2026 0xm4ngli. All rights reserved except as expressly granted below.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This is a source-available licence, not an OSI-approved open-source licence.
+Read it carefully. It is not legal advice; consult a qualified lawyer if you
+need certainty in your jurisdiction.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. Definitions
+
+"Software" means the source code, configuration, documentation, design and
+other files in this repository, excluding third-party dependencies and
+third-party assets.
+
+"Official Donation Details" means the account name, IBAN, BIC (if any), country
+and official repository URL published in DONATIONS.md and
+config/donation.ts.
+
+"Commercial Use" means using the Software, in whole or in substantial part, to
+run or support a business, sell products or services, provide paid hosting or
+development, or generate revenue, including deploying it as a live store.
+
+2. Grant for personal and educational use
+
+Subject to this licence, you may view, copy, modify and run the Software for
+personal, educational, evaluation and non-commercial purposes. You may publish
+modifications only if you keep this licence and the attribution required by
+section 3.
+
+3. Attribution and official donation notice
+
+Any permitted copy, fork or public deployment must retain:
+
+(a) this licence file;
+
+(b) the copyright notice above;
+
+(c) a visible link to the official repository; and
+
+(d) the Official Donation Details in DONATIONS.md and config/donation.ts.
+
+You may not remove, replace, redirect or hide the Official Donation Details in a
+public deployment in a way that suggests you are the official 0xm4ngli project,
+or that donations should go to a different account as the official project.
+You may add your own separate donation method only if it is clearly labelled as
+not official and does not replace the Official Donation Details.
+
+4. Commercial use requires permission
+
+You may not make Commercial Use of the Software without prior written
+permission from the copyright holder. To request a commercial licence, contact
+the address published in the official repository.
+
+5. Names, logos and endorsement
+
+No trademark or branding licence is granted. You may not use the 0xm4ngli name,
+logo, domain or visual identity for a fork, a competing service or a public
+deployment in a way that implies endorsement, affiliation or official status.
+
+6. Contributions
+
+By submitting a contribution, you grant the copyright holder a perpetual,
+worldwide, royalty-free, irrevocable licence to use, reproduce, modify,
+distribute and sublicense your contribution under this licence or another
+licence chosen by the copyright holder. Do not submit code you do not have the
+right to license.
+
+7. Donations
+
+Donations are voluntary. They are not a fee, purchase, investment, equity or
+consideration for a commercial licence. They do not create a partnership,
+employment or fiduciary relationship. Use only the Official Donation Details.
+
+8. No warranty
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, SECURITY OR LEGAL
+COMPLIANCE. THE COPYRIGHT HOLDER IS NOT LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
+
+9. Termination and remedies
+
+Any breach of this licence terminates your rights automatically. The copyright
+holder may also pursue any remedy available under copyright, contract,
+trademark, unfair-competition or other law. A licence is a legal rule, not a
+technical restriction; enforcement requires legal action.
+
+10. Third-party components
+
+Third-party dependencies, fonts, images and product names remain under their
+own licences and ownership. This licence does not grant rights to them.
