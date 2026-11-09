@@ -145,6 +145,26 @@ button:not(:disabled),
   box-shadow: 0 18px 60px -22px rgba(139, 92, 246, 0.45);
 }
 
+.card-actions {
+  opacity: 1;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-actions {
+    opacity: 0;
+    transform: translateY(0.5rem);
+    pointer-events: none;
+  }
+
+  .group:hover .card-actions,
+  .group:focus-within .card-actions {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
 .bg-grid {
   background-image:
     linear-gradient(rgba(148, 163, 184, 0.055) 1px, transparent 1px),

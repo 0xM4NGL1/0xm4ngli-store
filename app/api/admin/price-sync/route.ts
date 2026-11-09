@@ -1,6 +1,6 @@
 import { syncPriceFeed } from "@/lib/feed";
 import { dbGet } from "@/lib/db";
-import { adminConfigured, isAdminRequest } from "@/lib/admin";
+import { adminConfigured, isAdminAuthorized } from "@/lib/admin";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   if (!adminConfigured()) {
     return Response.json({ error: "Sync endpoint is disabled." }, { status: 503 });
   }
-  if (!isAdminRequest(request)) {
+  if (!await isAdminAuthorized(request)) {
     return Response.json({ error: "Unauthorised." }, { status: 401 });
   }
 

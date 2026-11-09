@@ -1,3 +1,5 @@
+import { cache } from "react";
+import { getCurrentUserCached } from "./auth";
 import { dbAll, dbGet, dbRun, nowIso } from "./db";
 import { getProductsByIds } from "./products";
 import type { Product } from "./types";
@@ -18,6 +20,25 @@ export async function getWishlistCount(userId: string) {
   );
   return Number(row?.count ?? 0);
 }
+
+export const getWishlistProductIds = cache(async (userId: string) => {
+  const rows = await dbAll<{ product_id: number }>(
+    "SELECT product_id FROM wishlist_items WHERE user_id = ?",
+    userId,
+  );
+  return new Set(rows.map((row) => row.product_id));
+});
+
+export const getViewerWishlist = cache(async () => {
+  const user = await getCurrentUserCached();
+  if (!user) {
+    return { authenticated: false as const, productIds: new Set<number>() };
+  }
+  return {
+    authenticated: true as const,
+    productIds: await getWishlistProductIds(user.id),
+  };
+});
 
 export async function isWishlisted(userId: string, productId: number) {
   return Boolean(

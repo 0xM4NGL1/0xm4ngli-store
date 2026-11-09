@@ -1,5 +1,5 @@
 import { getOrdersByStatus } from "@/lib/orders";
-import { adminConfigured, isAdminRequest } from "@/lib/admin";
+import { adminConfigured, isAdminAuthorized } from "@/lib/admin";
 import type { OrderStatus } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   if (!adminConfigured()) {
     return Response.json({ error: "Admin API is disabled." }, { status: 503 });
   }
-  if (!isAdminRequest(request)) {
+  if (!await isAdminAuthorized(request)) {
     return Response.json({ error: "Unauthorised." }, { status: 401 });
   }
 

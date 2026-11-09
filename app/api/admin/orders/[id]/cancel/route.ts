@@ -1,4 +1,4 @@
-import { adminConfigured, isAdminRequest } from "@/lib/admin";
+import { adminConfigured, isAdminAuthorized } from "@/lib/admin";
 import { cancelPendingOrder } from "@/lib/orders";
 import { handleApiError } from "@/lib/security";
 
@@ -11,7 +11,7 @@ export async function POST(
   if (!adminConfigured()) {
     return Response.json({ error: "Admin API is disabled." }, { status: 503 });
   }
-  if (!isAdminRequest(_request)) {
+  if (!await isAdminAuthorized(_request)) {
     return Response.json({ error: "Unauthorised." }, { status: 401 });
   }
 

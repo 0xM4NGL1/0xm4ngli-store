@@ -29,9 +29,12 @@ export function WishlistButton({
         href={`/login?next=${encodeURIComponent(pathname)}`}
         className={classNames(
           "neon-outline inline-flex items-center justify-center gap-2 rounded-xl font-semibold text-slate-300 transition hover:text-fuchsia-200",
-          compact ? "h-10 w-10" : "px-5 py-3.5 text-sm",
+          compact
+            ? "h-9 w-9 rounded-full border border-white/15 bg-[#05060b]/80 backdrop-blur"
+            : "px-5 py-3.5 text-sm",
         )}
         aria-label="Sign in to save to wishlist"
+        title="Sign in to save to wishlist"
       >
         <Heart size={17} aria-hidden="true" />
         {!compact && "Save"}
@@ -74,12 +77,15 @@ export function WishlistButton({
         disabled={loading}
         aria-pressed={wishlisted}
         aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
+        title={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         className={classNames(
           "inline-flex items-center justify-center gap-2 rounded-xl border font-semibold transition disabled:opacity-60",
           wishlisted
             ? "border-fuchsia-300/40 bg-fuchsia-300/10 text-fuchsia-200"
             : "border-white/15 bg-white/[0.03] text-slate-300 hover:border-fuchsia-300/40 hover:text-fuchsia-200",
-          compact ? "h-10 w-10" : "px-5 py-3.5 text-sm",
+          compact
+            ? "h-9 w-9 rounded-full bg-[#05060b]/80 backdrop-blur"
+            : "px-5 py-3.5 text-sm",
         )}
       >
         {loading ? (

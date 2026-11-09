@@ -5,7 +5,6 @@ import { ArrowRight, Heart } from "lucide-react";
 import { getCurrentUser } from "@/lib/auth";
 import { getWishlistProducts } from "@/lib/wishlist";
 import { ProductCard } from "@/components/product-card";
-import { WishlistButton } from "@/components/wishlist-button";
 
 export const metadata: Metadata = {
   title: "Your wishlist",
@@ -66,17 +65,7 @@ export default async function WishlistPage() {
       ) : (
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {products.map((product) => (
-            <div key={product.id} className="flex flex-col">
-              <ProductCard product={product} />
-              <div className="mt-2">
-                <WishlistButton
-                  productId={product.id}
-                  initial
-                  authenticated
-                  compact={false}
-                />
-              </div>
-            </div>
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}

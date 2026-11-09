@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { adminConfigured, isAdminRequest } from "@/lib/admin";
+import { adminConfigured, isAdminAuthorized } from "@/lib/admin";
 import { markOrderPaid } from "@/lib/orders";
 import { sendOrderConfirmationEmail } from "@/lib/email";
 import { readJson, handleApiError } from "@/lib/security";
@@ -17,7 +17,7 @@ export async function POST(
   if (!adminConfigured()) {
     return Response.json({ error: "Admin API is disabled." }, { status: 503 });
   }
-  if (!isAdminRequest(request)) {
+  if (!await isAdminAuthorized(request)) {
     return Response.json({ error: "Unauthorised." }, { status: 401 });
   }
 
