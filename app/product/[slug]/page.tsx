@@ -281,7 +281,7 @@ export default async function ProductPage({ params }: PageProps) {
                   ? "authorised feed"
                   : product.source === "demo"
                     ? "demo feed"
-                    : "starter catalogue"}{" "}
+                    : "0xm4ngli catalogue"}{" "}
                 · updated {formatDateTime(product.updatedAt)}
               </p>
             </div>
