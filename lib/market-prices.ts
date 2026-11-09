@@ -22,19 +22,7 @@ const FX_URL = "https://api.frankfurter.app";
 const FX_CURRENCIES = ["AUD", "GBP", "USD"];
 
 /** Deepest retained history first, then the closest EUR markets. */
-const DEFAULT_MARKET_CHAIN = [
-  "au",
-  "us",
-  "gb",
-  "gr",
-  "de",
-  "it",
-  "fr",
-  "es",
-  "nl",
-  "be",
-  "at",
-];
+const DEFAULT_MARKET_CHAIN = ["au", "us", "gb", "gr", "de"];
 
 const MARKET_CURRENCY: Record<string, string> = {
   au: "AUD",
@@ -209,6 +197,14 @@ const bannedWords = [
   "cable",
   "adapter",
   "replacement",
+  "manual",
+  "book",
+  "guide",
+  "paperback",
+  "hardcover",
+  "ebook",
+  "poster",
+  "sticker",
 ];
 
 function normalize(value: string) {
@@ -248,6 +244,14 @@ function matchScore(product: Product, candidate: SearchCandidate) {
   let score = present.length / wanted.length;
   score -= 0.55 * missing.length;
   score -= 0.45 * missingDistinctive.length;
+
+  // Do not match a Plus/Pro/Max/Ultra variant to the base model.
+  const variantMarkers = ["plus", "pro", "max", "mini", "ultra", "fold", "flip"];
+  const wantedTitle = normalize(product.name);
+  const extraMarkers = variantMarkers.filter(
+    (marker) => title.includes(marker) && !wantedTitle.includes(marker),
+  );
+  score -= 0.3 * extraMarkers.length;
 
   // Brand is a hint, not a hard requirement: many listings omit it.
   if (brand.some((token) => title.includes(token))) score += 0.08;
@@ -462,7 +466,7 @@ export async function syncMarketPrices(
     ),
   );
   const log = options.log ?? (() => undefined);
-  const throttleMs = options.throttleMs ?? 6_000;
+  const throttleMs = options.throttleMs ?? 10_000;
   const rates = await fetchRates(days).catch((error) => {
     log(`FX rates unavailable: ${error instanceof Error ? error.message : String(error)}`);
     return [] as RateTable;
