@@ -104,7 +104,11 @@ Vercel serverless functions do not keep a local SQLite file. Use **Turso**, a ho
    curl -sSfL https://get.tur.so/install.sh | bash
    turso auth login
    ```
-2. Create a database:
+2. Create a database and print the Vercel values:
+   ```bash
+   ./scripts/setup-turso.sh 0xm4ngli-store
+   ```
+   Or manually:
    ```bash
    turso db create 0xm4ngli-store
    turso db show 0xm4ngli-store --url

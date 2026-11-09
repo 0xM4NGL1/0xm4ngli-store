@@ -5,7 +5,12 @@ export const site = {
   tagline: "Tech worth the wait. Prices worth the drop.",
   description:
     "A privacy-first technology store with independent price intelligence, worldwide shipping and a simple bank-transfer checkout.",
-  url: (process.env.APP_URL ?? "http://localhost:3000").replace(/\/$/, ""),
+  url: (
+    process.env.APP_URL ??
+    (process.env.VERCEL
+      ? "https://0xm4ngli-store.vercel.app"
+      : "http://localhost:3000")
+  ).replace(/\/$/, ""),
   email: process.env.CONTACT_EMAIL ?? "hello@0xm4ngli.store",
   repositoryUrl: OFFICIAL_DONATION.repository,
   legalName: process.env.LEGAL_NAME ?? "",
