@@ -1,4 +1,5 @@
 import { OFFICIAL_DONATION } from "@/config/donation";
+import { OFFICIAL_SELLER } from "@/config/seller";
 
 export const site = {
   name: "0xm4ngli",
@@ -11,17 +12,17 @@ export const site = {
       ? "https://0xm4ngli-store.vercel.app"
       : "http://localhost:3000")
   ).replace(/\/$/, ""),
-  email: process.env.CONTACT_EMAIL ?? "hello@0xm4ngli.store",
+  email: process.env.CONTACT_EMAIL ?? OFFICIAL_SELLER.email,
   repositoryUrl: OFFICIAL_DONATION.repository,
-  legalName: process.env.LEGAL_NAME ?? "",
-  legalAddress: process.env.LEGAL_ADDRESS ?? "",
+  legalName: process.env.LEGAL_NAME ?? OFFICIAL_SELLER.name,
+  legalAddress: process.env.LEGAL_ADDRESS ?? OFFICIAL_SELLER.address,
   companyNumber: process.env.COMPANY_NUMBER ?? "",
-  vatId: process.env.VAT_ID ?? "",
-  jurisdiction: process.env.LEGAL_JURISDICTION ?? "the European Union",
+  vatId: process.env.VAT_ID ?? OFFICIAL_SELLER.vatId,
+  jurisdiction: process.env.LEGAL_JURISDICTION ?? OFFICIAL_SELLER.jurisdiction,
   privacyEmail:
     process.env.PRIVACY_EMAIL ??
     process.env.CONTACT_EMAIL ??
-    "privacy@0xm4ngli.store",
+    OFFICIAL_SELLER.privacyEmail,
   currency: "EUR",
   locale: "en-IE",
   freeShippingThresholdCents: Number(process.env.FREE_SHIPPING_THRESHOLD_CENTS ?? 50000),

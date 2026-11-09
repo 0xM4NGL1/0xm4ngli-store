@@ -67,12 +67,12 @@ export function LegalShell({
             </p>
           </div>
 
-          {(!site.legalName || !site.legalAddress) && (
+          {!site.legalAddress && (
             <div className="mt-6 rounded-xl border border-amber-300/20 bg-amber-300/[0.05] p-4 text-xs leading-6 text-amber-100/80">
-              <strong className="text-amber-100">Operator note:</strong> the seller
-              legal name and registered address are not configured yet. Set{" "}
-              <code>LEGAL_NAME</code>, <code>LEGAL_ADDRESS</code> and{" "}
-              <code>LEGAL_JURISDICTION</code> before launch. These documents are a
+              <strong className="text-amber-100">Operator note:</strong> the
+              registered business address is still missing. Add it in{" "}
+              <code>config/seller.ts</code> or set <code>LEGAL_ADDRESS</code> before
+              relying on these pages for a live launch. These documents are a
               technical starting point, not legal advice; have them reviewed for
               your jurisdiction.
             </div>

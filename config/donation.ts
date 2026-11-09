@@ -17,7 +17,7 @@
  * banking codes here.
  */
 export const OFFICIAL_DONATION = {
-  accountName: "0xm4ngli",
+  accountName: "Tzouliano Mangli",
   iban: "GR8101712010006201168118306",
   bic: "",
   bankName: "",
