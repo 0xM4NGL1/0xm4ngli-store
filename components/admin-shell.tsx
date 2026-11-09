@@ -19,7 +19,7 @@ export function AdminShell({
 }) {
   return (
     <div className="container-m4 py-10 md:py-14">
-      <div className="flex flex-col justify-between gap-5 border-b border-white/10 pb-6 md:flex-row md:items-end">
+      <div className="flex flex-col justify-between gap-5 border-b border-[#c4b5fd]/12 pb-6 md:flex-row md:items-end">
         <div>
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
             Store admin
@@ -45,7 +45,7 @@ export function AdminShell({
           <Link
             key={link.href}
             href={link.href}
-            className="inline-flex shrink-0 items-center gap-2 rounded-lg px-3.5 py-2 text-xs font-bold text-slate-400 transition hover:bg-white/5 hover:text-white"
+            className="inline-flex shrink-0 items-center gap-2 rounded-lg px-3.5 py-2 text-xs font-bold text-slate-400 transition hover:bg-[#c4b5fd]/10 hover:text-white"
           >
             <link.icon size={14} aria-hidden="true" /> {link.label}
           </Link>

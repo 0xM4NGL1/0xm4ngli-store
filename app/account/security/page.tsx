@@ -20,7 +20,7 @@ export default async function SecurityPage() {
   return (
     <div className="grid gap-6 lg:grid-cols-12">
       <div className="space-y-6 lg:col-span-7">
-        <section className="neon-card rounded-2xl bg-[#0a0d19] p-5 md:p-6">
+        <section className="neon-card rounded-2xl bg-[#0b051d] p-5 md:p-6">
           <div className="flex items-center gap-2">
             <KeyRound size={18} className="text-cyan-300" aria-hidden="true" />
             <h2 className="text-lg font-black text-white">Password</h2>
@@ -34,7 +34,7 @@ export default async function SecurityPage() {
           </div>
         </section>
 
-        <section className="neon-card rounded-2xl bg-[#0a0d19] p-5 md:p-6">
+        <section className="neon-card rounded-2xl bg-[#0b051d] p-5 md:p-6">
           <div className="flex items-center gap-2">
             <ShieldCheck size={18} className="text-emerald-300" aria-hidden="true" />
             <h2 className="text-lg font-black text-white">Sessions</h2>
@@ -50,7 +50,7 @@ export default async function SecurityPage() {
       </div>
 
       <section className="lg:col-span-5">
-        <div className="neon-card rounded-2xl bg-[#0a0d19] p-5 md:p-6">
+        <div className="neon-card rounded-2xl bg-[#0b051d] p-5 md:p-6">
           <h2 className="text-lg font-black text-white">Privacy controls</h2>
           <p className="mt-1 text-xs leading-5 text-slate-500">
             Export, correct or erase the data linked to your account.

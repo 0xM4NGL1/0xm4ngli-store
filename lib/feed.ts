@@ -21,6 +21,10 @@ const feedProductSchema = z.object({
   category: z.enum(categorySlugs),
   description: z.string().trim().min(20).max(4000),
   specs: z.record(z.string().max(60), z.string().max(300)).default({}),
+  sizes: z
+    .array(z.string().trim().min(1).max(30))
+    .max(30)
+    .optional(),
   price: z.number().positive().max(1_000_000),
   compareAt: z.number().positive().max(1_000_000).optional(),
   stock: z.number().int().min(0).max(1_000_000),
@@ -89,7 +93,6 @@ export async function syncPriceFeed(raw: unknown) {
         slug: string;
         price_cents: number;
       }>("SELECT id, slug, price_cents FROM products WHERE sku = ?", item.sku);
-
       const priceCents = Math.round(item.price * 100);
       const compareAtCents =
         item.compareAt && item.compareAt > item.price
@@ -103,7 +106,8 @@ export async function syncPriceFeed(raw: unknown) {
         await dbRun(
           `UPDATE products SET
              name = ?, brand = ?, category = ?, description = ?,
-             specs_json = ?, price_cents = ?, compare_at_cents = ?,
+             specs_json = ?, sizes_json = COALESCE(?, sizes_json),
+             price_cents = ?, compare_at_cents = ?,
              currency = 'EUR', stock = ?, image = ?, featured = ?,
              is_demo = 0, source = 'feed', source_url = ?, updated_at = ?
            WHERE id = ?`,
@@ -112,6 +116,7 @@ export async function syncPriceFeed(raw: unknown) {
           item.category,
           item.description,
           JSON.stringify(item.specs),
+          item.sizes ? JSON.stringify(item.sizes) : null,
           priceCents,
           compareAtCents,
           item.stock,
@@ -154,9 +159,10 @@ export async function syncPriceFeed(raw: unknown) {
         const inserted = await dbRun(
           `INSERT INTO products (
              sku, slug, name, brand, category, description, specs_json,
-             price_cents, compare_at_cents, currency, stock, reserved, image,
-             featured, is_demo, source, source_url, created_at, updated_at
-           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'EUR', ?, 0, ?, ?, 0, 'feed', ?, ?, ?)`,
+             sizes_json, price_cents, compare_at_cents, currency, stock,
+             reserved, image, featured, is_demo, source, source_url,
+             created_at, updated_at
+           ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'EUR', ?, 0, ?, ?, 0, 'feed', ?, ?, ?)`,
           item.sku,
           slug,
           item.name,
@@ -164,6 +170,7 @@ export async function syncPriceFeed(raw: unknown) {
           item.category,
           item.description,
           JSON.stringify(item.specs),
+          JSON.stringify(item.sizes ?? []),
           priceCents,
           compareAtCents,
           item.stock,

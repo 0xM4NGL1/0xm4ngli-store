@@ -8,6 +8,7 @@ export type SeedProduct = {
   category: CategorySlug;
   description: string;
   specs: Record<string, string>;
+  sizes?: string[];
   priceCents: number;
   compareAtCents?: number;
   stock: number;
@@ -344,6 +345,7 @@ export const seedProducts: SeedProduct[] = [
       Sizes: "US 6–13",
       Subscription: "Required for full insights",
     },
+    sizes: ["6", "7", "8", "9", "10", "11", "12", "13"],
     priceCents: 34900,
     stock: 13,
     image: image("1605100804763-247f67b3557e"),

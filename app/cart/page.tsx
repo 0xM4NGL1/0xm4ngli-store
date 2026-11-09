@@ -36,8 +36,8 @@ export default async function CartPage({
   if (cart.lines.length === 0) {
     return (
       <div className="container-m4 py-20">
-        <div className="mx-auto max-w-lg rounded-3xl border border-white/10 bg-[#0a0d19] p-10 text-center">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
+        <div className="mx-auto max-w-lg rounded-3xl border border-[#c4b5fd]/12 bg-[#0b051d] p-10 text-center">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#c4b5fd]/12 bg-[#0d0622]/80">
             <ShoppingBag size={28} className="text-slate-500" aria-hidden="true" />
           </div>
           <h1 className="mt-5 text-3xl font-black tracking-tight text-white">
@@ -88,12 +88,12 @@ export default async function CartPage({
 
       <div className="mt-8 grid gap-8 lg:grid-cols-12">
         <section className="lg:col-span-8" aria-label="Cart items">
-          <ul className="neon-card divide-y divide-white/10 overflow-hidden rounded-2xl bg-[#0a0d19]">
-            {cart.lines.map(({ product, quantity }) => (
-              <li key={product.id} className="flex gap-4 p-4 sm:p-5">
+          <ul className="neon-card divide-y divide-[#c4b5fd]/12 overflow-hidden rounded-2xl bg-[#0b051d]">
+            {cart.lines.map(({ product, quantity, size }) => (
+              <li key={`${product.id}-${size || "standard"}`} className="flex gap-4 p-4 sm:p-5">
                 <Link
                   href={`/product/${product.slug}`}
-                  className="relative h-24 w-28 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-slate-900 sm:h-28 sm:w-32"
+                  className="relative h-24 w-28 shrink-0 overflow-hidden rounded-xl border border-[#c4b5fd]/12 bg-slate-900 sm:h-28 sm:w-32"
                 >
                   <ProductImage
                     src={product.image}
@@ -113,6 +113,12 @@ export default async function CartPage({
                         </Link>
                       </h2>
                       <p className="mt-1 text-xs text-slate-500">
+                        {size && (
+                          <>
+                            <span className="text-slate-400">Size {size}</span>
+                            {" · "}
+                          </>
+                        )}
                         {product.available > 0
                           ? `${product.available} in stock`
                           : "Out of stock"}{" "}
@@ -146,7 +152,7 @@ export default async function CartPage({
             ].map((item) => (
               <div
                 key={item.text}
-                className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2.5 text-[11px] text-slate-400"
+                className="flex items-center gap-2 rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 px-3 py-2.5 text-[11px] text-slate-400"
               >
                 <item.icon size={14} className="text-cyan-300" aria-hidden="true" />
                 {item.text}
@@ -154,7 +160,7 @@ export default async function CartPage({
             ))}
           </div>
 
-          <div className="neon-card mt-6 rounded-2xl bg-[#0a0d19] p-5 md:p-6">
+          <div className="neon-card mt-6 rounded-2xl bg-[#0b051d] p-5 md:p-6">
             <CheckoutPanel
               signedIn={Boolean(user)}
               defaultEmail={user?.email ?? ""}
@@ -186,7 +192,7 @@ export default async function CartPage({
                 <dt className="text-slate-400">Tax</dt>
                 <dd className="text-xs text-slate-500">Included where applicable</dd>
               </div>
-              <div className="flex justify-between gap-3 border-t border-white/10 pt-4">
+              <div className="flex justify-between gap-3 border-t border-[#c4b5fd]/12 pt-4">
                 <dt className="text-base font-bold text-white">Total before support</dt>
                 <dd className="text-xl font-black text-white">
                   {formatPrice(cart.totalCents)}
@@ -200,7 +206,7 @@ export default async function CartPage({
                   Add {formatPrice(cart.freeShippingRemainingCents)} for free
                   tracked shipping.
                 </p>
-                <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/10">
+                <div className="mt-2 h-1 overflow-hidden rounded-full bg-[#c4b5fd]/12">
                   <div
                     className="h-full rounded-full bg-cyan-300"
                     style={{

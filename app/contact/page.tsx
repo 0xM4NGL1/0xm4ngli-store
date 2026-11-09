@@ -34,7 +34,7 @@ export default function ContactPage() {
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
           <a
             href={`mailto:${site.email}`}
-            className="neon-card group rounded-2xl bg-[#0a0d19] p-5 transition"
+            className="neon-card group rounded-2xl bg-[#0b051d] p-5 transition"
           >
             <Mail size={20} className="text-cyan-300" aria-hidden="true" />
             <h2 className="mt-4 text-sm font-bold text-white">General & orders</h2>
@@ -43,7 +43,7 @@ export default function ContactPage() {
           </a>
           <a
             href={`mailto:${site.privacyEmail}`}
-            className="neon-card group rounded-2xl bg-[#0a0d19] p-5 transition"
+            className="neon-card group rounded-2xl bg-[#0b051d] p-5 transition"
           >
             <ShieldCheck size={20} className="text-emerald-300" aria-hidden="true" />
             <h2 className="mt-4 text-sm font-bold text-white">Privacy & data rights</h2>
@@ -52,7 +52,7 @@ export default function ContactPage() {
           </a>
         </div>
 
-        <div className="neon-card mt-6 rounded-2xl bg-white/[0.02] p-5">
+        <div className="neon-card mt-6 rounded-2xl bg-[#0b051d]/70 p-5">
           <div className="flex items-center gap-2">
             <Building2 size={17} className="text-slate-400" aria-hidden="true" />
             <h2 className="text-sm font-bold text-white">Seller details</h2>
@@ -90,7 +90,7 @@ export default function ContactPage() {
             <Link
               key={link.href}
               href={link.href}
-              className="flex items-center justify-between rounded-xl border border-white/10 px-4 py-3 text-xs font-semibold text-slate-300 hover:border-cyan-300/40 hover:text-white"
+              className="flex items-center justify-between rounded-xl border border-[#c4b5fd]/12 px-4 py-3 text-xs font-semibold text-slate-300 hover:border-cyan-300/40 hover:text-white"
             >
               {link.label} <ArrowRight size={13} aria-hidden="true" />
             </Link>

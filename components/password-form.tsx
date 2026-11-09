@@ -62,7 +62,7 @@ export function PasswordForm() {
             autoComplete="current-password"
             value={currentPassword}
             onChange={(event) => setCurrentPassword(event.target.value)}
-            className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 text-sm text-white outline-none focus:border-cyan-300/60"
+            className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 text-sm text-white outline-none focus:border-cyan-300/60"
           />
         </div>
         <div>
@@ -78,7 +78,7 @@ export function PasswordForm() {
             autoComplete="new-password"
             value={newPassword}
             onChange={(event) => setNewPassword(event.target.value)}
-            className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 text-sm text-white outline-none focus:border-cyan-300/60"
+            className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 text-sm text-white outline-none focus:border-cyan-300/60"
           />
         </div>
         <div>
@@ -94,7 +94,7 @@ export function PasswordForm() {
             autoComplete="new-password"
             value={confirm}
             onChange={(event) => setConfirm(event.target.value)}
-            className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 text-sm text-white outline-none focus:border-cyan-300/60"
+            className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 text-sm text-white outline-none focus:border-cyan-300/60"
           />
         </div>
       </div>

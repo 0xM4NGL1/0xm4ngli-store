@@ -30,7 +30,7 @@ type OrderRow = {
   paid_at: string | null;
 };
 
-type CartSnapshotLine = { productId: number; quantity: number };
+type CartSnapshotLine = { productId: number; quantity: number; size?: string };
 
 export type ShippingAddress = {
   name: string;
@@ -121,6 +121,10 @@ export async function createPendingOrder(input: {
       if (line.quantity < 1 || line.quantity > 10) {
         throw new ApiError("Invalid quantity.", 422);
       }
+      const size = product.sizes.length > 0 ? (line.size ?? "").trim() : "";
+      if (product.sizes.length > 0 && !product.sizes.includes(size)) {
+        throw new ApiError(`Choose a valid size for ${product.name}.`, 422);
+      }
       if (product.available < line.quantity) {
         throw new ApiError(
           `${product.name} only has ${product.available} left in stock.`,
@@ -133,6 +137,7 @@ export async function createPendingOrder(input: {
         slug: product.slug,
         name: product.name,
         sku: product.sku,
+        size: size || undefined,
         unitPriceCents: product.priceCents,
         quantity: line.quantity,
       });

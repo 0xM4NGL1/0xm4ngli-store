@@ -27,7 +27,7 @@ export function CopyField({
   }
 
   return (
-    <div className="rounded-xl border border-white/10 bg-[#05060b]/50 p-3">
+    <div className="rounded-xl border border-[#c4b5fd]/12 bg-[#04010c]/50 p-3">
       <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
         {label}
       </p>
@@ -38,7 +38,7 @@ export function CopyField({
         <button
           type="button"
           onClick={copy}
-          className="shrink-0 rounded-lg border border-white/15 p-2 text-slate-400 transition hover:border-cyan-300/40 hover:text-cyan-200"
+          className="shrink-0 rounded-lg border border-[#c4b5fd]/18 p-2 text-slate-400 transition hover:border-cyan-300/40 hover:text-cyan-200"
           aria-label={`Copy ${label}`}
         >
           {copied ? (

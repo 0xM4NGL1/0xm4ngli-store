@@ -13,31 +13,31 @@ const styles = {
     short: "Buy now",
     icon: TrendingDown,
     className:
-      "border-emerald-300/40 bg-[#052018]/88 text-emerald-200",
+      "border-emerald-300/40 bg-[#032018]/88 text-emerald-200",
   },
   good: {
     label: "Good price",
     short: "Good price",
     icon: TrendingDown,
-    className: "border-cyan-300/40 bg-[#041b24]/88 text-cyan-200",
+    className: "border-cyan-300/40 bg-[#03202a]/88 text-cyan-200",
   },
   fair: {
     label: "Fair price",
     short: "Fair",
     icon: Wallet,
-    className: "border-amber-300/35 bg-[#211a05]/88 text-amber-200",
+    className: "border-amber-300/35 bg-[#2a1d05]/88 text-amber-200",
   },
   wait: {
     label: "Consider waiting",
     short: "Wait",
     icon: TrendingUp,
-    className: "border-rose-300/35 bg-[#21070c]/88 text-rose-200",
+    className: "border-rose-300/35 bg-[#28040f]/88 text-rose-200",
   },
   collecting: {
     label: "Collecting data",
     short: "Collecting",
     icon: CircleHelp,
-    className: "border-slate-400/25 bg-[#0b0d16]/88 text-slate-300",
+    className: "border-slate-400/25 bg-[#0b0618]/88 text-slate-300",
   },
 } as const;
 

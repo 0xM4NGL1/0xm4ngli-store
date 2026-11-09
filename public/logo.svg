@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="100%" height="100%">
   <defs>
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#a855f7" flood-opacity="0.9"/>
-      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#22d3ee" flood-opacity="0.5"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#9d4dff" flood-opacity="0.9"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="16" flood-color="#34f4ff" flood-opacity="0.5"/>
     </filter>
   </defs>
-  <rect width="256" height="256" rx="32" fill="#03030a" stroke="#a855f7" stroke-width="3" filter="url(#glow)"/>
-  <text x="128" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="900" font-size="110" fill="#e879f9" filter="url(#glow)">0X</text>
-  <text x="128" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="28" letter-spacing="0.15em" fill="#22d3ee">4NGLI</text>
+  <rect width="256" height="256" rx="32" fill="#04010c" stroke="#9d4dff" stroke-width="3" filter="url(#glow)"/>
+  <text x="128" y="155" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="900" font-size="110" fill="#ff2bd6" filter="url(#glow)">0X</text>
+  <text x="128" y="195" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="28" letter-spacing="0.15em" fill="#34f4ff">4NGLI</text>
 </svg>

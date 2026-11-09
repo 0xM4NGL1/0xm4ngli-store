@@ -70,7 +70,7 @@ export default async function SupportPage() {
           </div>
 
           {bank.configured ? (
-            <div className="neon-card mt-4 rounded-2xl bg-[#0a0d19] p-5">
+            <div className="neon-card mt-4 rounded-2xl bg-[#0b051d] p-5">
               <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                 Bank details
               </p>

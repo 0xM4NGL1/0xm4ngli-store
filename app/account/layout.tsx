@@ -15,7 +15,7 @@ export default async function AccountLayout({
 
   return (
     <div className="container-m4 py-10 md:py-14">
-      <div className="flex flex-col justify-between gap-5 border-b border-white/10 pb-6 md:flex-row md:items-end">
+      <div className="flex flex-col justify-between gap-5 border-b border-[#c4b5fd]/12 pb-6 md:flex-row md:items-end">
         <div>
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
             Your account
@@ -30,7 +30,7 @@ export default async function AccountLayout({
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href="/shop"
-            className="rounded-lg border border-white/15 px-3.5 py-2 text-xs font-semibold text-slate-300 transition hover:border-cyan-300/40 hover:text-white"
+            className="rounded-lg border border-[#c4b5fd]/18 px-3.5 py-2 text-xs font-semibold text-slate-300 transition hover:border-cyan-300/40 hover:text-white"
           >
             Continue shopping
           </Link>

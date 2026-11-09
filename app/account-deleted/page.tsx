@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function AccountDeletedPage() {
   return (
     <div className="container-m4 py-16 md:py-24">
-      <div className="mx-auto max-w-2xl rounded-3xl border border-white/10 bg-[#0a0d19] p-8 text-center md:p-12">
+      <div className="mx-auto max-w-2xl rounded-3xl border border-[#c4b5fd]/12 bg-[#0b051d] p-8 text-center md:p-12">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-300/10 text-emerald-300">
           <Check size={30} aria-hidden="true" />
         </div>
@@ -35,7 +35,7 @@ export default function AccountDeletedPage() {
           </Link>
           <Link
             href="/legal/privacy"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-5 py-3 text-xs font-bold text-slate-300 hover:border-cyan-300/40 hover:text-white"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#c4b5fd]/18 px-5 py-3 text-xs font-bold text-slate-300 hover:border-cyan-300/40 hover:text-white"
           >
             <ShieldCheck size={14} aria-hidden="true" /> Privacy policy
           </Link>

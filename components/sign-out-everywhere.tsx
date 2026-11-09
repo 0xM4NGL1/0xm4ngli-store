@@ -23,7 +23,7 @@ export function SignOutEverywhere() {
   }
 
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+    <div className="rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 p-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h3 className="text-sm font-bold text-white">Sign out other devices</h3>
@@ -35,7 +35,7 @@ export function SignOutEverywhere() {
           type="button"
           onClick={signOut}
           disabled={loading}
-          className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2.5 text-xs font-semibold text-slate-300 hover:border-cyan-300/40 hover:text-white disabled:opacity-60"
+          className="inline-flex items-center gap-2 rounded-lg border border-[#c4b5fd]/18 px-4 py-2.5 text-xs font-semibold text-slate-300 hover:border-cyan-300/40 hover:text-white disabled:opacity-60"
         >
           {loading ? <LoaderCircle size={14} className="animate-spin" aria-hidden="true" /> : <Signpost size={14} aria-hidden="true" />}
           {done ? "Signed out elsewhere" : "Sign out everywhere"}

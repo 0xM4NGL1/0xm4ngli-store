@@ -9,14 +9,22 @@ export function AddToCartButton({
   productId,
   available,
   quantity = 1,
+  size = "",
   variant = "primary",
   label,
+  goToCart = false,
+  disabled = false,
+  disabledLabel,
 }: {
   productId: number;
   available: number;
   quantity?: number;
+  size?: string;
   variant?: "primary" | "compact" | "outline" | "icon";
   label?: string;
+  goToCart?: boolean;
+  disabled?: boolean;
+  disabledLabel?: string;
 }) {
   const router = useRouter();
   const [state, setState] = useState<"idle" | "loading" | "added" | "error">(
@@ -25,14 +33,14 @@ export function AddToCartButton({
   const [message, setMessage] = useState("");
 
   async function add() {
-    if (available < 1 || state === "loading") return;
+    if (disabled || available < 1 || state === "loading") return;
     setState("loading");
     setMessage("");
     try {
       const response = await fetch("/api/cart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId, quantity }),
+        body: JSON.stringify({ productId, quantity, size: size || undefined }),
       });
       const data = (await response.json().catch(() => ({}))) as {
         error?: string;
@@ -40,6 +48,10 @@ export function AddToCartButton({
       if (!response.ok) {
         setState("error");
         setMessage(data.error ?? "Could not add to cart.");
+        return;
+      }
+      if (goToCart) {
+        router.push("/cart");
         return;
       }
       setState("added");
@@ -51,15 +63,22 @@ export function AddToCartButton({
     }
   }
 
-  const disabled = available < 1;
+  const soldOut = available < 1;
+  const blocked = disabled || soldOut;
   const text =
     label ??
-    (state === "added" ? "Added" : disabled ? "Sold out" : "Add to cart");
+    (state === "added"
+      ? "Added"
+      : blocked
+        ? (disabledLabel ?? (soldOut ? "Sold out" : "Choose an option"))
+        : goToCart
+          ? "Buy now"
+          : "Add to cart");
   const actionLabel =
     state === "added"
       ? "Added to cart"
-      : disabled
-        ? "Sold out"
+      : blocked
+        ? (disabledLabel ?? (soldOut ? "Sold out" : "Choose an option"))
         : "Add to cart";
 
   return (
@@ -67,7 +86,7 @@ export function AddToCartButton({
       <button
         type="button"
         onClick={add}
-        disabled={disabled || state === "loading"}
+        disabled={blocked || state === "loading"}
         aria-label={variant === "icon" ? actionLabel : undefined}
         title={variant === "icon" ? actionLabel : undefined}
         className={classNames(
@@ -77,9 +96,9 @@ export function AddToCartButton({
           variant === "compact" &&
             "w-full rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-2.5 text-xs text-cyan-100 hover:bg-cyan-300/20",
           variant === "outline" &&
-            "w-full rounded-xl border border-white/15 bg-white/[0.03] px-5 py-3.5 text-sm text-slate-200 hover:border-cyan-300/40 hover:text-white",
+            "w-full rounded-xl border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-5 py-3.5 text-sm text-slate-200 hover:border-cyan-300/40 hover:text-white",
           variant === "icon" &&
-            "h-9 w-9 rounded-full border border-white/15 bg-[#05060b]/80 text-slate-200 backdrop-blur transition hover:border-cyan-300/50 hover:bg-cyan-300/15 hover:text-cyan-100",
+            "h-9 w-9 rounded-full border border-[#c4b5fd]/18 bg-[#04010c]/80 text-slate-200 backdrop-blur transition hover:border-cyan-300/50 hover:bg-cyan-300/15 hover:text-cyan-100",
         )}
       >
         {state === "loading" ? (

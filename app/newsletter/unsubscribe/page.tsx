@@ -15,7 +15,7 @@ export default async function NewsletterUnsubscribePage({
   const token = typeof params.token === "string" ? params.token : "";
   return (
     <div className="container-m4 py-16 md:py-24">
-      <div className="mx-auto max-w-lg rounded-3xl border border-white/10 bg-[#0a0d19] p-8">
+      <div className="mx-auto max-w-lg rounded-3xl border border-[#c4b5fd]/12 bg-[#0b051d] p-8">
         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
           The useful email
         </p>

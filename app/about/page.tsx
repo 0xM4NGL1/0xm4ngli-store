@@ -38,7 +38,7 @@ export default async function AboutPage() {
 
   return (
     <div>
-      <section className="relative overflow-hidden border-b border-white/10">
+      <section className="relative overflow-hidden border-b border-[#c4b5fd]/12">
         <div className="absolute inset-0 bg-grid opacity-50" />
         <div className="hero-glow absolute inset-0" />
         <div className="container-m4 relative py-16 md:py-24">
@@ -103,7 +103,7 @@ export default async function AboutPage() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="neon-card rounded-2xl bg-[#0a0d19] p-5"
+                  className="neon-card rounded-2xl bg-[#0b051d] p-5"
                 >
                   <item.icon size={18} className="text-cyan-300" aria-hidden="true" />
                   <p className="mt-4 text-3xl font-black text-white">{item.value}</p>
@@ -125,7 +125,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-[#070913]">
+      <section className="border-y border-[#c4b5fd]/12 bg-[#070212]">
         <div className="container-m4 py-16 md:py-24">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {[
@@ -150,7 +150,7 @@ export default async function AboutPage() {
                 text: "The goal is a good decision at a fair price, not a checkout at any cost.",
               },
             ].map((item) => (
-              <div key={item.title} className="neon-card rounded-2xl bg-[#0a0d19] p-6">
+              <div key={item.title} className="neon-card rounded-2xl bg-[#0b051d] p-6">
                 <item.icon size={22} className="text-cyan-300" aria-hidden="true" />
                 <h2 className="mt-4 text-lg font-bold text-white">{item.title}</h2>
                 <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
@@ -208,9 +208,9 @@ export default async function AboutPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="neon-card rounded-2xl bg-[#0a0d19] p-6">
+            <div className="neon-card rounded-2xl bg-[#0b051d] p-6">
               <h3 className="text-sm font-bold text-white">The scoring model</h3>
-              <pre className="mt-4 overflow-x-auto rounded-xl border border-white/10 bg-[#05060b] p-4 font-mono text-[11px] leading-6 text-cyan-100">
+              <pre className="mt-4 overflow-x-auto rounded-xl border border-[#c4b5fd]/12 bg-[#04010c] p-4 font-mono text-[11px] leading-6 text-cyan-100">
 {`position = (price - low90) / (high90 - low90)
 dropBoost = clamp(-change30 * 100, 0, 20)
 score = clamp((1 - position) * 75 + dropBoost
@@ -238,7 +238,7 @@ observations < 3               -> COLLECTING`}
       </section>
 
       <section className="container-m4 pb-20">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#0c1022] via-[#0b0a1b] to-[#071018] p-8 md:p-12">
+        <div className="relative overflow-hidden rounded-3xl border border-[#c4b5fd]/12 bg-gradient-to-br from-[#0d0622] via-[#0b0618] to-[#04161a] p-8 md:p-12">
           <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/10 blur-[80px]" />
           <div className="relative max-w-2xl">
             <Globe size={26} className="text-cyan-300" aria-hidden="true" />
@@ -261,7 +261,7 @@ observations < 3               -> COLLECTING`}
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-5 py-3 text-xs font-bold text-slate-200 hover:border-cyan-300/40 hover:text-white"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#c4b5fd]/18 px-5 py-3 text-xs font-bold text-slate-200 hover:border-cyan-300/40 hover:text-white"
               >
                 Talk to me
               </Link>

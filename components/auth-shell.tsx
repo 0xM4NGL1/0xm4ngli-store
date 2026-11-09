@@ -17,10 +17,10 @@ export function AuthShell({
 }) {
   return (
     <div className="container-m4 py-12 md:py-20">
-      <div className="neon-card mx-auto grid max-w-5xl overflow-hidden rounded-3xl bg-[#080a14] shadow-2xl lg:grid-cols-2">
+      <div className="neon-card mx-auto grid max-w-5xl overflow-hidden rounded-3xl bg-[#080316] shadow-2xl lg:grid-cols-2">
         <div className="relative hidden overflow-hidden p-10 lg:block">
           <div className="absolute inset-0 bg-grid opacity-50" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.18),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(232,121,249,0.16),transparent_40%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(52, 244, 255, 0.18),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(255, 43, 214, 0.16),transparent_40%)]" />
           <div className="relative flex h-full flex-col">
             <Logo />
             <div className="mt-auto">

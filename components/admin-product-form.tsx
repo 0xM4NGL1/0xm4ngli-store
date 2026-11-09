@@ -31,6 +31,7 @@ export function AdminProductForm({ product }: { product?: Product }) {
     product?.compareAtCents ? (product.compareAtCents / 100).toFixed(2) : "",
   );
   const [stock, setStock] = useState(String(product?.stock ?? 0));
+  const [sizes, setSizes] = useState(product?.sizes.join(", ") ?? "");
   const [image, setImage] = useState(product?.image ?? "");
   const [sourceUrl, setSourceUrl] = useState(product?.sourceUrl ?? "");
   const [featured, setFeatured] = useState(product?.featured ?? false);
@@ -70,6 +71,10 @@ export function AdminProductForm({ product }: { product?: Product }) {
         category,
         description,
         specs: parsedSpecs,
+        sizes: sizes
+          .split(",")
+          .map((entry) => entry.trim())
+          .filter(Boolean),
         price: Number(price),
         compareAt: compareAt ? Number(compareAt) : undefined,
         stock: Number(stock),
@@ -103,7 +108,7 @@ export function AdminProductForm({ product }: { product?: Product }) {
 
   return (
     <form onSubmit={submit} className="space-y-5">
-      <div className="neon-card rounded-2xl bg-[#0a0d19] p-5 md:p-6">
+      <div className="neon-card rounded-2xl bg-[#0b051d] p-5 md:p-6">
         <h2 className="text-lg font-black text-white">Product identity</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <div>
@@ -139,7 +144,7 @@ export function AdminProductForm({ product }: { product?: Product }) {
             <label htmlFor="product-category" className="mb-1.5 block text-xs font-semibold text-slate-300">
               Category
             </label>
-            <select id="product-category" value={category} onChange={(e) => setCategory(e.target.value as typeof category)} className="neon-outline h-10 w-full rounded-lg bg-[#0a0d19] px-3 text-sm text-slate-200">
+            <select id="product-category" value={category} onChange={(e) => setCategory(e.target.value as typeof category)} className="neon-outline h-10 w-full rounded-lg bg-[#0b051d] px-3 text-sm text-slate-200">
               {categories.map((entry) => (
                 <option key={entry.slug} value={entry.slug}>{entry.name}</option>
               ))}
@@ -160,7 +165,7 @@ export function AdminProductForm({ product }: { product?: Product }) {
         </div>
       </div>
 
-      <div className="neon-card rounded-2xl bg-[#0a0d19] p-5 md:p-6">
+      <div className="neon-card rounded-2xl bg-[#0b051d] p-5 md:p-6">
         <h2 className="text-lg font-black text-white">Price and stock</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
           <div>
@@ -176,7 +181,7 @@ export function AdminProductForm({ product }: { product?: Product }) {
             <input id="product-compare" type="number" min="0.01" step="0.01" value={compareAt} onChange={(e) => setCompareAt(e.target.value)} className="neon-outline h-10 w-full rounded-lg px-3 text-sm text-white outline-none focus:border-cyan-300/60" />
           </div>
           <label className="flex items-center gap-2.5 self-end text-sm text-slate-300">
-            <input type="checkbox" checked={featured} onChange={(e) => setFeatured(e.target.checked)} className="h-4 w-4 rounded border-white/20 bg-white/5 accent-cyan-300" />
+            <input type="checkbox" checked={featured} onChange={(e) => setFeatured(e.target.checked)} className="h-4 w-4 rounded border-[#c4b5fd]/22 bg-[#c4b5fd]/10 accent-cyan-300" />
             Featured on the home page
           </label>
         </div>
@@ -184,9 +189,26 @@ export function AdminProductForm({ product }: { product?: Product }) {
           Prices are stored in euro, tax-inclusive. A price change records a new
           price observation automatically.
         </p>
+        <div className="mt-4">
+          <label htmlFor="product-sizes" className="mb-1.5 block text-xs font-semibold text-slate-300">
+            Sizes (optional)
+          </label>
+          <input
+            id="product-sizes"
+            value={sizes}
+            onChange={(e) => setSizes(e.target.value)}
+            placeholder="6, 7, 8, 9, 10, 11, 12, 13"
+            className="neon-outline h-10 w-full rounded-lg px-3 text-sm text-white outline-none focus:border-cyan-300/60"
+          />
+          <p className="mt-1 text-[10px] text-slate-600">
+            Comma-separated. Leave empty for products without sizes. The product
+            page will show these as selectable buttons and require a choice
+            before checkout.
+          </p>
+        </div>
       </div>
 
-      <div className="neon-card rounded-2xl bg-[#0a0d19] p-5 md:p-6">
+      <div className="neon-card rounded-2xl bg-[#0b051d] p-5 md:p-6">
         <h2 className="text-lg font-black text-white">Media and source</h2>
         <div className="mt-4 grid gap-4">
           <div>

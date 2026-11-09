@@ -89,7 +89,7 @@ export async function sendOrderConfirmationEmail(order: Order) {
   const items = order.items
     .map(
       (item) =>
-        `${item.quantity} × ${item.name} — ${formatPrice(item.unitPriceCents * item.quantity, order.currency)}`,
+        `${item.quantity} × ${item.name}${item.size ? ` (size ${item.size})` : ""} — ${formatPrice(item.unitPriceCents * item.quantity, order.currency)}`,
     )
     .join("\n");
   const supportLine =
@@ -114,7 +114,7 @@ export async function sendBankTransferInstructionsEmail(order: Order) {
     ? order.items
         .map(
           (item) =>
-            `${item.quantity} × ${item.name} — ${formatPrice(item.unitPriceCents * item.quantity, order.currency)}`,
+            `${item.quantity} × ${item.name}${item.size ? ` (size ${item.size})` : ""} — ${formatPrice(item.unitPriceCents * item.quantity, order.currency)}`,
         )
         .join("\n")
     : "Voluntary support contribution";

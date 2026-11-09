@@ -9,6 +9,30 @@ import type {
 } from "./types";
 import { clamp } from "./format";
 
+function sizesFromSpecs(specs: Record<string, string>): string[] {
+  const raw = Object.entries(specs).find(([key]) =>
+    /^sizes?$/i.test(key.trim()),
+  )?.[1];
+  if (!raw) return [];
+
+  const range = raw.match(/(\d+)\s*(?:[–-]|\bto\b)\s*(\d+)/i);
+  if (range) {
+    const start = Number(range[1]);
+    const end = Number(range[2]);
+    if (end >= start && end - start <= 30) {
+      return Array.from({ length: end - start + 1 }, (_, index) =>
+        String(start + index),
+      );
+    }
+  }
+
+  return raw
+    .split(/[,/|]/)
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+    .slice(0, 30);
+}
+
 export function mapProduct(row: ProductRow): Product {
   let specs: Record<string, string> = {};
   try {
@@ -16,6 +40,21 @@ export function mapProduct(row: ProductRow): Product {
   } catch {
     specs = {};
   }
+
+  let sizes: string[] = [];
+  try {
+    const parsed = JSON.parse(row.sizes_json ?? "[]") as unknown;
+    if (Array.isArray(parsed)) {
+      sizes = parsed
+        .filter((entry): entry is string => typeof entry === "string")
+        .map((entry) => entry.trim())
+        .filter(Boolean)
+        .slice(0, 30);
+    }
+  } catch {
+    sizes = [];
+  }
+  if (sizes.length === 0) sizes = sizesFromSpecs(specs);
 
   return {
     id: row.id,
@@ -26,6 +65,7 @@ export function mapProduct(row: ProductRow): Product {
     category: row.category,
     description: row.description,
     specs,
+    sizes,
     priceCents: row.price_cents,
     compareAtCents: row.compare_at_cents,
     currency: row.currency,

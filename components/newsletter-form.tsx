@@ -63,7 +63,7 @@ export function NewsletterForm() {
       <label htmlFor="newsletter-email" className="sr-only">
         Email address
       </label>
-      <div className="flex overflow-hidden rounded-xl border border-white/15 bg-white/[0.035] focus-within:border-cyan-300/60">
+      <div className="flex overflow-hidden rounded-xl border border-[#c4b5fd]/18 bg-[#c4b5fd]/[0.05] focus-within:border-cyan-300/60">
         <input
           id="newsletter-email"
           type="email"
@@ -93,7 +93,7 @@ export function NewsletterForm() {
           type="checkbox"
           checked={consent}
           onChange={(event) => setConsent(event.target.checked)}
-          className="mt-0.5 h-4 w-4 rounded border-white/20 bg-white/5 accent-cyan-300"
+          className="mt-0.5 h-4 w-4 rounded border-[#c4b5fd]/22 bg-[#c4b5fd]/10 accent-cyan-300"
         />
         <span>
           I agree to receive occasional marketing emails and accept the{" "}

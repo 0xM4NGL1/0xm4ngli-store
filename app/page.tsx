@@ -45,12 +45,11 @@ function SectionHeading({
   return (
     <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
       <div>
-        <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
-          {eyebrow}
-        </p>
+        <p className="neon-kicker">{eyebrow}</p>
         <h2 className="neon-text mt-2 text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">
           {title}
         </h2>
+        <span className="neon-line mt-5 block w-24" aria-hidden="true" />
         {description && (
           <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-400">
             {description}
@@ -102,7 +101,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-white/10">
+      <section className="relative overflow-hidden border-b border-[#c4b5fd]/12">
         <div className="absolute inset-0 bg-grid opacity-60" />
         <div className="hero-glow absolute inset-0" />
         <div className="scanlines absolute inset-0 opacity-50" />
@@ -143,7 +142,7 @@ export default async function HomePage() {
               </Link>
             </div>
 
-            <dl className="mt-10 grid max-w-xl grid-cols-3 gap-4 border-t border-white/10 pt-6">
+            <dl className="mt-10 grid max-w-xl grid-cols-3 gap-4 border-t border-[#c4b5fd]/12 pt-6">
               <div>
                 <dt className="font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500">
                   Products tracked
@@ -179,7 +178,7 @@ export default async function HomePage() {
                       priority
                       sizes="(max-width: 1024px) 100vw, 480px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#070812]/90 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#070212]/90 via-transparent to-transparent" />
                     <span className="absolute left-3 top-3">
                       <DealBadge signal={heroEntry.signal} />
                     </span>
@@ -216,8 +215,8 @@ export default async function HomePage() {
                             points={heroHistory}
                             color={
                               heroEntry.signal.verdict === "buy"
-                                ? "#34d399"
-                                : "#22d3ee"
+                                ? "#4dffa8"
+                                : "#34f4ff"
                             }
                           />
                         ) : (
@@ -229,13 +228,13 @@ export default async function HomePage() {
                         )}
                       </div>
                     </div>
-                    <div className="mt-3 flex items-center justify-between gap-3 border-t border-white/10 pt-3">
+                    <div className="mt-3 flex items-center justify-between gap-3 border-t border-[#c4b5fd]/12 pt-3">
                       <p className="text-xs leading-5 text-slate-400">
                         {heroEntry.signal.summary}
                       </p>
                       <Link
                         href={`/product/${heroEntry.product.slug}`}
-                        className="shrink-0 rounded-full border border-white/15 bg-white/[0.04] p-2 text-slate-200 transition hover:border-cyan-300/40 hover:text-white"
+                        className="shrink-0 rounded-full border border-[#c4b5fd]/18 bg-[#c4b5fd]/[0.06] p-2 text-slate-200 transition hover:border-cyan-300/40 hover:text-white"
                         aria-label={`View ${heroEntry.product.name}`}
                       >
                         <ArrowRight size={16} aria-hidden="true" />
@@ -253,8 +252,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-white/10 bg-white/[0.015]">
-        <div className="container-m4 grid grid-cols-2 divide-x divide-white/10 py-5 sm:grid-cols-4">
+      <section className="border-b border-[#c4b5fd]/12 bg-[#0b051d]/60">
+        <div className="container-m4 grid grid-cols-2 divide-x divide-[#c4b5fd]/12 py-5 sm:grid-cols-4">
           {[
             { icon: ShieldCheck, label: "GDPR-first by design" },
             { icon: Lock, label: "Card data never touches us" },
@@ -295,7 +294,7 @@ export default async function HomePage() {
                 className="opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
                 sizes="(max-width: 640px) 50vw, 25vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#05060b] via-[#05060b]/25 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#04010c] via-[#04010c]/25 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4">
                 <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-slate-400">
                   {categoryCounts[category.slug] ?? 0} products
@@ -304,7 +303,7 @@ export default async function HomePage() {
                   {category.name}
                 </p>
               </div>
-              <span className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-[#05060b]/60 text-slate-300 opacity-0 transition group-hover:opacity-100">
+              <span className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full border border-[#c4b5fd]/18 bg-[#04010c]/60 text-slate-300 opacity-0 transition group-hover:opacity-100">
                 <ArrowRight size={13} aria-hidden="true" />
               </span>
             </Link>
@@ -312,7 +311,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-[#070913]">
+      <section className="border-y border-[#c4b5fd]/12 bg-[#070212]">
         <div className="container-m4 py-16 md:py-24">
           <SectionHeading
             eyebrow="Price intelligence"
@@ -328,7 +327,7 @@ export default async function HomePage() {
               ))}
             </div>
           ) : (
-            <div className="rounded-2xl border border-dashed border-white/15 p-10 text-center text-slate-400">
+            <div className="rounded-2xl border border-dashed border-[#c4b5fd]/18 p-10 text-center text-slate-400">
               No verified price drops yet. The engine needs a little more history.
             </div>
           )}
@@ -336,7 +335,7 @@ export default async function HomePage() {
       </section>
 
       <section className="container-m4 py-16 md:py-24" id="price-engine">
-        <div className="neon-card relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a0d1d] via-[#0c0a1c] to-[#071018] p-6 md:p-12">
+        <div className="neon-card relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0c0620] via-[#0d0620] to-[#04161a] p-6 md:p-12">
           <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-[90px]" />
           <div className="relative grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-5">
@@ -382,7 +381,7 @@ export default async function HomePage() {
               ].map((item) => (
                 <div
                   key={item.step}
-                  className="rounded-2xl border border-white/10 bg-[#05060b]/45 p-5"
+                  className="rounded-2xl border border-[#c4b5fd]/12 bg-[#04010c]/45 p-5"
                 >
                   <div className="flex items-center justify-between">
                     <item.icon size={19} className="text-cyan-300" aria-hidden="true" />
@@ -431,7 +430,7 @@ export default async function HomePage() {
               text: "Export or delete your account from your profile. No tracking pixels, no data sales.",
             },
           ].map((item) => (
-            <div key={item.title} className="neon-card rounded-2xl bg-white/[0.02] p-6">
+            <div key={item.title} className="neon-card rounded-2xl bg-[#0b051d]/70 p-6">
               <item.icon size={22} className="text-cyan-300" aria-hidden="true" />
               <h2 className="mt-4 text-lg font-bold text-white">{item.title}</h2>
               <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>

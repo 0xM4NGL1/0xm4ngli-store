@@ -29,7 +29,7 @@ export function AccountNav() {
               "shrink-0 rounded-lg px-3.5 py-2 text-xs font-bold transition",
               active
                 ? "bg-cyan-300/10 text-cyan-200"
-                : "text-slate-400 hover:bg-white/5 hover:text-white",
+                : "text-slate-400 hover:bg-[#c4b5fd]/10 hover:text-white",
             )}
           >
             {link.label}

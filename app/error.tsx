@@ -17,7 +17,7 @@ export default function ErrorPage({
 
   return (
     <div className="container-m4 py-24">
-      <div className="mx-auto max-w-xl rounded-3xl border border-white/10 bg-[#0a0d19] p-8 text-center">
+      <div className="mx-auto max-w-xl rounded-3xl border border-[#c4b5fd]/12 bg-[#0b051d] p-8 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-rose-300/10 text-rose-300">
           <AlertTriangle size={26} aria-hidden="true" />
         </div>
@@ -38,7 +38,7 @@ export default function ErrorPage({
           </button>
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-5 py-3 text-xs font-bold text-slate-300 hover:border-cyan-300/40 hover:text-white"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#c4b5fd]/18 px-5 py-3 text-xs font-bold text-slate-300 hover:border-cyan-300/40 hover:text-white"
           >
             Back home
           </Link>

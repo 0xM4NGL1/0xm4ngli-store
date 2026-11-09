@@ -48,7 +48,7 @@ export default async function CheckoutSuccessPage({
   return (
     <div className="container-m4 py-12 md:py-20">
       <div className="mx-auto max-w-3xl">
-        <div className="neon-card rounded-3xl bg-[#0a0d19] p-6 md:p-10">
+        <div className="neon-card rounded-3xl bg-[#0b051d] p-6 md:p-10">
           <div
             className={
               paid
@@ -174,7 +174,7 @@ export default async function CheckoutSuccessPage({
             </div>
           )}
 
-          <div className="mt-6 grid gap-3 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs sm:grid-cols-3">
+          <div className="mt-6 grid gap-3 rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 p-4 text-xs sm:grid-cols-3">
             <div>
               <p className="text-slate-500">Order</p>
               <p className="mt-1 font-mono text-slate-200">{order.id}</p>
@@ -197,12 +197,17 @@ export default async function CheckoutSuccessPage({
                 <Package size={16} className="text-cyan-300" aria-hidden="true" />
                 Items
               </h2>
-              <ul className="mt-3 divide-y divide-white/10 rounded-xl border border-white/10">
+              <ul className="mt-3 divide-y divide-[#c4b5fd]/12 rounded-xl border border-[#c4b5fd]/12">
                 {order.items.map((item) => (
                   <li key={item.sku} className="flex items-center justify-between gap-3 px-4 py-3 text-sm">
                     <span className="min-w-0 text-slate-300">
                       <span className="text-slate-500">{item.quantity} × </span>
                       {item.name}
+                      {item.size && (
+                        <span className="block text-[11px] text-slate-500">
+                          Size {item.size}
+                        </span>
+                      )}
                     </span>
                     <span className="shrink-0 font-semibold text-white">
                       {formatPrice(item.unitPriceCents * item.quantity, order.currency)}
@@ -213,7 +218,7 @@ export default async function CheckoutSuccessPage({
             </div>
           )}
 
-          <dl className="mt-5 space-y-2 border-t border-white/10 pt-4 text-sm">
+          <dl className="mt-5 space-y-2 border-t border-[#c4b5fd]/12 pt-4 text-sm">
             {!supportOnly && (
               <>
                 <div className="flex justify-between gap-3">
@@ -234,7 +239,7 @@ export default async function CheckoutSuccessPage({
                 <dd className="text-fuchsia-200">{formatPrice(order.supportCents, order.currency)}</dd>
               </div>
             )}
-            <div className="flex justify-between gap-3 border-t border-white/10 pt-3 text-base">
+            <div className="flex justify-between gap-3 border-t border-[#c4b5fd]/12 pt-3 text-base">
               <dt className="font-bold text-white">Total</dt>
               <dd className="font-black text-white">{formatPrice(order.totalCents, order.currency)}</dd>
             </div>
@@ -247,7 +252,7 @@ export default async function CheckoutSuccessPage({
           )}
 
           {address.length > 0 && (
-            <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs leading-6 text-slate-400">
+            <div className="mt-4 rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 p-4 text-xs leading-6 text-slate-400">
               <p className="font-semibold text-slate-200">Shipping to</p>
               <p className="mt-1">{address.join(", ")}</p>
             </div>
@@ -262,7 +267,7 @@ export default async function CheckoutSuccessPage({
             </Link>
             <Link
               href="/account/orders"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-5 py-3 text-xs font-bold text-slate-300 hover:border-cyan-300/40 hover:text-white"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#c4b5fd]/18 px-5 py-3 text-xs font-bold text-slate-300 hover:border-cyan-300/40 hover:text-white"
             >
               <ShieldCheck size={14} aria-hidden="true" /> Order history
             </Link>

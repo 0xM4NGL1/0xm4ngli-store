@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Ruler } from "lucide-react";
 import type { DealSignal, Product } from "@/lib/types";
 import { formatPrice } from "@/lib/format";
 import { categoryBySlug } from "@/lib/site";
@@ -11,11 +12,11 @@ import { WishlistButton } from "./wishlist-button";
 import { MiniSparkline } from "./mini-sparkline";
 
 const sparkColors: Record<DealSignal["verdict"], string> = {
-  buy: "#34d399",
-  good: "#22d3ee",
-  fair: "#fbbf24",
-  wait: "#fb7185",
-  collecting: "#64748b",
+  buy: "#4dffa8",
+  good: "#34f4ff",
+  fair: "#ffc247",
+  wait: "#ff6d93",
+  collecting: "#6d619a",
 };
 
 export async function ProductCard({ product }: { product: Product }) {
@@ -31,7 +32,7 @@ export async function ProductCard({ product }: { product: Product }) {
       : null;
 
   return (
-    <article className="neon-card card-hover group relative flex h-full flex-col overflow-hidden rounded-2xl bg-[#0a0d19]">
+    <article className="neon-card card-hover group relative flex h-full flex-col overflow-hidden rounded-2xl bg-[#0b051d]">
       <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
         <Link
           href={`/product/${product.slug}`}
@@ -44,7 +45,7 @@ export async function ProductCard({ product }: { product: Product }) {
             className="transition duration-700 ease-out group-hover:scale-[1.04]"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080a14] via-transparent to-transparent opacity-80" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080316] via-transparent to-transparent opacity-80" />
           <span className="neon-chip absolute left-3 top-3 rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-slate-100 backdrop-blur">
             {category?.name ?? product.category}
           </span>
@@ -59,11 +60,22 @@ export async function ProductCard({ product }: { product: Product }) {
             authenticated={viewer.authenticated}
             compact
           />
-          <AddToCartButton
-            productId={product.id}
-            available={product.available}
-            variant="icon"
-          />
+          {product.sizes.length > 0 ? (
+            <Link
+              href={`/product/${product.slug}`}
+              aria-label={`Choose a size for ${product.name}`}
+              title="Choose a size"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#c4b5fd]/18 bg-[#04010c]/80 text-slate-200 backdrop-blur transition hover:border-cyan-300/50 hover:bg-cyan-300/15 hover:text-cyan-100"
+            >
+              <Ruler size={15} aria-hidden="true" />
+            </Link>
+          ) : (
+            <AddToCartButton
+              productId={product.id}
+              available={product.available}
+              variant="icon"
+            />
+          )}
         </div>
       </div>
 
@@ -86,7 +98,7 @@ export async function ProductCard({ product }: { product: Product }) {
           {history.length >= 2 ? (
             <MiniSparkline points={history} color={sparkColors[signal.verdict]} />
           ) : (
-            <div className="mt-0.5 flex h-14 items-center justify-center rounded-md border border-dashed border-white/10 text-[10px] text-slate-600">
+            <div className="mt-0.5 flex h-14 items-center justify-center rounded-md border border-dashed border-[#c4b5fd]/12 text-[10px] text-slate-600">
               No recorded prices yet
             </div>
           )}
@@ -113,12 +125,21 @@ export async function ProductCard({ product }: { product: Product }) {
               </div>
             </div>
             <div className="w-28 shrink-0">
-              <AddToCartButton
-                productId={product.id}
-                available={product.available}
-                variant="compact"
-                label={product.available > 0 ? "Add" : "Sold out"}
-              />
+              {product.sizes.length > 0 ? (
+                <Link
+                  href={`/product/${product.slug}`}
+                  className="flex w-full items-center justify-center rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-2.5 text-xs font-bold text-cyan-100 transition hover:bg-cyan-300/20"
+                >
+                  Choose size
+                </Link>
+              ) : (
+                <AddToCartButton
+                  productId={product.id}
+                  available={product.available}
+                  variant="compact"
+                  label={product.available > 0 ? "Add" : "Sold out"}
+                />
+              )}
             </div>
           </div>
           <p className="mt-3 flex items-center gap-1.5 font-mono text-[10px] text-slate-500">

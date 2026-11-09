@@ -162,7 +162,7 @@ export default async function ShopPage({
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[260px_1fr]">
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <details className="neon-card group rounded-2xl bg-[#0a0d19]" open>
+          <details className="neon-card group rounded-2xl bg-[#0b051d]" open>
             <summary className="flex cursor-pointer list-none items-center justify-between p-4 text-sm font-bold text-white lg:cursor-default">
               <span className="flex items-center gap-2">
                 <SlidersHorizontal size={16} className="text-cyan-300" aria-hidden="true" />
@@ -178,12 +178,12 @@ export default async function ShopPage({
               </span>
             </summary>
 
-            <form action="/shop" method="get" className="space-y-6 border-t border-white/10 p-4">
+            <form action="/shop" method="get" className="space-y-6 border-t border-[#c4b5fd]/12 p-4">
               <div>
                 <label htmlFor="filter-q" className="mb-2 block text-xs font-semibold text-slate-300">
                   Search
                 </label>
-                <div className="flex items-center gap-2 rounded-lg border border-white/15 bg-white/[0.03] px-3 focus-within:border-cyan-300/50">
+                <div className="flex items-center gap-2 rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3 focus-within:border-cyan-300/50">
                   <Search size={14} className="text-slate-500" aria-hidden="true" />
                   <input
                     id="filter-q"
@@ -201,7 +201,7 @@ export default async function ShopPage({
                 <select
                   name="category"
                   defaultValue={category ?? ""}
-                  className="h-10 w-full rounded-lg border border-white/15 bg-[#0a0d19] px-3 text-sm text-slate-200"
+                  className="h-10 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0b051d] px-3 text-sm text-slate-200"
                 >
                   <option value="">All categories</option>
                   {categories.map((entry) => (
@@ -217,7 +217,7 @@ export default async function ShopPage({
                 <select
                   name="brand"
                   defaultValue={brand ?? ""}
-                  className="h-10 w-full rounded-lg border border-white/15 bg-[#0a0d19] px-3 text-sm text-slate-200"
+                  className="h-10 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0b051d] px-3 text-sm text-slate-200"
                 >
                   <option value="">All brands</option>
                   {brands.map((entry) => (
@@ -242,7 +242,7 @@ export default async function ShopPage({
                     step="1"
                     defaultValue={minPriceCents ? minPriceCents / 100 : ""}
                     placeholder="Min €"
-                    className="h-10 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none placeholder:text-slate-500 focus:border-cyan-300/50"
+                    className="h-10 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3 text-sm text-white outline-none placeholder:text-slate-500 focus:border-cyan-300/50"
                   />
                   <label className="sr-only" htmlFor="maxPrice">Maximum price</label>
                   <input
@@ -253,7 +253,7 @@ export default async function ShopPage({
                     step="1"
                     defaultValue={maxPriceCents ? maxPriceCents / 100 : ""}
                     placeholder="Max €"
-                    className="h-10 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none placeholder:text-slate-500 focus:border-cyan-300/50"
+                    className="h-10 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3 text-sm text-white outline-none placeholder:text-slate-500 focus:border-cyan-300/50"
                   />
                 </div>
               </fieldset>
@@ -264,7 +264,7 @@ export default async function ShopPage({
                   name="inStock"
                   value="1"
                   defaultChecked={inStock}
-                  className="h-4 w-4 rounded border-white/20 bg-white/5 accent-cyan-300"
+                  className="h-4 w-4 rounded border-[#c4b5fd]/22 bg-[#c4b5fd]/10 accent-cyan-300"
                 />
                 In stock only
               </label>
@@ -277,7 +277,7 @@ export default async function ShopPage({
                   id="filter-sort"
                   name="sort"
                   defaultValue={sort}
-                  className="h-10 w-full rounded-lg border border-white/15 bg-[#0a0d19] px-3 text-sm text-slate-200"
+                  className="h-10 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0b051d] px-3 text-sm text-slate-200"
                 >
                   {sortOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -296,7 +296,7 @@ export default async function ShopPage({
                 </button>
                 <Link
                   href="/shop"
-                  className="rounded-lg border border-white/15 px-3 py-2.5 text-xs font-semibold text-slate-400 transition hover:text-white"
+                  className="rounded-lg border border-[#c4b5fd]/18 px-3 py-2.5 text-xs font-semibold text-slate-400 transition hover:text-white"
                 >
                   Reset
                 </Link>
@@ -314,7 +314,7 @@ export default async function ShopPage({
         </aside>
 
         <div>
-          <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-[#c4b5fd]/12 pb-4">
             <p className="text-sm text-slate-400">
               <span className="font-bold text-white">{result.total}</span>{" "}
               {result.total === 1 ? "product" : "products"}
@@ -324,22 +324,22 @@ export default async function ShopPage({
             </p>
             <div className="flex flex-wrap gap-2">
               {query && (
-                <Link href={buildHref({ q: undefined })} className="inline-flex items-center gap-1 rounded-full border border-white/15 px-2.5 py-1 text-[10px] text-slate-300 hover:text-white">
+                <Link href={buildHref({ q: undefined })} className="inline-flex items-center gap-1 rounded-full border border-[#c4b5fd]/18 px-2.5 py-1 text-[10px] text-slate-300 hover:text-white">
                   “{query}” <X size={11} aria-hidden="true" />
                 </Link>
               )}
               {activeCategory && (
-                <Link href={buildHref({ category: undefined })} className="inline-flex items-center gap-1 rounded-full border border-white/15 px-2.5 py-1 text-[10px] text-slate-300 hover:text-white">
+                <Link href={buildHref({ category: undefined })} className="inline-flex items-center gap-1 rounded-full border border-[#c4b5fd]/18 px-2.5 py-1 text-[10px] text-slate-300 hover:text-white">
                   {activeCategory.name} <X size={11} aria-hidden="true" />
                 </Link>
               )}
               {brand && (
-                <Link href={buildHref({ brand: undefined })} className="inline-flex items-center gap-1 rounded-full border border-white/15 px-2.5 py-1 text-[10px] text-slate-300 hover:text-white">
+                <Link href={buildHref({ brand: undefined })} className="inline-flex items-center gap-1 rounded-full border border-[#c4b5fd]/18 px-2.5 py-1 text-[10px] text-slate-300 hover:text-white">
                   {brand} <X size={11} aria-hidden="true" />
                 </Link>
               )}
               {inStock && (
-                <Link href={buildHref({ inStock: undefined })} className="inline-flex items-center gap-1 rounded-full border border-white/15 px-2.5 py-1 text-[10px] text-slate-300 hover:text-white">
+                <Link href={buildHref({ inStock: undefined })} className="inline-flex items-center gap-1 rounded-full border border-[#c4b5fd]/18 px-2.5 py-1 text-[10px] text-slate-300 hover:text-white">
                   In stock <X size={11} aria-hidden="true" />
                 </Link>
               )}
@@ -353,7 +353,7 @@ export default async function ShopPage({
               ))}
             </div>
           ) : (
-            <div className="flex min-h-80 flex-col items-center justify-center rounded-2xl border border-dashed border-white/15 p-8 text-center">
+            <div className="flex min-h-80 flex-col items-center justify-center rounded-2xl border border-dashed border-[#c4b5fd]/18 p-8 text-center">
               <PackageSearch size={36} className="text-slate-600" aria-hidden="true" />
               <h2 className="mt-4 text-lg font-bold text-white">No products found</h2>
               <p className="mt-2 max-w-sm text-sm leading-6 text-slate-400">
@@ -374,13 +374,13 @@ export default async function ShopPage({
               {result.page > 1 ? (
                 <Link
                   href={buildHref({ page: String(result.page - 1) })}
-                  className="inline-flex h-9 items-center gap-1 rounded-lg border border-white/15 px-3 text-xs text-slate-300 hover:border-cyan-300/40 hover:text-white"
+                  className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#c4b5fd]/18 px-3 text-xs text-slate-300 hover:border-cyan-300/40 hover:text-white"
                   rel="prev"
                 >
                   <ChevronLeft size={14} aria-hidden="true" /> Previous
                 </Link>
               ) : (
-                <span className="inline-flex h-9 items-center gap-1 rounded-lg border border-white/10 px-3 text-xs text-slate-600">
+                <span className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#c4b5fd]/12 px-3 text-xs text-slate-600">
                   <ChevronLeft size={14} aria-hidden="true" /> Previous
                 </span>
               )}
@@ -390,13 +390,13 @@ export default async function ShopPage({
               {result.page < result.pageCount ? (
                 <Link
                   href={buildHref({ page: String(result.page + 1) })}
-                  className="inline-flex h-9 items-center gap-1 rounded-lg border border-white/15 px-3 text-xs text-slate-300 hover:border-cyan-300/40 hover:text-white"
+                  className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#c4b5fd]/18 px-3 text-xs text-slate-300 hover:border-cyan-300/40 hover:text-white"
                   rel="next"
                 >
                   Next <ChevronRight size={14} aria-hidden="true" />
                 </Link>
               ) : (
-                <span className="inline-flex h-9 items-center gap-1 rounded-lg border border-white/10 px-3 text-xs text-slate-600">
+                <span className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#c4b5fd]/12 px-3 text-xs text-slate-600">
                   Next <ChevronRight size={14} aria-hidden="true" />
                 </span>
               )}

@@ -72,6 +72,7 @@ export async function POST(request: Request) {
       lines: cart.lines.map((line) => ({
         productId: line.product.id,
         quantity: line.quantity,
+        size: line.size,
       })),
       shippingCents: cart.shippingCents || 0,
       supportCents: body.supportCents,

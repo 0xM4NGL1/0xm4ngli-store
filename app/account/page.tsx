@@ -35,7 +35,7 @@ export default async function AccountPage() {
   return (
     <div className="grid gap-6 lg:grid-cols-12">
       <section className="lg:col-span-7">
-        <div className="neon-card rounded-2xl bg-[#0a0d19] p-5 md:p-6">
+        <div className="neon-card rounded-2xl bg-[#0b051d] p-5 md:p-6">
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-300">
@@ -113,7 +113,7 @@ export default async function AccountPage() {
             <Link
               key={item.label + item.href}
               href={item.href}
-              className="neon-card rounded-2xl bg-[#0a0d19] p-4 transition"
+              className="neon-card rounded-2xl bg-[#0b051d] p-4 transition"
             >
               <item.icon size={17} className="text-cyan-300" aria-hidden="true" />
               <p className="mt-3 text-2xl font-black text-white">{item.value}</p>
@@ -124,7 +124,7 @@ export default async function AccountPage() {
           ))}
         </div>
 
-        <div className="neon-card rounded-2xl bg-gradient-to-br from-[#0d1022] to-[#0a0d19] p-5">
+        <div className="neon-card rounded-2xl bg-gradient-to-br from-[#0d0622] to-[#0b051d] p-5">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-fuchsia-300">
             Member benefit
           </p>
@@ -137,7 +137,7 @@ export default async function AccountPage() {
           </p>
           <Link
             href="/wishlist"
-            className="mt-4 inline-flex items-center gap-2 rounded-lg border border-white/15 px-3.5 py-2 text-xs font-bold text-slate-200 hover:border-fuchsia-300/40 hover:text-fuchsia-200"
+            className="mt-4 inline-flex items-center gap-2 rounded-lg border border-[#c4b5fd]/18 px-3.5 py-2 text-xs font-bold text-slate-200 hover:border-fuchsia-300/40 hover:text-fuchsia-200"
           >
             Open wishlist <ArrowRight size={13} aria-hidden="true" />
           </Link>

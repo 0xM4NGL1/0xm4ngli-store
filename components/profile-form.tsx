@@ -73,7 +73,7 @@ export function ProfileForm({
             autoComplete="name"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 text-sm text-white outline-none focus:border-cyan-300/60"
+            className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 text-sm text-white outline-none focus:border-cyan-300/60"
           />
         </div>
         <div>
@@ -88,7 +88,7 @@ export function ProfileForm({
             autoComplete="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 text-sm text-white outline-none focus:border-cyan-300/60"
+            className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 text-sm text-white outline-none focus:border-cyan-300/60"
           />
         </div>
       </div>
@@ -110,12 +110,12 @@ export function ProfileForm({
         </div>
       )}
 
-      <label className="flex items-start gap-2.5 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs leading-5 text-slate-400">
+      <label className="flex items-start gap-2.5 rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 p-4 text-xs leading-5 text-slate-400">
         <input
           type="checkbox"
           checked={marketingConsent}
           onChange={(event) => setMarketingConsent(event.target.checked)}
-          className="mt-0.5 h-4 w-4 rounded border-white/20 bg-white/5 accent-cyan-300"
+          className="mt-0.5 h-4 w-4 rounded border-[#c4b5fd]/22 bg-[#c4b5fd]/10 accent-cyan-300"
         />
         <span>
           <span className="font-semibold text-slate-200">Marketing emails</span>

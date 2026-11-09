@@ -106,7 +106,7 @@ export function HeaderClient({
 
   return (
     <>
-      <div className="relative overflow-hidden border-b border-white/10 bg-[#080a14]">
+      <div className="relative overflow-hidden border-b border-[#c4b5fd]/12 bg-[#080316]">
         <div className="container-m4 flex min-h-9 items-center justify-between gap-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
           <p className="flex items-center gap-2">
             <Sparkles size={12} className="text-cyan-300" aria-hidden="true" />
@@ -121,11 +121,11 @@ export function HeaderClient({
         </div>
       </div>
 
-      <header className="neon-header sticky top-0 z-40 border-b border-white/10 bg-[#05060b]/82 backdrop-blur-xl">
+      <header className="neon-header sticky top-0 z-40 border-b border-[#c4b5fd]/12 bg-[#04010c]/82 backdrop-blur-xl">
         <div className="container-m4 flex h-[68px] items-center gap-4">
           <button
             type="button"
-            className="rounded-full p-2 text-slate-300 transition hover:bg-white/5 hover:text-white lg:hidden"
+            className="rounded-full p-2 text-slate-300 transition hover:bg-[#c4b5fd]/10 hover:text-white lg:hidden"
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
             aria-expanded={menuOpen}
@@ -158,7 +158,7 @@ export function HeaderClient({
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="rounded-full p-2.5 text-slate-300 transition hover:bg-white/5 hover:text-white"
+              className="rounded-full p-2.5 text-slate-300 transition hover:bg-[#c4b5fd]/10 hover:text-white"
               aria-label="Search products"
               aria-haspopup="dialog"
             >
@@ -167,12 +167,12 @@ export function HeaderClient({
 
             <Link
               href="/wishlist"
-              className="relative hidden rounded-full p-2.5 text-slate-300 transition hover:bg-white/5 hover:text-fuchsia-200 sm:block"
+              className="relative hidden rounded-full p-2.5 text-slate-300 transition hover:bg-[#c4b5fd]/10 hover:text-fuchsia-200 sm:block"
               aria-label={`Wishlist${wishlistCount ? `, ${wishlistCount} items` : ""}`}
             >
               <Heart size={19} aria-hidden="true" />
               {wishlistCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-fuchsia-500 px-1 text-[9px] font-black text-white shadow-[0_0_14px_rgba(232,121,249,0.8)]">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-fuchsia-500 px-1 text-[9px] font-black text-white shadow-[0_0_14px_rgba(255, 43, 214, 0.8)]">
                   {wishlistCount}
                 </span>
               )}
@@ -181,7 +181,7 @@ export function HeaderClient({
             <Link
               href={user ? "/account" : "/login"}
               className={classNames(
-                "relative flex items-center gap-2 rounded-full p-2.5 text-slate-300 transition hover:bg-white/5 hover:text-cyan-200",
+                "relative flex items-center gap-2 rounded-full p-2.5 text-slate-300 transition hover:bg-[#c4b5fd]/10 hover:text-cyan-200",
                 user && "sm:pr-3",
               )}
               aria-label={user ? "Your account" : "Sign in"}
@@ -200,12 +200,12 @@ export function HeaderClient({
 
             <Link
               href="/cart"
-              className="relative rounded-full p-2.5 text-slate-200 transition hover:bg-white/5 hover:text-white"
+              className="relative rounded-full p-2.5 text-slate-200 transition hover:bg-[#c4b5fd]/10 hover:text-white"
               aria-label={`Cart${cartCount ? `, ${cartCount} items` : ""}`}
             >
               <ShoppingBag size={20} aria-hidden="true" />
               {cartCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gradient-to-br from-cyan-300 to-fuchsia-400 px-1 text-[9px] font-black text-slate-950 shadow-[0_0_14px_rgba(34,211,238,0.8)]">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gradient-to-br from-cyan-300 to-fuchsia-400 px-1 text-[9px] font-black text-slate-950 shadow-[0_0_14px_rgba(52, 244, 255, 0.8)]">
                   {cartCount > 99 ? "99+" : cartCount}
                 </span>
               )}
@@ -217,17 +217,17 @@ export function HeaderClient({
       {menuOpen && (
         <div
           id="mobile-menu"
-          className="scanlines fixed inset-0 z-50 flex flex-col bg-[#060815] lg:hidden"
+          className="scanlines fixed inset-0 z-50 flex flex-col bg-[#080316] lg:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
         >
-          <div className="flex h-[68px] items-center justify-between border-b border-white/10 px-4">
+          <div className="flex h-[68px] items-center justify-between border-b border-[#c4b5fd]/12 px-4">
             <Logo />
             <button
               type="button"
               onClick={() => setMenuOpen(false)}
-              className="rounded-full p-2 text-slate-300 hover:bg-white/5 hover:text-white"
+              className="rounded-full p-2 text-slate-300 hover:bg-[#c4b5fd]/10 hover:text-white"
               aria-label="Close menu"
             >
               <X size={24} aria-hidden="true" />
@@ -242,7 +242,7 @@ export function HeaderClient({
                 <Link
                   key={category.slug}
                   href={`/shop?category=${category.slug}`}
-                  className="rounded-xl border border-white/10 bg-white/[0.025] px-4 py-3 text-sm font-semibold text-slate-200 hover:border-cyan-300/30 hover:text-white"
+                  className="rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/75 px-4 py-3 text-sm font-semibold text-slate-200 hover:border-cyan-300/30 hover:text-white"
                 >
                   {category.name}
                 </Link>
@@ -251,7 +251,7 @@ export function HeaderClient({
             <p className="mb-3 mt-8 font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500">
               Store
             </p>
-            <nav className="flex flex-col divide-y divide-white/10 border-y border-white/10">
+            <nav className="flex flex-col divide-y divide-[#c4b5fd]/12 border-y border-[#c4b5fd]/12">
               {[
                 { href: "/shop", label: "Shop all" },
                 { href: "/shop?sort=drop", label: "Price drops" },
@@ -279,7 +279,7 @@ export function HeaderClient({
 
       {searchOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-start justify-center bg-[#03040a]/80 px-4 pt-[12vh] backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-start justify-center bg-[#030108]/80 px-4 pt-[12vh] backdrop-blur-md"
           role="dialog"
           aria-modal="true"
           aria-label="Search"
@@ -287,8 +287,8 @@ export function HeaderClient({
             if (event.target === event.currentTarget) setSearchOpen(false);
           }}
         >
-          <div className="neon-card w-full max-w-2xl overflow-hidden rounded-2xl border border-white/15 bg-[#0a0d1b] shadow-2xl">
-            <form onSubmit={submitSearch} className="flex items-center gap-3 border-b border-white/10 px-5">
+          <div className="neon-card w-full max-w-2xl overflow-hidden rounded-2xl border border-[#c4b5fd]/18 bg-[#0c0620] shadow-2xl">
+            <form onSubmit={submitSearch} className="flex items-center gap-3 border-b border-[#c4b5fd]/12 px-5">
               <Search size={20} className="shrink-0 text-cyan-300" aria-hidden="true" />
               <label htmlFor="site-search" className="sr-only">
                 Search products
@@ -306,7 +306,7 @@ export function HeaderClient({
               <button
                 type="button"
                 onClick={() => setSearchOpen(false)}
-                className="rounded-full p-2 text-slate-400 hover:bg-white/5 hover:text-white"
+                className="rounded-full p-2 text-slate-400 hover:bg-[#c4b5fd]/10 hover:text-white"
                 aria-label="Close search"
               >
                 <X size={20} aria-hidden="true" />
@@ -329,7 +329,7 @@ export function HeaderClient({
                 ))}
               </div>
               <p className="mt-5 text-xs text-slate-500">
-                Tip: press <kbd className="rounded border border-white/15 bg-white/5 px-1.5 py-0.5 font-mono">/</kbd> anywhere to search.
+                Tip: press <kbd className="rounded border border-[#c4b5fd]/18 bg-[#c4b5fd]/10 px-1.5 py-0.5 font-mono">/</kbd> anywhere to search.
               </p>
             </div>
           </div>

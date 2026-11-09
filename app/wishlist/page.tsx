@@ -48,7 +48,7 @@ export default async function WishlistPage() {
       </div>
 
       {products.length === 0 ? (
-        <div className="mt-8 flex min-h-80 flex-col items-center justify-center rounded-2xl border border-dashed border-white/15 p-8 text-center">
+        <div className="mt-8 flex min-h-80 flex-col items-center justify-center rounded-2xl border border-dashed border-[#c4b5fd]/18 p-8 text-center">
           <Heart size={34} className="text-slate-600" aria-hidden="true" />
           <h2 className="mt-4 text-lg font-bold text-white">Nothing saved yet</h2>
           <p className="mt-2 max-w-sm text-sm leading-6 text-slate-400">

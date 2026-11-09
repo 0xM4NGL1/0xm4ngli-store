@@ -23,6 +23,10 @@ export const adminProductSchema = z.object({
   category: z.enum(categorySlugs),
   description: z.string().trim().min(20).max(4000),
   specs: z.record(z.string().max(60), z.string().max(300)).default({}),
+  sizes: z
+    .array(z.string().trim().min(1).max(30))
+    .max(30)
+    .default([]),
   price: z.number().positive().max(1_000_000),
   compareAt: z.number().positive().max(1_000_000).optional(),
   stock: z.number().int().min(0).max(1_000_000),
@@ -82,9 +86,9 @@ export async function createManualProduct(input: AdminProductInput) {
     const result = await dbRun(
       `INSERT INTO products (
          sku, slug, name, brand, category, description, specs_json,
-         price_cents, compare_at_cents, currency, stock, reserved, image,
-         featured, is_demo, source, source_url, created_at, updated_at
-       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'EUR', ?, 0, ?, ?, 0, 'manual', ?, ?, ?)`,
+         sizes_json, price_cents, compare_at_cents, currency, stock, reserved,
+         image, featured, is_demo, source, source_url, created_at, updated_at
+       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'EUR', ?, 0, ?, ?, 0, 'manual', ?, ?, ?)`,
       input.sku,
       input.slug,
       input.name,
@@ -92,6 +96,7 @@ export async function createManualProduct(input: AdminProductInput) {
       input.category,
       input.description,
       JSON.stringify(input.specs),
+      JSON.stringify(input.sizes),
       priceCents,
       compareAtCents,
       input.stock,
@@ -140,8 +145,8 @@ export async function updateManualProduct(id: number, input: AdminProductInput) 
     await dbRun(
       `UPDATE products SET
          sku = ?, slug = ?, name = ?, brand = ?, category = ?, description = ?,
-         specs_json = ?, price_cents = ?, compare_at_cents = ?, stock = ?,
-         image = ?, featured = ?, is_demo = 0, source = 'manual',
+         specs_json = ?, sizes_json = ?, price_cents = ?, compare_at_cents = ?,
+         stock = ?, image = ?, featured = ?, is_demo = 0, source = 'manual',
          source_url = ?, updated_at = ?
        WHERE id = ?`,
       input.sku,
@@ -151,6 +156,7 @@ export async function updateManualProduct(id: number, input: AdminProductInput) 
       input.category,
       input.description,
       JSON.stringify(input.specs),
+      JSON.stringify(input.sizes),
       priceCents,
       compareAtCents,
       input.stock,

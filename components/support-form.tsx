@@ -73,13 +73,13 @@ export function SupportForm({ signedInEmail }: { signedInEmail: string }) {
             className={
               !customActive && amountCents === value
                 ? "rounded-full border border-fuchsia-300/40 bg-fuchsia-300/10 px-4 py-2 text-sm font-bold text-fuchsia-200"
-                : "rounded-full border border-white/15 px-4 py-2 text-sm text-slate-400 hover:border-fuchsia-300/30 hover:text-white"
+                : "rounded-full border border-[#c4b5fd]/18 px-4 py-2 text-sm text-slate-400 hover:border-fuchsia-300/30 hover:text-white"
             }
           >
             {formatPrice(value)}
           </button>
         ))}
-        <div className="flex items-center rounded-full border border-white/15 bg-white/[0.03] px-4">
+        <div className="flex items-center rounded-full border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-4">
           <span className="text-sm text-slate-500">€</span>
           <label htmlFor="support-custom" className="sr-only">
             Custom support amount

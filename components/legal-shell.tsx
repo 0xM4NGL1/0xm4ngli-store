@@ -35,13 +35,13 @@ export function LegalShell({
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="shrink-0 rounded-lg px-3 py-2 text-xs font-semibold text-slate-400 transition hover:bg-white/5 hover:text-white"
+                  className="shrink-0 rounded-lg px-3 py-2 text-xs font-semibold text-slate-400 transition hover:bg-[#c4b5fd]/10 hover:text-white"
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
-            <div className="mt-6 hidden rounded-xl border border-white/10 bg-white/[0.02] p-4 text-[11px] leading-5 text-slate-500 lg:block">
+            <div className="mt-6 hidden rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 p-4 text-[11px] leading-5 text-slate-500 lg:block">
               <p className="flex items-center gap-2 font-semibold text-slate-300">
                 <ShieldCheck size={14} className="text-emerald-300" aria-hidden="true" />
                 Privacy-first
@@ -55,7 +55,7 @@ export function LegalShell({
         </aside>
 
         <article className="lg:col-span-9">
-          <div className="border-b border-white/10 pb-6">
+          <div className="border-b border-[#c4b5fd]/12 pb-6">
             <p className="flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
               <FileText size={13} aria-hidden="true" /> Last updated {updated}
             </p>
@@ -80,7 +80,7 @@ export function LegalShell({
 
           <div className="legal-prose mt-4">{children}</div>
 
-          <div className="mt-12 rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-xs leading-6 text-slate-500">
+          <div className="mt-12 rounded-2xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 p-5 text-xs leading-6 text-slate-500">
             <p>
               Questions about this page? Email{" "}
               <a href={`mailto:${site.privacyEmail}`} className="text-cyan-200 underline underline-offset-2">

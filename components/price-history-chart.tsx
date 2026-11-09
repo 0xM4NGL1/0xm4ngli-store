@@ -2,11 +2,11 @@ import type { DealSignal, PricePoint } from "@/lib/types";
 import { formatDate, formatPrice } from "@/lib/format";
 
 const colors: Record<DealSignal["verdict"], string> = {
-  buy: "#34d399",
-  good: "#22d3ee",
-  fair: "#fbbf24",
-  wait: "#fb7185",
-  collecting: "#94a3b8",
+  buy: "#4dffa8",
+  good: "#34f4ff",
+  fair: "#ffc247",
+  wait: "#ff6d93",
+  collecting: "#a99cd8",
 };
 
 export function PriceHistoryChart({
@@ -22,7 +22,7 @@ export function PriceHistoryChart({
 }) {
   if (points.length < 2) {
     return (
-      <div className="flex min-h-52 flex-col items-center justify-center rounded-xl border border-dashed border-white/15 bg-white/[0.015] p-8 text-center">
+      <div className="flex min-h-52 flex-col items-center justify-center rounded-xl border border-dashed border-[#c4b5fd]/18 bg-[#0b051d]/60 p-8 text-center">
         <p className="font-semibold text-slate-300">Building price history</p>
         <p className="mt-1 max-w-sm text-sm text-slate-500">
           The chart appears after the next price observations are recorded. We do
@@ -74,7 +74,7 @@ export function PriceHistoryChart({
   const tableRows = points.slice(-14);
 
   return (
-    <figure className="neon-card rounded-xl bg-[#080a14] p-3">
+    <figure className="neon-card rounded-xl bg-[#080316] p-3">
       <svg
         viewBox={`0 0 ${width} ${height}`}
         className="h-auto w-full"
@@ -97,14 +97,14 @@ export function PriceHistoryChart({
                 x2={width - padding.right}
                 y1={tickY}
                 y2={tickY}
-                stroke="rgba(148,163,184,0.12)"
+                stroke="rgba(196, 181, 253, 0.12)"
                 strokeDasharray="3 5"
               />
               <text
                 x={padding.left - 8}
                 y={tickY + 3}
                 textAnchor="end"
-                fill="#64748b"
+                fill="#6d619a"
                 fontSize="10"
                 fontFamily="var(--font-geist-mono)"
               >
@@ -122,7 +122,7 @@ export function PriceHistoryChart({
             textAnchor={
               index === 0 ? "start" : index === xTickCount - 1 ? "end" : "middle"
             }
-            fill="#64748b"
+            fill="#6d619a"
             fontSize="10"
             fontFamily="var(--font-geist-mono)"
           >
@@ -146,7 +146,7 @@ export function PriceHistoryChart({
             cx={x(times[index])}
             cy={y(point.priceCents)}
             r={index === points.length - 1 ? 5 : 1.8}
-            fill={index === points.length - 1 ? color : "#05060b"}
+            fill={index === points.length - 1 ? color : "#04010c"}
             stroke={color}
             strokeWidth={index === points.length - 1 ? 2 : 1}
             opacity={index === points.length - 1 ? 1 : 0.65}
@@ -170,18 +170,18 @@ export function PriceHistoryChart({
         <summary className="cursor-pointer py-1 text-xs text-slate-500 hover:text-slate-300">
           View data table
         </summary>
-        <div className="mt-2 max-h-56 overflow-auto rounded-lg border border-white/10">
+        <div className="mt-2 max-h-56 overflow-auto rounded-lg border border-[#c4b5fd]/12">
           <table className="w-full text-left text-xs">
             <caption className="sr-only">
               Recent recorded prices for this product
             </caption>
-            <thead className="sticky top-0 bg-[#0c0f1c] text-slate-400">
+            <thead className="sticky top-0 bg-[#0c0618] text-slate-400">
               <tr>
                 <th scope="col" className="px-3 py-2 font-semibold">Date</th>
                 <th scope="col" className="px-3 py-2 text-right font-semibold">Price</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-[#c4b5fd]/8">
               {tableRows.map((point) => (
                 <tr key={`row-${point.recordedAt}`}>
                   <td className="px-3 py-1.5 text-slate-400">

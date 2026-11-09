@@ -52,7 +52,7 @@ export function LoginForm({ next }: { next: string }) {
           autoComplete="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
+          className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
           placeholder="you@example.com"
         />
       </div>
@@ -74,7 +74,7 @@ export function LoginForm({ next }: { next: string }) {
             autoComplete="current-password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 pr-11 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
+            className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 pr-11 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
             placeholder="Your password"
           />
           <button

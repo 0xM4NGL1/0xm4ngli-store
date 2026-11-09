@@ -53,7 +53,7 @@ export function CookieNotice() {
         <button
           type="button"
           onClick={dismiss}
-          className="rounded-full p-1 text-slate-500 hover:bg-white/5 hover:text-white"
+          className="rounded-full p-1 text-slate-500 hover:bg-[#c4b5fd]/10 hover:text-white"
           aria-label="Dismiss cookie notice"
         >
           <X size={16} aria-hidden="true" />

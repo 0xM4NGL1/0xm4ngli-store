@@ -2,7 +2,7 @@ import type { PricePoint } from "@/lib/types";
 
 export function MiniSparkline({
   points,
-  color = "#22d3ee",
+  color = "#34f4ff",
   width = 220,
   height = 58,
   className = "h-14 w-full",
@@ -16,7 +16,7 @@ export function MiniSparkline({
   if (points.length < 2) {
     return (
       <div
-        className="h-14 rounded-md border border-dashed border-white/10"
+        className="h-14 rounded-md border border-dashed border-[#c4b5fd]/12"
         aria-hidden="true"
       />
     );

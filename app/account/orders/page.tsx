@@ -37,7 +37,7 @@ export default async function OrdersPage() {
       </div>
 
       {orders.length === 0 ? (
-        <div className="mt-6 flex min-h-72 flex-col items-center justify-center rounded-2xl border border-dashed border-white/15 p-8 text-center">
+        <div className="mt-6 flex min-h-72 flex-col items-center justify-center rounded-2xl border border-dashed border-[#c4b5fd]/18 p-8 text-center">
           <Package size={34} className="text-slate-600" aria-hidden="true" />
           <h3 className="mt-4 text-lg font-bold text-white">No orders yet</h3>
           <p className="mt-2 max-w-sm text-sm leading-6 text-slate-400">
@@ -57,7 +57,7 @@ export default async function OrdersPage() {
             return (
               <details
                 key={order.id}
-                className="neon-card group overflow-hidden rounded-2xl bg-[#0a0d19]"
+                className="neon-card group overflow-hidden rounded-2xl bg-[#0b051d]"
               >
                 <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-3 p-4">
                   <div>
@@ -70,7 +70,7 @@ export default async function OrdersPage() {
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${statusStyles[order.status] ?? "bg-white/5 text-slate-300"}`}>
+                    <span className={`rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide ${statusStyles[order.status] ?? "bg-[#c4b5fd]/10 text-slate-300"}`}>
                       {order.status === "pending" && order.paymentMethod === "bank_transfer"
                         ? "Awaiting transfer"
                         : order.status}
@@ -85,7 +85,7 @@ export default async function OrdersPage() {
                     />
                   </div>
                 </summary>
-                <div className="border-t border-white/10 p-4">
+                <div className="border-t border-[#c4b5fd]/12 p-4">
                   <ul className="space-y-2">
                     {order.items.length === 0 && (
                       <li className="flex justify-between gap-3 text-sm">
@@ -100,6 +100,11 @@ export default async function OrdersPage() {
                         <span className="text-slate-300">
                           <span className="text-slate-500">{item.quantity} × </span>
                           {item.name}
+                          {item.size && (
+                            <span className="block text-[11px] text-slate-500">
+                              Size {item.size}
+                            </span>
+                          )}
                         </span>
                         <span className="font-semibold text-white">
                           {formatPrice(item.unitPriceCents * item.quantity, order.currency)}
@@ -108,7 +113,7 @@ export default async function OrdersPage() {
                     ))}
                   </ul>
                   {address.length > 0 && (
-                    <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.02] p-3 text-xs leading-5 text-slate-400">
+                    <div className="mt-4 rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 p-3 text-xs leading-5 text-slate-400">
                       <p className="font-semibold text-slate-300">Shipping to</p>
                       <p className="mt-1">{address.join(", ")}</p>
                     </div>

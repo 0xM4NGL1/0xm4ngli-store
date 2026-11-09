@@ -16,13 +16,13 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-function OrderItems({ items }: { items: { sku: string; name: string; quantity: number; unitPriceCents: number }[] }) {
+function OrderItems({ items }: { items: { sku: string; name: string; quantity: number; unitPriceCents: number; size?: string }[] }) {
   if (items.length === 0) return <p className="text-xs text-fuchsia-200">Voluntary support contribution</p>;
   return (
     <ul className="space-y-1 text-xs">
       {items.map((item) => (
-        <li key={item.sku} className="flex justify-between gap-3">
-          <span className="text-slate-400">{item.quantity} × {item.name}</span>
+        <li key={`${item.sku}-${item.size ?? ""}`} className="flex justify-between gap-3">
+          <span className="text-slate-400">{item.quantity} × {item.name}{item.size ? ` · size ${item.size}` : ""}</span>
           <span className="font-mono text-slate-300">{formatPrice(item.unitPriceCents * item.quantity)}</span>
         </li>
       ))}
@@ -49,13 +49,13 @@ export default async function AdminOrdersPage() {
           <span className="rounded-full bg-cyan-300/10 px-2 py-0.5 text-[10px] text-cyan-200">{pending.length}</span>
         </h2>
         {pending.length === 0 ? (
-          <p className="mt-3 rounded-2xl border border-dashed border-white/15 p-6 text-sm text-slate-500">
+          <p className="mt-3 rounded-2xl border border-dashed border-[#c4b5fd]/18 p-6 text-sm text-slate-500">
             No pending bank transfers. New orders appear here immediately.
           </p>
         ) : (
           <div className="mt-3 space-y-3">
             {pending.map((order) => (
-              <article key={order.id} className="neon-card rounded-2xl bg-[#0a0d19] p-4">
+              <article key={order.id} className="neon-card rounded-2xl bg-[#0b051d] p-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
                     <p className="font-mono text-xs text-slate-300">{order.id}</p>
@@ -76,7 +76,7 @@ export default async function AdminOrdersPage() {
                     </p>
                   )}
                 </div>
-                <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-3">
+                <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-[#c4b5fd]/12 pt-3">
                   <Link href={`/checkout/success?token=${encodeURIComponent(order.publicToken)}`} className="text-[11px] font-semibold text-cyan-200 hover:text-white">
                     Open order page
                   </Link>
@@ -95,11 +95,11 @@ export default async function AdminOrdersPage() {
           <span className="rounded-full bg-emerald-300/10 px-2 py-0.5 text-[10px] text-emerald-200">{paid.length}</span>
         </h2>
         {paid.length === 0 ? (
-          <p className="mt-3 rounded-2xl border border-dashed border-white/15 p-6 text-sm text-slate-500">
+          <p className="mt-3 rounded-2xl border border-dashed border-[#c4b5fd]/18 p-6 text-sm text-slate-500">
             No paid orders yet. Mark a matched transfer as paid above.
           </p>
         ) : (
-          <div className="mt-3 divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/10">
+          <div className="mt-3 divide-y divide-[#c4b5fd]/12 overflow-hidden rounded-2xl border border-[#c4b5fd]/12">
             {paid.slice(0, 30).map((order) => (
               <div key={order.id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3">
                 <div>

@@ -72,7 +72,7 @@ export function CartLineControls({
   return (
     <div className="space-y-1.5">
       <div className="flex items-center gap-2">
-        <div className="flex items-center rounded-lg border border-white/15 bg-white/[0.03]">
+        <div className="flex items-center rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80">
           <button
             type="button"
             onClick={() => update(quantity - 1)}

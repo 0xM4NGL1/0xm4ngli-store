@@ -31,6 +31,30 @@ import { ProductCard } from "@/components/product-card";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
+const deliveryFormatter = new Intl.DateTimeFormat("en-IE", {
+  weekday: "short",
+  day: "numeric",
+  month: "short",
+});
+
+function addBusinessDays(days: number) {
+  const date = new Date();
+  let added = 0;
+  while (added < days) {
+    date.setDate(date.getDate() + 1);
+    const weekday = date.getDay();
+    if (weekday !== 0 && weekday !== 6) added += 1;
+  }
+  return date;
+}
+
+function deliveryEstimate() {
+  const earliest =
+    site.dispatchBusinessDays + site.deliveryMinBusinessDays;
+  const latest = site.dispatchBusinessDays + site.deliveryMaxBusinessDays;
+  return `${deliveryFormatter.format(addBusinessDays(earliest))} – ${deliveryFormatter.format(addBusinessDays(latest))}`;
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
@@ -69,6 +93,15 @@ export default async function ProductPage({ params }: PageProps) {
     product.compareAtCents && product.compareAtCents > product.priceCents
       ? (product.compareAtCents - product.priceCents) / product.compareAtCents
       : null;
+  const shippingCents =
+    product.priceCents >= site.freeShippingThresholdCents
+      ? 0
+      : site.flatShippingCents;
+  const freeShippingRemaining = Math.max(
+    0,
+    site.freeShippingThresholdCents - product.priceCents,
+  );
+  const delivery = deliveryEstimate();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -122,12 +155,12 @@ export default async function ProductPage({ params }: PageProps) {
               priority
               sizes="(max-width: 1024px) 100vw, 58vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#05060b]/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#04010c]/40 via-transparent to-transparent" />
             <span className="absolute left-4 top-4">
               <DealBadge signal={signal} size="md" />
             </span>
             {product.isDemo && (
-              <span className="absolute right-4 top-4 rounded-full border border-amber-300/35 bg-[#211a05]/88 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-amber-200 backdrop-blur-md">
+              <span className="absolute right-4 top-4 rounded-full border border-amber-300/35 bg-[#2a1d05]/88 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-amber-200 backdrop-blur-md">
                 Demo data
               </span>
             )}
@@ -149,7 +182,7 @@ export default async function ProductPage({ params }: PageProps) {
             ].map((item) => (
               <div
                 key={item.label}
-                className="neon-card rounded-xl bg-white/[0.02] p-3"
+                className="neon-card rounded-xl bg-[#0b051d]/70 p-3"
               >
                 <item.icon size={16} className="text-cyan-300" aria-hidden="true" />
                 <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">
@@ -201,10 +234,10 @@ export default async function ProductPage({ params }: PageProps) {
               )}
             </div>
             <p className="mt-1 text-xs text-slate-500">
-              Tax included where applicable.{" "}
-              {product.priceCents >= site.freeShippingThresholdCents
+              Tax included.{" "}
+              {shippingCents === 0
                 ? "Free tracked shipping."
-                : `${formatPrice(site.flatShippingCents)} tracked shipping.`}
+                : `${formatPrice(shippingCents)} tracked shipping — free over ${formatPrice(site.freeShippingThresholdCents)}.`}
             </p>
 
             <div className="mt-5 flex flex-wrap items-center gap-3">
@@ -221,7 +254,7 @@ export default async function ProductPage({ params }: PageProps) {
               <DropPill signal={signal} />
             </div>
 
-            <div className="neon-card mt-6 rounded-2xl bg-[#0a0d19] p-4">
+            <div className="neon-card mt-6 rounded-2xl bg-[#0b051d] p-4">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500">
@@ -246,7 +279,7 @@ export default async function ProductPage({ params }: PageProps) {
                   )}
                 </span>
               </div>
-              <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/10">
+              <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#c4b5fd]/12">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-cyan-300 to-emerald-300"
                   style={{ width: `${signal.score}%` }}
@@ -255,8 +288,29 @@ export default async function ProductPage({ params }: PageProps) {
               <p className="mt-3 text-xs leading-5 text-slate-400">{signal.summary}</p>
             </div>
 
-            <div className="mt-6">
-              <PurchasePanel productId={product.id} available={product.available} />
+            <div id="buy" className="neon-card mt-4 rounded-2xl bg-[#0b051d] p-4 md:p-5">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h2 className="text-sm font-black uppercase tracking-[0.14em] text-white">
+                    Make it yours
+                  </h2>
+                  <p className="mt-1 text-[11px] leading-5 text-slate-500">
+                    {product.sizes.length > 0
+                      ? "Choose your size and quantity, then add it to the cart."
+                      : "Choose a quantity, then add it to the cart."}
+                  </p>
+                </div>
+                <span className="shrink-0 rounded-full border border-emerald-300/25 bg-emerald-300/10 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-emerald-200">
+                  {product.available > 0 ? "Ready to ship" : "Sold out"}
+                </span>
+              </div>
+              <div className="mt-4">
+                <PurchasePanel
+                  productId={product.id}
+                  available={product.available}
+                  sizes={product.sizes}
+                />
+              </div>
             </div>
             <div className="mt-3">
               <WishlistButton
@@ -266,14 +320,92 @@ export default async function ProductPage({ params }: PageProps) {
               />
             </div>
 
-            <div className="mt-6 space-y-2 border-t border-white/10 pt-5 text-xs text-slate-500">
-              <p className="flex items-center gap-2">
-                <Lock size={13} className="text-cyan-300" aria-hidden="true" />
-                Bank transfer checkout. No card details are requested.
+            <div className="neon-card mt-4 rounded-2xl bg-[#0b051d] p-4">
+              <h2 className="flex items-center gap-2 text-sm font-black text-white">
+                <Truck size={16} className="text-cyan-300" aria-hidden="true" />
+                Delivery & returns
+              </h2>
+              <dl className="mt-3 space-y-3 text-xs">
+                <div className="flex gap-3">
+                  <dt className="w-28 shrink-0 text-slate-500">Estimated arrival</dt>
+                  <dd className="text-slate-200">
+                    <span className="font-semibold text-white">{delivery}</span>
+                    <span className="block text-[11px] text-slate-500">
+                      after your bank transfer clears
+                    </span>
+                  </dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="w-28 shrink-0 text-slate-500">Shipping</dt>
+                  <dd className="text-slate-200">
+                    {shippingCents === 0
+                      ? "Free tracked shipping"
+                      : `${formatPrice(shippingCents)} tracked shipping`}
+                    {freeShippingRemaining > 0 && (
+                      <span className="block text-[11px] text-slate-500">
+                        Add {formatPrice(freeShippingRemaining)} more for free shipping.
+                      </span>
+                    )}
+                  </dd>
+                </div>
+                <div className="flex gap-3">
+                  <dt className="w-28 shrink-0 text-slate-500">Returns</dt>
+                  <dd className="text-slate-200">
+                    {site.returnsDays}-day returns ·{" "}
+                    <Link href="/legal/shipping" className="text-cyan-200 underline underline-offset-2">
+                      read the policy
+                    </Link>
+                  </dd>
+                </div>
+              </dl>
+              <p className="mt-3 flex items-start gap-2 rounded-xl border border-cyan-300/15 bg-cyan-300/[0.04] p-3 text-[11px] leading-5 text-cyan-100/75">
+                <Lock size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
+                Bank transfer only. We never ask for card details. Your stock is
+                held for 7 days while the transfer clears.
               </p>
+            </div>
+
+            <div className="neon-card mt-4 rounded-2xl bg-[#0b051d] p-4">
+              <h2 className="text-sm font-black text-white">How buying works</h2>
+              <ol className="mt-3 space-y-3 text-xs leading-5 text-slate-400">
+                <li className="flex gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-300/10 font-mono text-[10px] font-bold text-cyan-200">
+                    1
+                  </span>
+                  <span>
+                    <strong className="text-slate-200">Add it to your cart.</strong>{" "}
+                    Choose your size and quantity where available.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-300/10 font-mono text-[10px] font-bold text-cyan-200">
+                    2
+                  </span>
+                  <span>
+                    <strong className="text-slate-200">Place the order.</strong> You
+                    get the exact amount, our IBAN and a unique payment reference.
+                  </span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-300/10 font-mono text-[10px] font-bold text-cyan-200">
+                    3
+                  </span>
+                  <span>
+                    <strong className="text-slate-200">Send the transfer.</strong> We
+                    match it, confirm the order and email tracking when it ships.
+                  </span>
+                </li>
+              </ol>
+            </div>
+
+            <div className="mt-4 space-y-2 border-t border-[#c4b5fd]/12 pt-4 text-xs text-slate-500">
               <p className="flex items-center gap-2">
                 <Globe size={13} className="text-cyan-300" aria-hidden="true" />
-                Worldwide tracked shipping. 14-day returns.
+                Worldwide tracked shipping. {site.returnsDays}-day returns.
+              </p>
+              <p className="flex items-center gap-2">
+                <ShieldCheck size={13} className="text-cyan-300" aria-hidden="true" />
+                Statutory and manufacturer warranty apply.
               </p>
               <p className="flex items-center gap-2">
                 <Database size={13} className="text-cyan-300" aria-hidden="true" />
@@ -323,7 +455,7 @@ export default async function ProductPage({ params }: PageProps) {
         </div>
 
         <div className="lg:col-span-4">
-          <div className="neon-card rounded-2xl bg-[#0a0d19] p-5">
+          <div className="neon-card rounded-2xl bg-[#0b051d] p-5">
             <h2 className="text-sm font-bold text-white">The numbers</h2>
             <dl className="mt-4 space-y-3 text-sm">
               {[
@@ -363,7 +495,7 @@ export default async function ProductPage({ params }: PageProps) {
                       : "text-slate-200",
                 },
               ].map((row) => (
-                <div key={row.label} className="flex items-center justify-between gap-3 border-b border-white/5 pb-2 last:border-0 last:pb-0">
+                <div key={row.label} className="flex items-center justify-between gap-3 border-b border-[#c4b5fd]/8 pb-2 last:border-0 last:pb-0">
                   <dt className="text-slate-500">{row.label}</dt>
                   <dd className={`font-mono font-bold ${row.accent}`}>{row.value}</dd>
                 </div>
@@ -393,7 +525,7 @@ export default async function ProductPage({ params }: PageProps) {
                 key={key}
                 className={
                   index % 2 === 0
-                    ? "grid grid-cols-2 gap-4 bg-white/[0.025] px-4 py-3"
+                    ? "grid grid-cols-2 gap-4 bg-[#0b051d]/75 px-4 py-3"
                     : "grid grid-cols-2 gap-4 bg-transparent px-4 py-3"
                 }
               >

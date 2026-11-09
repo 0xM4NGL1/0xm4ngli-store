@@ -75,7 +75,7 @@ export function RegisterForm({ next }: { next: string }) {
           maxLength={80}
           value={name}
           onChange={(event) => setName(event.target.value)}
-          className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
+          className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
           placeholder="Your name"
         />
       </div>
@@ -92,7 +92,7 @@ export function RegisterForm({ next }: { next: string }) {
           maxLength={254}
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
+          className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
           placeholder="you@example.com"
         />
       </div>
@@ -111,7 +111,7 @@ export function RegisterForm({ next }: { next: string }) {
             autoComplete="new-password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 pr-11 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
+            className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 pr-11 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
             placeholder="At least 10 characters"
             aria-describedby="password-hint"
           />
@@ -142,7 +142,7 @@ export function RegisterForm({ next }: { next: string }) {
           autoComplete="new-password"
           value={confirm}
           onChange={(event) => setConfirm(event.target.value)}
-          className="h-11 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3.5 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
+          className="h-11 w-full rounded-lg border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3.5 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-cyan-300/60"
           placeholder="Repeat your password"
         />
       </div>
@@ -152,7 +152,7 @@ export function RegisterForm({ next }: { next: string }) {
           type="checkbox"
           checked={marketingConsent}
           onChange={(event) => setMarketingConsent(event.target.checked)}
-          className="mt-0.5 h-4 w-4 rounded border-white/20 bg-white/5 accent-cyan-300"
+          className="mt-0.5 h-4 w-4 rounded border-[#c4b5fd]/22 bg-[#c4b5fd]/10 accent-cyan-300"
         />
         Optional: send me occasional price-drop and new-arrival emails. I can
         unsubscribe at any time.
@@ -164,7 +164,7 @@ export function RegisterForm({ next }: { next: string }) {
           required
           checked={acceptTerms}
           onChange={(event) => setAcceptTerms(event.target.checked)}
-          className="mt-0.5 h-4 w-4 rounded border-white/20 bg-white/5 accent-cyan-300"
+          className="mt-0.5 h-4 w-4 rounded border-[#c4b5fd]/22 bg-[#c4b5fd]/10 accent-cyan-300"
         />
         I accept the terms of service and have read the privacy policy.
       </label>

@@ -223,6 +223,7 @@ The importer upserts by SKU and records a price observation when the price chang
       "category": "laptops",
       "description": "At least twenty characters of accurate description.",
       "specs": { "Memory": "16 GB", "Warranty": "2 years" },
+      "sizes": ["6", "7", "8", "9"],
       "price": 999.9,
       "compareAt": 1099.9,
       "stock": 25,
@@ -235,6 +236,8 @@ The importer upserts by SKU and records a price observation when the price chang
 ```
 
 Allowed categories: `laptops`, `phones`, `audio`, `wearables`, `gaming`, `cameras`, `smart-home`, `accessories`.
+
+`sizes` is optional. Use it for products sold in sizes. The product page shows the values as selectable buttons, the cart stores the chosen size, and checkout requires a valid size for those products. If `sizes` is omitted, the store reuses the existing sizes on update and leaves new products without size options.
 
 ```bash
 # local file

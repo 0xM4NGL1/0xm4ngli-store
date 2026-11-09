@@ -210,7 +210,7 @@ export function CheckoutPanel({
               autoComplete="country"
               value={country}
               onChange={(event) => setCountry(event.target.value)}
-              className="neon-outline h-10 w-full rounded-lg bg-[#0a0d19] px-3 text-sm text-slate-200"
+              className="neon-outline h-10 w-full rounded-lg bg-[#0b051d] px-3 text-sm text-slate-200"
             >
               <option value="">Select country</option>
               {countries.map((entry) => (
@@ -223,11 +223,11 @@ export function CheckoutPanel({
         </div>
       </div>
 
-      <div className="border-t border-white/10 pt-5">
+      <div className="border-t border-[#c4b5fd]/12 pt-5">
         <div className="flex items-center gap-2">
           <Heart size={16} className="text-fuchsia-300" aria-hidden="true" />
           <h2 className="text-sm font-bold text-white">Support the store</h2>
-          <span className="rounded-full border border-white/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-slate-500">
+          <span className="rounded-full border border-[#c4b5fd]/12 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-slate-500">
             Optional
           </span>
         </div>
@@ -246,13 +246,13 @@ export function CheckoutPanel({
               className={
                 !customActive && supportCents === value
                   ? "rounded-full border border-fuchsia-300/40 bg-fuchsia-300/10 px-3 py-1.5 text-xs font-semibold text-fuchsia-200"
-                  : "rounded-full border border-white/15 px-3 py-1.5 text-xs text-slate-400 hover:border-fuchsia-300/30 hover:text-white"
+                  : "rounded-full border border-[#c4b5fd]/18 px-3 py-1.5 text-xs text-slate-400 hover:border-fuchsia-300/30 hover:text-white"
               }
             >
               {value === 0 ? "No extra" : formatPrice(value)}
             </button>
           ))}
-          <div className="flex items-center rounded-full border border-white/15 bg-white/[0.03] px-3">
+          <div className="flex items-center rounded-full border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-3">
             <span className="text-xs text-slate-500">€</span>
             <label htmlFor="support-amount" className="sr-only">
               Custom support amount in euro
@@ -278,7 +278,7 @@ export function CheckoutPanel({
         )}
       </div>
 
-      <div className="border-t border-white/10 pt-5">
+      <div className="border-t border-[#c4b5fd]/12 pt-5">
         <div className="flex items-center justify-between gap-3">
           <span className="text-sm text-slate-400">Products + shipping</span>
           <span className="text-sm font-semibold text-white">
@@ -293,7 +293,7 @@ export function CheckoutPanel({
             </span>
           </div>
         )}
-        <div className="mt-3 flex items-center justify-between gap-3 border-t border-white/10 pt-3">
+        <div className="mt-3 flex items-center justify-between gap-3 border-t border-[#c4b5fd]/12 pt-3">
           <span className="text-base font-bold text-white">Transfer total</span>
           <span className="text-xl font-black text-white">
             {formatPrice(finalTotal)}

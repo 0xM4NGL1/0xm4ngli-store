@@ -9,6 +9,7 @@ export type ProductRow = {
   category: CategorySlug;
   description: string;
   specs_json: string;
+  sizes_json: string;
   price_cents: number;
   compare_at_cents: number | null;
   currency: string;
@@ -32,6 +33,7 @@ export type Product = {
   category: CategorySlug;
   description: string;
   specs: Record<string, string>;
+  sizes: string[];
   priceCents: number;
   compareAtCents: number | null;
   currency: string;
@@ -69,6 +71,7 @@ export type DealSignal = {
 export type CartLine = {
   product: Product;
   quantity: number;
+  size: string;
 };
 
 export type CartSummary = {
@@ -97,6 +100,7 @@ export type OrderItemSnapshot = {
   slug: string;
   name: string;
   sku: string;
+  size?: string;
   unitPriceCents: number;
   quantity: number;
 };

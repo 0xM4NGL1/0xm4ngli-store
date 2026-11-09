@@ -120,6 +120,7 @@ async function initBackend(): Promise<Backend> {
     const executor = libsqlExecutor(client);
     await client.executeMultiple(SCHEMA_SQL);
     await addPaymentColumns(executor);
+    await addCatalogueColumns(executor);
     await seedDatabase(executor);
     await pruneDatabase(executor);
     return { kind: "libsql", client, executor };
@@ -139,6 +140,7 @@ async function initBackend(): Promise<Backend> {
 
   const executor = localExecutor(db);
   await addPaymentColumns(executor);
+  await addCatalogueColumns(executor);
   await seedDatabase(executor);
   await pruneDatabase(executor);
 
@@ -169,6 +171,7 @@ const SCHEMA_SQL = `
     category TEXT NOT NULL,
     description TEXT NOT NULL,
     specs_json TEXT NOT NULL DEFAULT '{}',
+    sizes_json TEXT NOT NULL DEFAULT '[]',
     price_cents INTEGER NOT NULL CHECK (price_cents >= 0),
     compare_at_cents INTEGER,
     currency TEXT NOT NULL DEFAULT 'EUR',
@@ -227,6 +230,7 @@ const SCHEMA_SQL = `
   CREATE TABLE IF NOT EXISTS cart_items (
     user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     product_id INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+    size TEXT NOT NULL DEFAULT '',
     quantity INTEGER NOT NULL CHECK (quantity > 0 AND quantity <= 10),
     added_at TEXT NOT NULL,
     PRIMARY KEY (user_id, product_id)
@@ -299,6 +303,25 @@ async function addPaymentColumns(executor: Executor) {
   }
 }
 
+async function addCatalogueColumns(executor: Executor) {
+  const additions = [
+    ["products", "sizes_json", "TEXT NOT NULL DEFAULT '[]'"],
+    ["cart_items", "size", "TEXT NOT NULL DEFAULT ''"],
+  ] as const;
+
+  for (const [table, column, definition] of additions) {
+    try {
+      await executor.execute(
+        `ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`,
+        [],
+      );
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      if (!/duplicate column|already exists/i.test(message)) throw error;
+    }
+  }
+}
+
 async function seedDatabase(executor: Executor) {
   const result = await executor.execute(
     "SELECT COUNT(*) AS count FROM products",
@@ -323,9 +346,9 @@ async function seedDatabase(executor: Executor) {
     statements.push({
       sql: `INSERT OR IGNORE INTO products (
         id, sku, slug, name, brand, category, description, specs_json,
-        price_cents, compare_at_cents, currency, stock, reserved, image,
-        featured, is_demo, source, source_url, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?, NULL, ?, ?)`,
+        sizes_json, price_cents, compare_at_cents, currency, stock, reserved,
+        image, featured, is_demo, source, source_url, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?, NULL, ?, ?)`,
       args: [
         productId,
         product.sku,
@@ -335,6 +358,7 @@ async function seedDatabase(executor: Executor) {
         product.category,
         product.description,
         JSON.stringify(product.specs),
+        JSON.stringify(product.sizes ?? []),
         product.priceCents,
         product.compareAtCents ?? null,
         "EUR",

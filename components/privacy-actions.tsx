@@ -45,7 +45,7 @@ export function PrivacyActions() {
 
   return (
     <div className="space-y-5">
-      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+      <div className="rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 p-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="text-sm font-bold text-white">Export your data</h3>
@@ -64,7 +64,7 @@ export function PrivacyActions() {
         </div>
       </div>
 
-      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
+      <div className="rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 p-4">
         <h3 className="text-sm font-bold text-white">Your GDPR rights</h3>
         <p className="mt-1 text-xs leading-5 text-slate-400">
           You can access, correct, export, restrict or erase your data. Profile
@@ -113,7 +113,7 @@ export function PrivacyActions() {
                   autoComplete="current-password"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
-                  className="h-10 w-full rounded-lg border border-rose-300/20 bg-[#0a0d19] px-3 text-sm text-white outline-none focus:border-rose-300/50"
+                  className="h-10 w-full rounded-lg border border-rose-300/20 bg-[#0b051d] px-3 text-sm text-white outline-none focus:border-rose-300/50"
                 />
               </div>
               <div>
@@ -127,7 +127,7 @@ export function PrivacyActions() {
                   value={confirmation}
                   onChange={(event) => setConfirmation(event.target.value)}
                   placeholder="DELETE"
-                  className="h-10 w-full rounded-lg border border-rose-300/20 bg-[#0a0d19] px-3 text-sm text-white outline-none focus:border-rose-300/50"
+                  className="h-10 w-full rounded-lg border border-rose-300/20 bg-[#0b051d] px-3 text-sm text-white outline-none focus:border-rose-300/50"
                 />
               </div>
             </div>
@@ -148,7 +148,7 @@ export function PrivacyActions() {
         </div>
       </details>
 
-      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs leading-5 text-slate-400">
+      <div className="rounded-xl border border-[#c4b5fd]/12 bg-[#0b051d]/70 p-4 text-xs leading-5 text-slate-400">
         <p className="flex items-center gap-2 font-semibold text-slate-200">
           <Check size={14} className="text-emerald-300" aria-hidden="true" />
           No hidden data broker opt-outs needed

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function SetupPage() {
   return (
     <div className="container-m4 py-16 md:py-24">
-      <div className="neon-card mx-auto max-w-2xl rounded-3xl bg-[#0a0d19] p-8 md:p-10">
+      <div className="neon-card mx-auto max-w-2xl rounded-3xl bg-[#0b051d] p-8 md:p-10">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-cyan-300/10 text-cyan-300">
           <Database size={26} aria-hidden="true" />
         </div>
@@ -32,7 +32,7 @@ export default function SetupPage() {
             <span className="font-mono text-cyan-300">01</span>
             <span>
               Create a free Turso database with{" "}
-              <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">
+              <code className="rounded bg-[#c4b5fd]/10 px-1.5 py-0.5 text-xs text-cyan-100">
                 ./scripts/setup-turso.sh
               </code>{" "}
               or the Turso dashboard.
@@ -42,20 +42,20 @@ export default function SetupPage() {
             <span className="font-mono text-cyan-300">02</span>
             <span>
               In Vercel → Project → Settings → Environment Variables, add{" "}
-              <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">
+              <code className="rounded bg-[#c4b5fd]/10 px-1.5 py-0.5 text-xs text-cyan-100">
                 TURSO_DATABASE_URL
               </code>{" "}
               and{" "}
-              <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">
+              <code className="rounded bg-[#c4b5fd]/10 px-1.5 py-0.5 text-xs text-cyan-100">
                 TURSO_AUTH_TOKEN
               </code>
               . Add{" "}
-              <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">
+              <code className="rounded bg-[#c4b5fd]/10 px-1.5 py-0.5 text-xs text-cyan-100">
                 APP_URL=https://0xm4ngli-store.vercel.app
               </code>
-              , <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">CART_SECRET</code>,{" "}
-              <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">ADMIN_TOKEN</code>{" "}
-              and <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">CRON_SECRET</code>.
+              , <code className="rounded bg-[#c4b5fd]/10 px-1.5 py-0.5 text-xs text-cyan-100">CART_SECRET</code>,{" "}
+              <code className="rounded bg-[#c4b5fd]/10 px-1.5 py-0.5 text-xs text-cyan-100">ADMIN_TOKEN</code>{" "}
+              and <code className="rounded bg-[#c4b5fd]/10 px-1.5 py-0.5 text-xs text-cyan-100">CRON_SECRET</code>.
             </span>
           </li>
           <li className="flex gap-3">
@@ -86,7 +86,7 @@ export default function SetupPage() {
             href={site.repositoryUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-5 py-3 text-xs font-bold text-slate-300 hover:border-cyan-300/40 hover:text-white"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#c4b5fd]/18 px-5 py-3 text-xs font-bold text-slate-300 hover:border-cyan-300/40 hover:text-white"
           >
             <Code2 size={15} aria-hidden="true" /> Repository & setup guide
           </a>

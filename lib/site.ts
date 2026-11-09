@@ -27,6 +27,10 @@ export const site = {
   locale: "en-IE",
   freeShippingThresholdCents: Number(process.env.FREE_SHIPPING_THRESHOLD_CENTS ?? 50000),
   flatShippingCents: Number(process.env.FLAT_SHIPPING_CENTS ?? 1290),
+  dispatchBusinessDays: Number(process.env.DISPATCH_BUSINESS_DAYS ?? 1),
+  deliveryMinBusinessDays: Number(process.env.DELIVERY_MIN_BUSINESS_DAYS ?? 3),
+  deliveryMaxBusinessDays: Number(process.env.DELIVERY_MAX_BUSINESS_DAYS ?? 10),
+  returnsDays: Number(process.env.RETURNS_DAYS ?? 14),
   demoCatalog: process.env.NEXT_PUBLIC_DEMO_CATALOG === "true",
 } as const;
 

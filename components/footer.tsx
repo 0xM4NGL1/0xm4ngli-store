@@ -16,7 +16,7 @@ const helpLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-24 overflow-hidden border-t border-white/10 bg-[#04050b]">
+    <footer className="relative mt-24 overflow-hidden border-t border-[#c4b5fd]/12 bg-[#04010c]">
       <div className="neon-divider absolute left-0 right-0 top-0" />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-[8%] h-72 w-72 rounded-full bg-cyan-500/10 blur-[100px]" />
@@ -95,7 +95,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-white/10 pt-8">
+        <div className="mt-14 border-t border-[#c4b5fd]/12 pt-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-2xl space-y-3 text-xs leading-6 text-slate-500">
               <p>

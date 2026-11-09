@@ -30,7 +30,7 @@ export default async function AdminProductsPage() {
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-2 text-[10px] font-semibold uppercase tracking-wide text-slate-500">
-          <span className="rounded-full border border-white/10 px-2.5 py-1">{products.length} total</span>
+          <span className="rounded-full border border-[#c4b5fd]/12 px-2.5 py-1">{products.length} total</span>
           <span className="rounded-full border border-cyan-300/20 bg-cyan-300/5 px-2.5 py-1 text-cyan-200">{manual} manual</span>
           <span className="rounded-full border border-emerald-300/20 bg-emerald-300/5 px-2.5 py-1 text-emerald-200">{feed} feed</span>
           <span className="rounded-full border border-amber-300/20 bg-amber-300/5 px-2.5 py-1 text-amber-200">{seeded} seeded</span>
@@ -44,7 +44,7 @@ export default async function AdminProductsPage() {
       </div>
 
       {products.length === 0 ? (
-        <div className="mt-6 rounded-2xl border border-dashed border-white/15 p-10 text-center">
+        <div className="mt-6 rounded-2xl border border-dashed border-[#c4b5fd]/18 p-10 text-center">
           <p className="text-lg font-bold text-white">No products yet</p>
           <p className="mt-2 text-sm text-slate-400">Add your first real product with actual stock and a licensed photo.</p>
           <Link href="/admin/products/new" className="neon-button mt-5 inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-xs font-black uppercase tracking-wide">
@@ -52,19 +52,19 @@ export default async function AdminProductsPage() {
           </Link>
         </div>
       ) : (
-        <div className="mt-6 overflow-hidden rounded-2xl border border-white/10">
-          <div className="hidden grid-cols-[minmax(0,2.4fr)_1fr_0.8fr_0.8fr_auto] gap-4 border-b border-white/10 bg-white/[0.02] px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500 lg:grid">
+        <div className="mt-6 overflow-hidden rounded-2xl border border-[#c4b5fd]/12">
+          <div className="hidden grid-cols-[minmax(0,2.4fr)_1fr_0.8fr_0.8fr_auto] gap-4 border-b border-[#c4b5fd]/12 bg-[#0b051d]/70 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500 lg:grid">
             <span>Product</span>
             <span>Source</span>
             <span>Price</span>
             <span>Stock</span>
             <span>Actions</span>
           </div>
-          <ul className="divide-y divide-white/10">
+          <ul className="divide-y divide-[#c4b5fd]/12">
             {products.map((product) => (
               <li key={product.id} className="grid gap-4 px-4 py-4 lg:grid-cols-[minmax(0,2.4fr)_1fr_0.8fr_0.8fr_auto] lg:items-center">
                 <div className="flex items-center gap-3">
-                  <div className="relative h-14 w-16 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-slate-900">
+                  <div className="relative h-14 w-16 shrink-0 overflow-hidden rounded-lg border border-[#c4b5fd]/12 bg-slate-900">
                     <ProductImage src={product.image} alt={product.name} sizes="64px" />
                   </div>
                   <div className="min-w-0">
@@ -73,7 +73,7 @@ export default async function AdminProductsPage() {
                     <p className="mt-0.5 text-[10px] text-slate-600">{product.category}</p>
                   </div>
                 </div>
-                <span className="w-fit rounded-full border border-white/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-slate-400">
+                <span className="w-fit rounded-full border border-[#c4b5fd]/12 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-slate-400">
                   {product.source}
                 </span>
                 <span className="text-sm font-bold text-white">{formatPrice(product.priceCents, product.currency)}</span>

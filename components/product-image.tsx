@@ -20,7 +20,7 @@ export function ProductImage({
     return (
       <div
         className={classNames(
-          "flex items-center justify-center bg-gradient-to-br from-slate-900 via-[#11142a] to-slate-950",
+          "flex items-center justify-center bg-gradient-to-br from-slate-900 via-[#150a2e] to-slate-950",
           className,
         )}
         role="img"
