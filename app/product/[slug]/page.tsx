@@ -7,7 +7,6 @@ import {
   Clock,
   Database,
   Globe,
-  Lock,
   RotateCcw,
   ShieldCheck,
   Truck,
@@ -307,6 +306,7 @@ export default async function ProductPage({ params }: PageProps) {
               <div className="mt-4">
                 <PurchasePanel
                   productId={product.id}
+                  slug={product.slug}
                   available={product.available}
                   sizes={product.sizes}
                 />
@@ -331,7 +331,7 @@ export default async function ProductPage({ params }: PageProps) {
                   <dd className="text-slate-200">
                     <span className="font-semibold text-white">{delivery}</span>
                     <span className="block text-[11px] text-slate-500">
-                      after your bank transfer clears
+                      after dispatch
                     </span>
                   </dd>
                 </div>
@@ -358,11 +358,6 @@ export default async function ProductPage({ params }: PageProps) {
                   </dd>
                 </div>
               </dl>
-              <p className="mt-3 flex items-start gap-2 rounded-xl border border-cyan-300/15 bg-cyan-300/[0.04] p-3 text-[11px] leading-5 text-cyan-100/75">
-                <Lock size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
-                Bank transfer only. We never ask for card details. Your stock is
-                held for 7 days while the transfer clears.
-              </p>
             </div>
 
             <div className="neon-card mt-4 rounded-2xl bg-[#0b051d] p-4">
@@ -457,59 +452,85 @@ export default async function ProductPage({ params }: PageProps) {
         <div className="lg:col-span-4">
           <div className="neon-card rounded-2xl bg-[#0b051d] p-5">
             <h2 className="text-sm font-bold text-white">The numbers</h2>
-            <dl className="mt-4 space-y-3 text-sm">
-              {[
-                {
-                  label: "90-day low",
-                  value:
-                    signal.low90Cents !== null
-                      ? formatPrice(signal.low90Cents, product.currency)
-                      : "Collecting",
-                  accent: "text-emerald-300",
-                },
-                {
-                  label: "90-day average",
-                  value:
-                    signal.average90Cents !== null
-                      ? formatPrice(signal.average90Cents, product.currency)
-                      : "Collecting",
-                  accent: "text-slate-200",
-                },
-                {
-                  label: "90-day high",
-                  value:
-                    signal.high90Cents !== null
-                      ? formatPrice(signal.high90Cents, product.currency)
-                      : "Collecting",
-                  accent: "text-rose-300",
-                },
-                {
-                  label: "30-day change",
-                  value:
-                    signal.change30Percent !== null
-                      ? `${signal.change30Percent > 0 ? "+" : ""}${(signal.change30Percent * 100).toFixed(1)}%`
-                      : "Collecting",
-                  accent:
-                    signal.change30Percent !== null && signal.change30Percent < 0
-                      ? "text-emerald-300"
-                      : "text-slate-200",
-                },
-              ].map((row) => (
-                <div key={row.label} className="flex items-center justify-between gap-3 border-b border-[#c4b5fd]/8 pb-2 last:border-0 last:pb-0">
-                  <dt className="text-slate-500">{row.label}</dt>
-                  <dd className={`font-mono font-bold ${row.accent}`}>{row.value}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-4 flex items-start gap-2 text-[11px] leading-5 text-slate-500">
-              <Clock size={13} className="mt-0.5 shrink-0" aria-hidden="true" />
-              {signal.observations} observations in the last 90 days. Lowest
-              recorded:{" "}
-              {signal.lowestEverCents !== null
-                ? formatPrice(signal.lowestEverCents, product.currency)
-                : "—"}
-              .
-            </p>
+            {signal.verdict === "collecting" ? (
+              <>
+                <dl className="mt-4 space-y-3 text-sm">
+                  <div className="flex items-center justify-between gap-3 border-b border-[#c4b5fd]/8 pb-2">
+                    <dt className="text-slate-500">Current price</dt>
+                    <dd className="font-mono font-bold text-emerald-300">
+                      {formatPrice(product.priceCents, product.currency)}
+                    </dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <dt className="text-slate-500">Price observations</dt>
+                    <dd className="font-mono font-bold text-slate-200">
+                      {Math.min(signal.observations, 3)}/3
+                    </dd>
+                  </div>
+                </dl>
+                <p className="mt-4 flex items-start gap-2 text-[11px] leading-5 text-slate-500">
+                  <Clock size={13} className="mt-0.5 shrink-0" aria-hidden="true" />
+                  The 90-day low, average, high and 30-day change appear after
+                  three recorded prices. We do not backfill guesses.
+                </p>
+              </>
+            ) : (
+              <>
+                <dl className="mt-4 space-y-3 text-sm">
+                  {[
+                    {
+                      label: "90-day low",
+                      value:
+                        signal.low90Cents !== null
+                          ? formatPrice(signal.low90Cents, product.currency)
+                          : "Collecting",
+                      accent: "text-emerald-300",
+                    },
+                    {
+                      label: "90-day average",
+                      value:
+                        signal.average90Cents !== null
+                          ? formatPrice(signal.average90Cents, product.currency)
+                          : "Collecting",
+                      accent: "text-slate-200",
+                    },
+                    {
+                      label: "90-day high",
+                      value:
+                        signal.high90Cents !== null
+                          ? formatPrice(signal.high90Cents, product.currency)
+                          : "Collecting",
+                      accent: "text-rose-300",
+                    },
+                    {
+                      label: "30-day change",
+                      value:
+                        signal.change30Percent !== null
+                          ? `${signal.change30Percent > 0 ? "+" : ""}${(signal.change30Percent * 100).toFixed(1)}%`
+                          : "Collecting",
+                      accent:
+                        signal.change30Percent !== null && signal.change30Percent < 0
+                          ? "text-emerald-300"
+                          : "text-slate-200",
+                    },
+                  ].map((row) => (
+                    <div key={row.label} className="flex items-center justify-between gap-3 border-b border-[#c4b5fd]/8 pb-2 last:border-0 last:pb-0">
+                      <dt className="text-slate-500">{row.label}</dt>
+                      <dd className={`font-mono font-bold ${row.accent}`}>{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="mt-4 flex items-start gap-2 text-[11px] leading-5 text-slate-500">
+                  <Clock size={13} className="mt-0.5 shrink-0" aria-hidden="true" />
+                  {signal.observations} observations in the last 90 days. Lowest
+                  recorded:{" "}
+                  {signal.lowestEverCents !== null
+                    ? formatPrice(signal.lowestEverCents, product.currency)
+                    : "—"}
+                  .
+                </p>
+              </>
+            )}
           </div>
         </div>
       </section>

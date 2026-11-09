@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "sync:prices": "bun run scripts/sync-prices.ts"
+    "sync:prices": "bun run scripts/sync-prices.ts",
+    "sync:market": "bun run scripts/sync-market-prices.ts"
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",

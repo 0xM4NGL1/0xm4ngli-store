@@ -100,8 +100,8 @@ export async function sendOrderConfirmationEmail(order: Order) {
   return sendEmail({
     to: order.email,
     subject: `Payment received — order ${order.id} confirmed`,
-    text: `Thanks for your order. Your bank transfer has been matched and the order is confirmed.\n\n${items}${supportLine}\n\nShipping: ${formatPrice(order.shippingCents, order.currency)}\nTotal: ${formatPrice(order.totalCents, order.currency)}\n\nView your order: ${url}\n\nYou can request a return within 14 days of delivery under EU consumer law.`,
-    html: `<p>Thanks for your order. Your bank transfer has been matched and the order is confirmed.</p><p>${escapeHtml(items).replaceAll("\n", "<br>")}${supportLine ? `<br>Voluntary support: ${formatPrice(order.supportCents, order.currency)}` : ""}</p><p>Shipping: ${formatPrice(order.shippingCents, order.currency)}<br>Total: ${formatPrice(order.totalCents, order.currency)}</p><p><a href="${url}">View your order</a></p><p>You can request a return within 14 days of delivery under EU consumer law.</p>`,
+    text: `Thanks for your order. Your bank transfer has been matched and the order is confirmed.\n\n${items}${supportLine}\n\nShipping: ${order.shippingCents === 0 ? "Free" : formatPrice(order.shippingCents, order.currency)}\nTotal: ${formatPrice(order.totalCents, order.currency)}\n\nView your order: ${url}\n\nYou can request a return within 14 days of delivery under EU consumer law.`,
+    html: `<p>Thanks for your order. Your bank transfer has been matched and the order is confirmed.</p><p>${escapeHtml(items).replaceAll("\n", "<br>")}${supportLine ? `<br>Voluntary support: ${formatPrice(order.supportCents, order.currency)}` : ""}</p><p>Shipping: ${order.shippingCents === 0 ? "Free" : formatPrice(order.shippingCents, order.currency)}<br>Total: ${formatPrice(order.totalCents, order.currency)}</p><p><a href="${url}">View your order</a></p><p>You can request a return within 14 days of delivery under EU consumer law.</p>`,
   });
 }
 

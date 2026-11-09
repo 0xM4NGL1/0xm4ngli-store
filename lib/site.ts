@@ -25,8 +25,10 @@ export const site = {
     OFFICIAL_SELLER.privacyEmail,
   currency: "EUR",
   locale: "en-IE",
-  freeShippingThresholdCents: Number(process.env.FREE_SHIPPING_THRESHOLD_CENTS ?? 50000),
-  flatShippingCents: Number(process.env.FLAT_SHIPPING_CENTS ?? 1290),
+  // Shipping is free for every order by default. Set the env vars only if you
+  // want to reintroduce a flat rate or a free-shipping threshold later.
+  freeShippingThresholdCents: Number(process.env.FREE_SHIPPING_THRESHOLD_CENTS ?? 0),
+  flatShippingCents: Number(process.env.FLAT_SHIPPING_CENTS ?? 0),
   dispatchBusinessDays: Number(process.env.DISPATCH_BUSINESS_DAYS ?? 1),
   deliveryMinBusinessDays: Number(process.env.DELIVERY_MIN_BUSINESS_DAYS ?? 3),
   deliveryMaxBusinessDays: Number(process.env.DELIVERY_MAX_BUSINESS_DAYS ?? 10),

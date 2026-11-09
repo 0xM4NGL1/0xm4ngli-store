@@ -304,10 +304,8 @@ export async function markOrderPaid(
       orderId,
     );
 
-    if (row.user_id) {
-      await dbRun("DELETE FROM cart_items WHERE user_id = ?", row.user_id);
-    }
-
+    // Cart orders are cleared when the order is created. Do not clear the
+    // cart here: a product-specific "Buy now" order must leave it intact.
     const updated = await dbGet<OrderRow>(
       "SELECT * FROM orders WHERE id = ?",
       orderId,

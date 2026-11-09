@@ -63,6 +63,14 @@ export function PriceHistoryChart({
   const color = colors[signal.verdict];
   const gradientId = `price-gradient-${productId}`;
   const current = points.at(-1);
+  const marketPoint = points.find((point) => point.source?.startsWith("market"));
+  const marketParts = marketPoint?.source?.split(":") ?? [];
+  const marketCode = marketParts[1]?.toUpperCase();
+  const marketCurrency = marketParts[2];
+  const hasMarket = Boolean(marketPoint);
+  const marketLabel = marketCode
+    ? `Market prices · ${marketCode}${marketCurrency && marketCurrency !== "EUR" ? " (converted to EUR)" : ""}`
+    : "Market prices · PricesAPI";
 
   const ticks = [min, min + span / 2, max];
   const xTickCount = 5;
@@ -163,8 +171,17 @@ export function PriceHistoryChart({
           {signal.observations} observations in 90 days · lowest{" "}
           {signal.low90Cents !== null ? formatPrice(signal.low90Cents, currency) : "—"}
         </span>
-        <span className="font-mono uppercase tracking-[0.14em]">Recorded prices</span>
+        <span className="font-mono uppercase tracking-[0.14em]">
+          {hasMarket ? marketLabel : "Recorded prices"}
+        </span>
       </div>
+
+      {hasMarket && (
+        <p className="px-2 pb-2 text-[10px] leading-4 text-slate-500">
+          Real merchant prices recorded by PricesAPI from live offers. They are
+          market observations, not this store&apos;s historical selling prices.
+        </p>
+      )}
 
       <details className="px-2">
         <summary className="cursor-pointer py-1 text-xs text-slate-500 hover:text-slate-300">

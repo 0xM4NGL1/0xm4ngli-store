@@ -369,7 +369,7 @@ export const seedProducts: SeedProduct[] = [
     priceCents: 31900,
     compareAtCents: 34900,
     stock: 16,
-    image: image("1606144042614-b2417e99c4e3"),
+    image: image("1578303512597-81e6cc155b3e"),
     featured: true,
   },
   {
@@ -391,7 +391,7 @@ export const seedProducts: SeedProduct[] = [
     priceCents: 56900,
     compareAtCents: 59900,
     stock: 5,
-    image: image("1612287230202-1ff1d85d1bdf"),
+    image: image("1760999366610-f83f4a490fd4"),
   },
   {
     sku: "M4-GAM-003",

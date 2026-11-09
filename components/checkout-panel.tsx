@@ -7,11 +7,21 @@ import {
   Heart,
   LoaderCircle,
   Lock,
+  Package,
 } from "lucide-react";
 import { formatPrice } from "@/lib/format";
 import { getCountries } from "@/lib/countries";
 
-const presets = [0, 500, 1000, 2500];
+const presets = [0, 99, 499, 999];
+
+export type CheckoutLine = {
+  productId: number;
+  name: string;
+  size?: string;
+  quantity: number;
+  unitPriceCents: number;
+  currency: string;
+};
 
 export function CheckoutPanel({
   signedIn,
@@ -20,6 +30,8 @@ export function CheckoutPanel({
   shippingCents,
   totalCents,
   bankConfigured,
+  lines,
+  items,
 }: {
   signedIn: boolean;
   defaultEmail: string;
@@ -27,6 +39,10 @@ export function CheckoutPanel({
   shippingCents: number;
   totalCents: number;
   bankConfigured: boolean;
+  /** Itemised lines shown in the checkout summary. */
+  lines?: CheckoutLine[];
+  /** When set, checkout orders exactly these lines instead of the cart. */
+  items?: Array<{ productId: number; quantity: number; size: string }>;
 }) {
   const countries = useMemo(() => getCountries(), []);
   const [supportCents, setSupportCents] = useState(0);
@@ -73,6 +89,7 @@ export function CheckoutPanel({
         body: JSON.stringify({
           email,
           supportCents,
+          ...(items && items.length > 0 ? { items } : {}),
           shipping: {
             name,
             address: {
@@ -279,26 +296,77 @@ export function CheckoutPanel({
       </div>
 
       <div className="border-t border-[#c4b5fd]/12 pt-5">
-        <div className="flex items-center justify-between gap-3">
-          <span className="text-sm text-slate-400">Products + shipping</span>
-          <span className="text-sm font-semibold text-white">
-            {formatPrice(subtotalCents + shippingCents)}
-          </span>
+        <div className="flex items-center gap-2">
+          <Package size={16} className="text-cyan-300" aria-hidden="true" />
+          <h2 className="text-sm font-bold text-white">What you are paying for</h2>
         </div>
-        {supportCents > 0 && (
-          <div className="mt-1 flex items-center justify-between gap-3">
-            <span className="text-sm text-slate-400">Voluntary support</span>
-            <span className="text-sm font-semibold text-fuchsia-200">
-              {formatPrice(supportCents)}
-            </span>
-          </div>
+        <p className="mt-1 text-[11px] leading-5 text-slate-500">
+          Full breakdown for this order. Prices come from the live catalogue and
+          are the same for every customer.
+        </p>
+
+        {lines && lines.length > 0 && (
+          <ul className="mt-3 divide-y divide-[#c4b5fd]/12 rounded-xl border border-[#c4b5fd]/12">
+            {lines.map((line) => (
+              <li
+                key={`${line.productId}-${line.size ?? "standard"}`}
+                className="flex items-start justify-between gap-3 px-3 py-2.5"
+              >
+                <div className="min-w-0">
+                  <p className="truncate text-xs font-semibold text-slate-200">
+                    {line.name}
+                  </p>
+                  <p className="mt-0.5 text-[11px] text-slate-500">
+                    {line.size ? `Size ${line.size} · ` : ""}
+                    {line.quantity} ×{" "}
+                    {formatPrice(line.unitPriceCents, line.currency)}
+                  </p>
+                </div>
+                <p className="shrink-0 text-xs font-bold text-white">
+                  {formatPrice(
+                    line.unitPriceCents * line.quantity,
+                    line.currency,
+                  )}
+                </p>
+              </li>
+            ))}
+          </ul>
         )}
-        <div className="mt-3 flex items-center justify-between gap-3 border-t border-[#c4b5fd]/12 pt-3">
-          <span className="text-base font-bold text-white">Transfer total</span>
-          <span className="text-xl font-black text-white">
-            {formatPrice(finalTotal)}
-          </span>
-        </div>
+
+        <dl className="mt-3 space-y-1.5 text-sm">
+          <div className="flex justify-between gap-3">
+            <dt className="text-slate-400">Products subtotal</dt>
+            <dd className="font-semibold text-white">
+              {formatPrice(subtotalCents)}
+            </dd>
+          </div>
+          <div className="flex justify-between gap-3">
+            <dt className="text-slate-400">Shipping</dt>
+            <dd className="font-semibold text-white">
+              {shippingCents === 0
+                ? "Free tracked shipping"
+                : `${formatPrice(shippingCents)} tracked shipping`}
+            </dd>
+          </div>
+          <div className="flex justify-between gap-3">
+            <dt className="text-slate-400">Tax</dt>
+            <dd className="text-xs text-slate-500">Included where applicable</dd>
+          </div>
+          {supportCents > 0 && (
+            <div className="flex justify-between gap-3">
+              <dt className="text-slate-400">Voluntary support</dt>
+              <dd className="font-semibold text-fuchsia-200">
+                {formatPrice(supportCents)}
+              </dd>
+            </div>
+          )}
+          <div className="flex items-center justify-between gap-3 border-t border-[#c4b5fd]/12 pt-3">
+            <dt className="text-base font-bold text-white">Transfer total</dt>
+            <dd className="text-xl font-black text-white">
+              {formatPrice(finalTotal)}
+            </dd>
+          </div>
+        </dl>
 
         <p className="mt-3 flex items-start gap-2 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.04] p-3 text-[11px] leading-5 text-cyan-100/75">
           <Building2 size={15} className="mt-0.5 shrink-0" aria-hidden="true" />

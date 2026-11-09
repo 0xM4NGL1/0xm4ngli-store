@@ -1,15 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { Minus, Plus, Ruler, Truck } from "lucide-react";
+import Link from "next/link";
+import { Minus, Plus, Ruler, ShoppingBag, Truck } from "lucide-react";
 import { AddToCartButton } from "./add-to-cart-button";
 
 export function PurchasePanel({
   productId,
+  slug,
   available,
   sizes,
 }: {
   productId: number;
+  slug: string;
   available: number;
   sizes: string[];
 }) {
@@ -19,6 +22,10 @@ export function PurchasePanel({
   const [showSizeHelp, setShowSizeHelp] = useState(false);
   const needsSize = sizes.length > 0;
   const missingSize = needsSize && !size;
+  const soldOut = available < 1;
+  const buyNowHref = `/checkout/buy/${encodeURIComponent(slug)}?quantity=${quantity}${
+    size ? `&size=${encodeURIComponent(size)}` : ""
+  }`;
 
   return (
     <div className="space-y-5">
@@ -65,7 +72,7 @@ export function PurchasePanel({
 
           {missingSize && (
             <p className="mt-2 text-[11px] text-amber-200/90" role="status">
-              Choose a size to add this product to your cart.
+              Choose a size to continue.
             </p>
           )}
 
@@ -130,17 +137,24 @@ export function PurchasePanel({
                 : `Add ${quantity} to cart`
           }
         />
-        <AddToCartButton
-          productId={productId}
-          available={available}
-          quantity={quantity}
-          size={size}
-          variant="outline"
-          goToCart
-          disabled={missingSize}
-          disabledLabel="Choose a size first"
-          label="Buy now"
-        />
+        {missingSize || soldOut ? (
+          <button
+            type="button"
+            disabled
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-5 py-3.5 text-sm font-bold text-slate-200 opacity-50"
+          >
+            <ShoppingBag size={17} aria-hidden="true" />
+            {soldOut ? "Sold out" : "Choose a size first"}
+          </button>
+        ) : (
+          <Link
+            href={buyNowHref}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#c4b5fd]/18 bg-[#0d0622]/80 px-5 py-3.5 text-sm font-bold text-slate-200 transition hover:border-cyan-300/40 hover:text-white"
+          >
+            <ShoppingBag size={17} aria-hidden="true" />
+            Buy now
+          </Link>
+        )}
       </div>
 
       <p className="flex items-start gap-2 text-[11px] leading-5 text-slate-500">

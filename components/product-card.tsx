@@ -26,6 +26,7 @@ export async function ProductCard({ product }: { product: Product }) {
     getViewerWishlist(),
   ]);
   const category = categoryBySlug[product.category];
+  const hasMarketHistory = history.some((point) => point.source?.startsWith("market"));
   const discount =
     product.compareAtCents && product.compareAtCents > product.priceCents
       ? (product.compareAtCents - product.priceCents) / product.compareAtCents
@@ -92,7 +93,9 @@ export async function ProductCard({ product }: { product: Product }) {
 
         <div className="mt-4">
           <div className="flex items-center justify-between gap-2 font-mono text-[9px] uppercase tracking-[0.14em] text-slate-600">
-            <span>90-day recorded price</span>
+            <span>
+              {hasMarketHistory ? "90-day market price" : "90-day recorded price"}
+            </span>
             <span>{history.length >= 2 ? `${history.length} pts` : "collecting"}</span>
           </div>
           {history.length >= 2 ? (

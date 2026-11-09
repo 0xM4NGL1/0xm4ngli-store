@@ -51,6 +51,7 @@ export type Product = {
 export type PricePoint = {
   priceCents: number;
   recordedAt: string;
+  source?: string;
 };
 
 export type DealVerdict = "buy" | "good" | "fair" | "wait" | "collecting";

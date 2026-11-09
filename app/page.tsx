@@ -417,7 +417,10 @@ export default async function HomePage() {
             {
               icon: Truck,
               title: "Shipping that makes sense",
-              text: `Flat ${formatPrice(site.flatShippingCents)} worldwide, free over ${formatPrice(site.freeShippingThresholdCents)}. Tracking included.`,
+              text:
+                site.flatShippingCents === 0
+                  ? "Free tracked shipping worldwide. Tracking included."
+                  : `Flat ${formatPrice(site.flatShippingCents)} worldwide, free over ${formatPrice(site.freeShippingThresholdCents)}. Tracking included.`,
             },
             {
               icon: ShieldCheck,

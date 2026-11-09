@@ -120,8 +120,7 @@ export async function readCartLines(): Promise<RawLine[]> {
   return user ? readUserLines(user.id) : readGuestLines();
 }
 
-export async function getCartSummary(): Promise<CartSummary> {
-  const lines = await readCartLines();
+async function summarizeLines(lines: RawLine[]): Promise<CartSummary> {
   const products = await getProductsByIds(lines.map((line) => line.productId));
   const byId = new Map(products.map((product) => [product.id, product]));
 
@@ -155,6 +154,28 @@ export async function getCartSummary(): Promise<CartSummary> {
       site.freeShippingThresholdCents - subtotalCents,
     ),
   };
+}
+
+export async function getCartSummary(): Promise<CartSummary> {
+  return summarizeLines(await readCartLines());
+}
+
+export type CheckoutLine = {
+  productId: number;
+  quantity: number;
+  size?: string;
+};
+
+export async function getSummaryForCheckoutLines(
+  lines: CheckoutLine[],
+): Promise<CartSummary> {
+  return summarizeLines(
+    lines.slice(0, MAX_LINES).map((line) => ({
+      productId: line.productId,
+      quantity: Math.max(1, Math.min(MAX_QUANTITY, Math.trunc(line.quantity))),
+      size: normalizeSize(line.size),
+    })),
+  );
 }
 
 function validate(product: Product, quantity: number, size: string) {

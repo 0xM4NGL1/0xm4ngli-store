@@ -168,6 +168,14 @@ export default async function CartPage({
               shippingCents={cart.shippingCents}
               totalCents={cart.totalCents}
               bankConfigured={bankConfigured}
+              lines={cart.lines.map(({ product, quantity, size }) => ({
+                productId: product.id,
+                name: product.name,
+                size,
+                quantity,
+                unitPriceCents: product.priceCents,
+                currency: product.currency,
+              }))}
             />
           </div>
         </section>
@@ -217,7 +225,7 @@ export default async function CartPage({
               </div>
             ) : (
               <p className="mt-4 flex items-center gap-1.5 text-[11px] text-emerald-200">
-                <Check size={13} aria-hidden="true" /> Free tracked shipping unlocked
+                <Check size={13} aria-hidden="true" /> Free tracked shipping included
               </p>
             )}
 

@@ -116,7 +116,7 @@ export function HeaderClient({
             <span className="sm:hidden">Price intelligence · 0 trackers</span>
           </p>
           <p className="hidden md:block">
-            Free tracked shipping over €500 · 14-day returns
+            Free tracked shipping · 14-day returns
           </p>
         </div>
       </div>

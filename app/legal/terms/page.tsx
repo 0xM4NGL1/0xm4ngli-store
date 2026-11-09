@@ -87,12 +87,11 @@ export default function TermsPage() {
       <h2 id="price">5. Prices, tax and shipping</h2>
       <p>
         Prices are shown in euro (EUR) and include VAT or other indirect taxes where
-        applicable. Shipping is{" "}
+        applicable.{" "}
         {site.flatShippingCents === 0
-          ? "free"
-          : `${formatPrice(site.flatShippingCents)} flat worldwide`}
-        , free over {formatPrice(site.freeShippingThresholdCents)}. The exact amount
-        is shown before payment. For deliveries outside the EU, import duties and
+          ? "Shipping is free worldwide."
+          : `Shipping is ${formatPrice(site.flatShippingCents)} flat worldwide, free over ${formatPrice(site.freeShippingThresholdCents)}.`}{" "}
+        The exact amount is shown before payment. For deliveries outside the EU, import duties and
         local taxes may be payable by you and are not included unless the checkout
         says otherwise.
       </p>

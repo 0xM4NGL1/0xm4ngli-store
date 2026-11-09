@@ -45,8 +45,9 @@ export default function ShippingPage() {
           <tr>
             <td>Tracked worldwide</td>
             <td>
-              {formatPrice(site.flatShippingCents)} flat, free over{" "}
-              {formatPrice(site.freeShippingThresholdCents)}
+              {site.flatShippingCents === 0
+                ? "Free"
+                : `${formatPrice(site.flatShippingCents)} flat, free over ${formatPrice(site.freeShippingThresholdCents)}`}
             </td>
             <td>3–10 business days</td>
           </tr>

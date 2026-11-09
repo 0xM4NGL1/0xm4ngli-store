@@ -12,7 +12,6 @@ export function AddToCartButton({
   size = "",
   variant = "primary",
   label,
-  goToCart = false,
   disabled = false,
   disabledLabel,
 }: {
@@ -22,7 +21,6 @@ export function AddToCartButton({
   size?: string;
   variant?: "primary" | "compact" | "outline" | "icon";
   label?: string;
-  goToCart?: boolean;
   disabled?: boolean;
   disabledLabel?: string;
 }) {
@@ -50,10 +48,6 @@ export function AddToCartButton({
         setMessage(data.error ?? "Could not add to cart.");
         return;
       }
-      if (goToCart) {
-        router.push("/cart");
-        return;
-      }
       setState("added");
       router.refresh();
       window.setTimeout(() => setState("idle"), 1800);
@@ -71,9 +65,7 @@ export function AddToCartButton({
       ? "Added"
       : blocked
         ? (disabledLabel ?? (soldOut ? "Sold out" : "Choose an option"))
-        : goToCart
-          ? "Buy now"
-          : "Add to cart");
+        : "Add to cart");
   const actionLabel =
     state === "added"
       ? "Added to cart"
@@ -115,7 +107,7 @@ export function AddToCartButton({
       <span className="sr-only" aria-live="polite">
         {state === "added" ? "Added to cart" : message}
       </span>
-      {message && variant === "primary" && (
+      {message && variant !== "icon" && (
         <p className="text-xs text-rose-300" role="alert">
           {message}
         </p>

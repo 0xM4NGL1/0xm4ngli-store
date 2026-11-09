@@ -261,6 +261,31 @@ Use `"purgeDemo": true` once to remove seeded demo products after your live feed
 
 **Do not scrape** a retailer’s website or API. Use a supplier feed, an affiliate API that permits it, or your own inventory.
 
+### Real market price history (PricesAPI)
+
+If you do not have a supplier feed, `sync:market` backfills real merchant price
+history from [PricesAPI](https://pricesapi.io). A free key includes 3,000
+one-time credits and needs no card. Retained history is deepest in the AU
+market, so the sync tries AU first, then US/GB and the EUR markets. It matches
+each product by model number and capacity, records one median in-stock offer
+per day, and converts non-EUR prices with ECB reference rates from Frankfurter.
+
+```bash
+# all products, 90 days
+PRICESAPI_KEY=pricesapi_... bun run sync:market
+
+# inspect matches without writing
+bun run sync:market --dry-run --limit=5
+
+# specific products / shorter window
+bun run sync:market --sku=M4-AUD-001,M4-PHO-001 --days=30
+```
+
+- Observations are stored with a `market:<market>:<currency>` source (for example `market:au:AUD`) and labelled **Market prices · PricesAPI** in the chart.
+- These are real merchant offers, not this store's historical selling prices.
+- A product with no trustworthy model/capacity match is left as “Collecting” instead of being matched to the wrong variant.
+- History depth varies by product and market. 90 days keeps the free credit reservation within the 3,000-credit allowance.
+
 ---
 
 ## Price engine
@@ -279,7 +304,7 @@ otherwise              -> WAIT
 < 3 observations       -> COLLECTING
 ```
 
-Production does not invent price history. If the database has no observations, products show “Collecting” until your feed syncs. Development seeds illustrative history so the chart and score can be evaluated locally.
+Production does not invent price history. If the database has no observations, products show “Collecting” until your feed or market sync records real prices. Development seeds illustrative history so the chart and score can be evaluated locally.
 
 ---
 
@@ -298,6 +323,8 @@ See [`.env.example`](./.env.example). Nothing in `.env.local` or `.env.productio
 | `ALLOW_DEMO_CATALOG_ORDERS` | Leave false. Enables real transfers for demo-marked products only if you really mean it. |
 | `CATALOG_IS_DEMO` | Marks seeded products as demo and disables their checkout. |
 | `SEED_PRICE_HISTORY` | Enables illustrative history for non-production evaluation. |
+| `PRICESAPI_KEY` | Real market price history backfill; free key at [pricesapi.io](https://pricesapi.io). |
+| `PRICE_MARKET` / `PRICE_HISTORY_DAYS` | First market to try (default `au`, where retained history is deepest) and history window (max 90 on the free plan). |
 | `FLAT_SHIPPING_CENTS` / `FREE_SHIPPING_THRESHOLD_CENTS` | Shipping display and order totals. |
 | `RESEND_API_KEY` / `EMAIL_FROM` | Optional transactional email. |
 | `IMAGE_HOSTS` | Extra `next/image` hosts for feed images. |
@@ -369,6 +396,7 @@ app/
   shop/                       search + filters
   product/[slug]/             product, chart and JSON-LD
   cart/                       cart, delivery form, support add-on
+  checkout/buy/[slug]/        product-specific Buy now checkout
   checkout/success/           private bank-transfer instructions
   support/                    voluntary support payments
   account/                    profile, orders, security/data

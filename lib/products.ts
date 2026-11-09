@@ -282,8 +282,12 @@ export async function getPriceHistory(
   days = 180,
 ): Promise<PricePoint[]> {
   const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
-  const rows = await dbAll<{ price_cents: number; recorded_at: string }>(
-    `SELECT price_cents, recorded_at
+  const rows = await dbAll<{
+    price_cents: number;
+    recorded_at: string;
+    source: string;
+  }>(
+    `SELECT price_cents, recorded_at, source
      FROM price_history
      WHERE product_id = ? AND recorded_at >= ?
      ORDER BY recorded_at ASC`,
@@ -293,6 +297,7 @@ export async function getPriceHistory(
   return rows.map((row) => ({
     priceCents: row.price_cents,
     recordedAt: row.recorded_at,
+    source: row.source,
   }));
 }
 
@@ -329,7 +334,7 @@ export async function getDealSignal(productId: number): Promise<DealSignal> {
       observations,
       lowestEverCents: all.length
         ? Math.min(...all.map((row) => row.price_cents))
-        : current || null,
+        : null,
       isLowest90: false,
       summary:
         "Still collecting price observations. The buy signal unlocks after a few feed syncs.",
