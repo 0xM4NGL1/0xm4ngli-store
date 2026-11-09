@@ -20,7 +20,7 @@ export default async function AccountLayout({
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
             Your account
           </p>
-          <h1 className="mt-2 text-3xl font-black tracking-[-0.04em] text-white md:text-4xl">
+          <h1 className="neon-text mt-2 text-3xl font-black tracking-[-0.04em] text-white md:text-4xl">
             {user.name}
           </h1>
           <p className="mt-1 text-sm text-slate-500">

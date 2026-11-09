@@ -7,7 +7,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
       className="group inline-flex items-baseline gap-2 focus-visible:rounded-md"
       aria-label="0xm4ngli home"
     >
-      <span className="text-2xl font-black tracking-[-0.07em] text-white md:text-3xl">
+      <span className="neon-text text-2xl font-black tracking-[-0.07em] text-white md:text-3xl">
         0xm4ngli
         <span className="text-cyan-300 transition group-hover:text-fuchsia-300">.</span>
       </span>

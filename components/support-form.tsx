@@ -110,7 +110,7 @@ export function SupportForm({ signedInEmail }: { signedInEmail: string }) {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
           placeholder="you@example.com"
-          className="h-10 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-cyan-300/60"
+          className="neon-outline h-10 w-full rounded-lg px-3 text-sm text-white outline-none focus:border-cyan-300/60"
         />
         <p className="mt-1 text-[10px] text-slate-600">
           Without an email, keep the private success link to retrieve your reference.
@@ -127,7 +127,7 @@ export function SupportForm({ signedInEmail }: { signedInEmail: string }) {
       <button
         type="submit"
         disabled={loading}
-        className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-400 via-fuchsia-300 to-cyan-300 px-6 py-3.5 text-sm font-black uppercase tracking-[0.12em] text-slate-950 transition hover:brightness-105 disabled:opacity-60"
+        className="neon-button flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-black uppercase tracking-[0.12em] disabled:opacity-60"
       >
         {loading ? (
           <LoaderCircle size={16} className="animate-spin" aria-hidden="true" />

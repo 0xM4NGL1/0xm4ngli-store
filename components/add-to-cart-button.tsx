@@ -65,7 +65,7 @@ export function AddToCartButton({
         className={classNames(
           "inline-flex items-center justify-center gap-2 font-bold transition disabled:cursor-not-allowed disabled:opacity-50",
           variant === "primary" &&
-            "w-full rounded-xl bg-gradient-to-r from-cyan-300 via-cyan-200 to-fuchsia-300 px-6 py-4 text-sm font-black uppercase tracking-[0.12em] text-slate-950 shadow-[0_0_35px_-8px_rgba(34,211,238,0.55)] hover:brightness-105",
+            "neon-button w-full rounded-xl px-6 py-4 text-sm font-black uppercase tracking-[0.12em]",
           variant === "compact" &&
             "w-full rounded-full border border-cyan-300/25 bg-cyan-300/10 px-3 py-2.5 text-xs text-cyan-100 hover:bg-cyan-300/20",
           variant === "outline" &&

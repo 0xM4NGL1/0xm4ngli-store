@@ -17,6 +17,7 @@ const helpLinks = [
 export function Footer() {
   return (
     <footer className="relative mt-24 overflow-hidden border-t border-white/10 bg-[#04050b]">
+      <div className="neon-divider absolute left-0 right-0 top-0" />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-[8%] h-72 w-72 rounded-full bg-cyan-500/10 blur-[100px]" />
         <div className="absolute -bottom-32 right-[8%] h-72 w-72 rounded-full bg-fuchsia-500/10 blur-[100px]" />
@@ -117,16 +118,16 @@ export function Footer() {
             </div>
 
             <div className="flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">
-              <span className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1.5">
+              <span className="neon-chip rounded-md px-2.5 py-1.5">
                 Bank transfer
               </span>
-              <span className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1.5">
+              <span className="neon-chip rounded-md px-2.5 py-1.5">
                 SEPA
               </span>
-              <span className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1.5">
+              <span className="neon-chip rounded-md px-2.5 py-1.5">
                 SWIFT
               </span>
-              <span className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1.5">
+              <span className="neon-chip rounded-md px-2.5 py-1.5">
                 EUR
               </span>
             </div>

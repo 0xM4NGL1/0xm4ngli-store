@@ -28,7 +28,7 @@ export function WishlistButton({
       <Link
         href={`/login?next=${encodeURIComponent(pathname)}`}
         className={classNames(
-          "inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] font-semibold text-slate-300 transition hover:border-fuchsia-300/40 hover:text-fuchsia-200",
+          "neon-outline inline-flex items-center justify-center gap-2 rounded-xl font-semibold text-slate-300 transition hover:text-fuchsia-200",
           compact ? "h-10 w-10" : "px-5 py-3.5 text-sm",
         )}
         aria-label="Sign in to save to wishlist"

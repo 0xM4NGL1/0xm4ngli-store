@@ -59,7 +59,7 @@ export function LegalShell({
             <p className="flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
               <FileText size={13} aria-hidden="true" /> Last updated {updated}
             </p>
-            <h1 className="mt-3 text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">
+            <h1 className="neon-text mt-3 text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">
               {title}
             </h1>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">

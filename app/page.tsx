@@ -48,7 +48,7 @@ function SectionHeading({
         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
           {eyebrow}
         </p>
-        <h2 className="mt-2 text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">
+        <h2 className="neon-text mt-2 text-3xl font-black tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">
           {title}
         </h2>
         {description && (
@@ -105,13 +105,15 @@ export default async function HomePage() {
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-grid opacity-60" />
         <div className="hero-glow absolute inset-0" />
+        <div className="scanlines absolute inset-0 opacity-50" />
+        <div className="hero-horizon" />
         <div className="container-m4 relative grid gap-14 pb-16 pt-14 lg:grid-cols-12 lg:items-center lg:pb-24 lg:pt-20">
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/[0.06] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-cyan-200">
               <Sparkles size={13} aria-hidden="true" />
               Independent price intelligence
             </div>
-            <h1 className="mt-6 max-w-3xl text-5xl font-black leading-[0.93] tracking-[-0.065em] text-white sm:text-6xl xl:text-7xl">
+            <h1 className="neon-text-strong mt-6 max-w-3xl text-5xl font-black leading-[0.93] tracking-[-0.065em] text-white sm:text-6xl xl:text-7xl">
               Tech worth the wait.
               <span className="text-gradient block">Prices worth the drop.</span>
             </h1>
@@ -123,7 +125,7 @@ export default async function HomePage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/shop"
-                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-300 via-cyan-200 to-fuchsia-300 px-6 py-4 text-sm font-black uppercase tracking-[0.12em] text-slate-950 shadow-[0_0_40px_-12px_rgba(34,211,238,0.65)] transition hover:brightness-105"
+                className="neon-button group inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-black uppercase tracking-[0.12em]"
               >
                 Shop all tech
                 <ArrowRight
@@ -134,7 +136,7 @@ export default async function HomePage() {
               </Link>
               <Link
                 href="/shop?sort=drop"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 py-4 text-sm font-bold text-slate-200 transition hover:border-cyan-300/40 hover:text-white"
+                className="neon-outline inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-bold text-slate-200 transition hover:text-white"
               >
                 <TrendingDown size={17} className="text-cyan-300" aria-hidden="true" />
                 See price drops
@@ -146,13 +148,13 @@ export default async function HomePage() {
                 <dt className="font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500">
                   Products tracked
                 </dt>
-                <dd className="mt-1 text-2xl font-black text-white">{productCount}</dd>
+                <dd className="neon-text mt-1 text-2xl font-black text-white">{productCount}</dd>
               </div>
               <div>
                 <dt className="font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500">
                   Price observations
                 </dt>
-                <dd className="mt-1 text-2xl font-black text-white">
+                <dd className="neon-text mt-1 text-2xl font-black text-white">
                   {observationCount.toLocaleString("en-IE")}
                 </dd>
               </div>
@@ -169,7 +171,7 @@ export default async function HomePage() {
             {heroEntry ? (
               <div className="relative mx-auto max-w-md">
                 <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-cyan-400/15 via-transparent to-fuchsia-400/15 blur-2xl" />
-                <div className="glass-strong relative overflow-hidden rounded-[1.6rem] p-3 shadow-2xl">
+                <div className="neon-card glass-strong relative overflow-hidden rounded-[1.6rem] p-3 shadow-2xl">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-900">
                     <ProductImage
                       src={heroEntry.product.image}
@@ -202,7 +204,7 @@ export default async function HomePage() {
                         <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-slate-500">
                           90-day low
                         </p>
-                        <p className="text-lg font-black text-emerald-300">
+                        <p className="neon-text text-lg font-black text-emerald-300">
                           {heroEntry.signal.low90Cents !== null
                             ? formatPrice(heroEntry.signal.low90Cents)
                             : "Collecting"}
@@ -243,7 +245,7 @@ export default async function HomePage() {
                 </div>
               </div>
             ) : (
-              <div className="glass-strong rounded-[1.6rem] p-8 text-center text-sm text-slate-400">
+              <div className="neon-card glass-strong rounded-[1.6rem] p-8 text-center text-sm text-slate-400">
                 Product data will appear here once a catalogue feed is connected.
               </div>
             )}
@@ -285,7 +287,7 @@ export default async function HomePage() {
             <Link
               key={category.slug}
               href={`/shop?category=${category.slug}`}
-              className="card-hover group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-slate-900"
+              className="neon-card card-hover group relative aspect-[4/3] overflow-hidden rounded-2xl bg-slate-900"
             >
               <ProductImage
                 src={category.image}
@@ -334,14 +336,14 @@ export default async function HomePage() {
       </section>
 
       <section className="container-m4 py-16 md:py-24" id="price-engine">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#0a0d1d] via-[#0c0a1c] to-[#071018] p-6 md:p-12">
+        <div className="neon-card relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a0d1d] via-[#0c0a1c] to-[#071018] p-6 md:p-12">
           <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-[90px]" />
           <div className="relative grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-5">
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-fuchsia-300">
                 The engine
               </p>
-              <h2 className="mt-3 text-3xl font-black tracking-[-0.04em] text-white md:text-4xl">
+              <h2 className="neon-text mt-3 text-3xl font-black tracking-[-0.04em] text-white md:text-4xl">
                 A buy signal built from evidence.
               </h2>
               <p className="mt-4 text-sm leading-7 text-slate-400">
@@ -429,7 +431,7 @@ export default async function HomePage() {
               text: "Export or delete your account from your profile. No tracking pixels, no data sales.",
             },
           ].map((item) => (
-            <div key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+            <div key={item.title} className="neon-card rounded-2xl bg-white/[0.02] p-6">
               <item.icon size={22} className="text-cyan-300" aria-hidden="true" />
               <h2 className="mt-4 text-lg font-bold text-white">{item.title}</h2>
               <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>

@@ -35,7 +35,7 @@ export default async function AccountPage() {
   return (
     <div className="grid gap-6 lg:grid-cols-12">
       <section className="lg:col-span-7">
-        <div className="rounded-2xl border border-white/10 bg-[#0a0d19] p-5 md:p-6">
+        <div className="neon-card rounded-2xl bg-[#0a0d19] p-5 md:p-6">
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-300">
@@ -58,7 +58,7 @@ export default async function AccountPage() {
           </div>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+        <div className="neon-outline mt-6 rounded-2xl p-5">
           <h2 className="text-sm font-bold text-white">What we do not do</h2>
           <ul className="mt-3 grid gap-2 text-xs leading-5 text-slate-400 sm:grid-cols-2">
             {[
@@ -113,7 +113,7 @@ export default async function AccountPage() {
             <Link
               key={item.label + item.href}
               href={item.href}
-              className="rounded-2xl border border-white/10 bg-[#0a0d19] p-4 transition hover:border-cyan-300/30"
+              className="neon-card rounded-2xl bg-[#0a0d19] p-4 transition"
             >
               <item.icon size={17} className="text-cyan-300" aria-hidden="true" />
               <p className="mt-3 text-2xl font-black text-white">{item.value}</p>
@@ -124,7 +124,7 @@ export default async function AccountPage() {
           ))}
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#0d1022] to-[#0a0d19] p-5">
+        <div className="neon-card rounded-2xl bg-gradient-to-br from-[#0d1022] to-[#0a0d19] p-5">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-fuchsia-300">
             Member benefit
           </p>

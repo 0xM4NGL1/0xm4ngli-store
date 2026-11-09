@@ -17,7 +17,7 @@ export async function ProductCard({ product }: { product: Product }) {
       : null;
 
   return (
-    <article className="card-hover group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0a0d19]">
+    <article className="neon-card card-hover group relative flex h-full flex-col overflow-hidden rounded-2xl bg-[#0a0d19]">
       <Link
         href={`/product/${product.slug}`}
         className="relative block aspect-[4/3] overflow-hidden bg-slate-900"
@@ -30,7 +30,7 @@ export async function ProductCard({ product }: { product: Product }) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080a14] via-transparent to-transparent opacity-80" />
-        <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-[#05060b]/70 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-slate-200 backdrop-blur">
+        <span className="neon-chip absolute left-3 top-3 rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] text-slate-100 backdrop-blur">
           {category?.name ?? product.category}
         </span>
         <span className="absolute right-3 top-3">
@@ -54,7 +54,7 @@ export async function ProductCard({ product }: { product: Product }) {
         <div className="mt-auto pt-5">
           <div className="flex items-end justify-between gap-3">
             <div>
-              <p className="text-lg font-black tracking-tight text-white">
+              <p className="neon-text text-lg font-black tracking-tight text-white">
                 {formatPrice(product.priceCents, product.currency)}
               </p>
               <div className="flex items-center gap-2">

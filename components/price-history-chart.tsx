@@ -74,7 +74,7 @@ export function PriceHistoryChart({
   const tableRows = points.slice(-14);
 
   return (
-    <figure className="rounded-xl border border-white/10 bg-[#080a14] p-3">
+    <figure className="neon-card rounded-xl bg-[#080a14] p-3">
       <svg
         viewBox={`0 0 ${width} ${height}`}
         className="h-auto w-full"

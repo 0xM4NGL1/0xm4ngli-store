@@ -23,7 +23,7 @@ export default function ContactPage() {
         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
           Contact
         </p>
-        <h1 className="mt-3 text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">
+        <h1 className="neon-text mt-3 text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">
           Talk to a person.
         </h1>
         <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-400">
@@ -34,7 +34,7 @@ export default function ContactPage() {
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
           <a
             href={`mailto:${site.email}`}
-            className="group rounded-2xl border border-white/10 bg-[#0a0d19] p-5 transition hover:border-cyan-300/40"
+            className="neon-card group rounded-2xl bg-[#0a0d19] p-5 transition"
           >
             <Mail size={20} className="text-cyan-300" aria-hidden="true" />
             <h2 className="mt-4 text-sm font-bold text-white">General & orders</h2>
@@ -43,7 +43,7 @@ export default function ContactPage() {
           </a>
           <a
             href={`mailto:${site.privacyEmail}`}
-            className="group rounded-2xl border border-white/10 bg-[#0a0d19] p-5 transition hover:border-emerald-300/40"
+            className="neon-card group rounded-2xl bg-[#0a0d19] p-5 transition"
           >
             <ShieldCheck size={20} className="text-emerald-300" aria-hidden="true" />
             <h2 className="mt-4 text-sm font-bold text-white">Privacy & data rights</h2>
@@ -52,7 +52,7 @@ export default function ContactPage() {
           </a>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+        <div className="neon-card mt-6 rounded-2xl bg-white/[0.02] p-5">
           <div className="flex items-center gap-2">
             <Building2 size={17} className="text-slate-400" aria-hidden="true" />
             <h2 className="text-sm font-bold text-white">Seller details</h2>

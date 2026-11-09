@@ -20,7 +20,7 @@ export function PurchasePanel({
         <span className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
           Quantity
         </span>
-        <div className="flex items-center rounded-lg border border-white/15 bg-white/[0.03]">
+        <div className="neon-outline flex items-center rounded-lg">
           <button
             type="button"
             onClick={() => setQuantity((value) => Math.max(1, value - 1))}

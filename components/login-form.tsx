@@ -97,7 +97,7 @@ export function LoginForm({ next }: { next: string }) {
       <button
         type="submit"
         disabled={loading}
-        className="flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-cyan-300 text-xs font-black uppercase tracking-[0.12em] text-slate-950 transition hover:bg-fuchsia-300 disabled:opacity-60"
+        className="neon-button flex h-11 w-full items-center justify-center gap-2 rounded-lg text-xs font-black uppercase tracking-[0.12em] disabled:opacity-60"
       >
         {loading ? <LoaderCircle size={16} className="animate-spin" aria-hidden="true" /> : <LogIn size={16} aria-hidden="true" />}
         {loading ? "Signing in…" : "Sign in"}

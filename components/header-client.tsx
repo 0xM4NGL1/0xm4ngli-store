@@ -121,7 +121,7 @@ export function HeaderClient({
         </div>
       </div>
 
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#05060b]/82 backdrop-blur-xl">
+      <header className="neon-header sticky top-0 z-40 border-b border-white/10 bg-[#05060b]/82 backdrop-blur-xl">
         <div className="container-m4 flex h-[68px] items-center gap-4">
           <button
             type="button"
@@ -172,7 +172,7 @@ export function HeaderClient({
             >
               <Heart size={19} aria-hidden="true" />
               {wishlistCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-fuchsia-500 px-1 text-[9px] font-black text-white">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-fuchsia-500 px-1 text-[9px] font-black text-white shadow-[0_0_14px_rgba(232,121,249,0.8)]">
                   {wishlistCount}
                 </span>
               )}
@@ -187,7 +187,7 @@ export function HeaderClient({
               aria-label={user ? "Your account" : "Sign in"}
             >
               {initials ? (
-                <span className="flex h-6 w-6 items-center justify-center rounded-full border border-cyan-300/30 bg-cyan-300/10 text-[10px] font-black text-cyan-100">
+                <span className="neon-avatar flex h-6 w-6 items-center justify-center rounded-full border border-cyan-300/30 text-[10px] font-black text-cyan-50">
                   {initials}
                 </span>
               ) : (
@@ -205,7 +205,7 @@ export function HeaderClient({
             >
               <ShoppingBag size={20} aria-hidden="true" />
               {cartCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-violet-500 px-1 text-[9px] font-black text-slate-950">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gradient-to-br from-cyan-300 to-fuchsia-400 px-1 text-[9px] font-black text-slate-950 shadow-[0_0_14px_rgba(34,211,238,0.8)]">
                   {cartCount > 99 ? "99+" : cartCount}
                 </span>
               )}
@@ -217,7 +217,7 @@ export function HeaderClient({
       {menuOpen && (
         <div
           id="mobile-menu"
-          className="fixed inset-0 z-50 flex flex-col bg-[#060815] lg:hidden"
+          className="scanlines fixed inset-0 z-50 flex flex-col bg-[#060815] lg:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
@@ -287,7 +287,7 @@ export function HeaderClient({
             if (event.target === event.currentTarget) setSearchOpen(false);
           }}
         >
-          <div className="w-full max-w-2xl overflow-hidden rounded-2xl border border-white/15 bg-[#0a0d1b] shadow-2xl">
+          <div className="neon-card w-full max-w-2xl overflow-hidden rounded-2xl border border-white/15 bg-[#0a0d1b] shadow-2xl">
             <form onSubmit={submitSearch} className="flex items-center gap-3 border-b border-white/10 px-5">
               <Search size={20} className="shrink-0 text-cyan-300" aria-hidden="true" />
               <label htmlFor="site-search" className="sr-only">
@@ -322,7 +322,7 @@ export function HeaderClient({
                     key={category.slug}
                     href={`/shop?category=${category.slug}`}
                     onClick={() => setSearchOpen(false)}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-xs font-semibold text-slate-300 hover:border-cyan-300/30 hover:text-white"
+                    className="neon-chip rounded-full px-3 py-2 text-xs font-semibold text-slate-200 hover:text-white"
                   >
                     {category.name}
                   </Link>

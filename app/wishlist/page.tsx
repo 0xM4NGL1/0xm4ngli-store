@@ -32,7 +32,7 @@ export default async function WishlistPage() {
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-fuchsia-300">
             Saved for later
           </p>
-          <h1 className="mt-2 text-4xl font-black tracking-[-0.05em] text-white">
+          <h1 className="neon-text mt-2 text-4xl font-black tracking-[-0.05em] text-white">
             Your wishlist
           </h1>
           <p className="mt-2 text-sm text-slate-400">

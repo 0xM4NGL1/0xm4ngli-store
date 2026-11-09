@@ -71,7 +71,7 @@ export default async function CartPage({
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
             Checkout
           </p>
-          <h1 className="mt-2 text-4xl font-black tracking-[-0.05em] text-white">
+          <h1 className="neon-text mt-2 text-4xl font-black tracking-[-0.05em] text-white">
             Your cart
           </h1>
         </div>
@@ -88,7 +88,7 @@ export default async function CartPage({
 
       <div className="mt-8 grid gap-8 lg:grid-cols-12">
         <section className="lg:col-span-8" aria-label="Cart items">
-          <ul className="divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/10 bg-[#0a0d19]">
+          <ul className="neon-card divide-y divide-white/10 overflow-hidden rounded-2xl bg-[#0a0d19]">
             {cart.lines.map(({ product, quantity }) => (
               <li key={product.id} className="flex gap-4 p-4 sm:p-5">
                 <Link
@@ -154,7 +154,7 @@ export default async function CartPage({
             ))}
           </div>
 
-          <div className="mt-6 rounded-2xl border border-white/10 bg-[#0a0d19] p-5 md:p-6">
+          <div className="neon-card mt-6 rounded-2xl bg-[#0a0d19] p-5 md:p-6">
             <CheckoutPanel
               signedIn={Boolean(user)}
               defaultEmail={user?.email ?? ""}
@@ -167,7 +167,7 @@ export default async function CartPage({
         </section>
 
         <aside className="lg:col-span-4">
-          <div className="glass-strong rounded-2xl p-5 lg:sticky lg:top-24">
+          <div className="neon-card glass-strong rounded-2xl p-5 lg:sticky lg:top-24">
             <h2 className="text-lg font-black text-white">Order summary</h2>
             <dl className="mt-5 space-y-3 text-sm">
               <div className="flex justify-between gap-3">

@@ -31,7 +31,7 @@ export default async function SupportPage() {
             <Heart size={13} aria-hidden="true" />
             Keep it independent
           </div>
-          <h1 className="mt-5 text-4xl font-black leading-[0.98] tracking-[-0.05em] text-white md:text-5xl">
+          <h1 className="neon-text-strong mt-5 text-4xl font-black leading-[0.98] tracking-[-0.05em] text-white md:text-5xl">
             Support the work.
             <span className="text-gradient block">Keep the signals free.</span>
           </h1>
@@ -58,7 +58,7 @@ export default async function SupportPage() {
         </div>
 
         <div className="lg:col-span-6">
-          <div className="glass-strong rounded-2xl p-5 md:p-6">
+          <div className="neon-card glass-strong rounded-2xl p-5 md:p-6">
             <h2 className="text-lg font-black text-white">Choose an amount</h2>
             <p className="mt-1 text-xs leading-5 text-slate-500">
               You will get a unique reference and the bank details after creating
@@ -70,7 +70,7 @@ export default async function SupportPage() {
           </div>
 
           {bank.configured ? (
-            <div className="mt-4 rounded-2xl border border-white/10 bg-[#0a0d19] p-5">
+            <div className="neon-card mt-4 rounded-2xl bg-[#0a0d19] p-5">
               <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                 Bank details
               </p>
@@ -124,7 +124,7 @@ export default async function SupportPage() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 max-w-5xl rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-xs leading-6 text-slate-500">
+      <div className="neon-outline mx-auto mt-12 max-w-5xl rounded-2xl p-5 text-xs leading-6 text-slate-500">
         <p>
           <strong className="text-slate-300">What support pays for:</strong> feed
           access, hosting, domain, email and time spent recording and checking price

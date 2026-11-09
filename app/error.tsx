@@ -21,7 +21,7 @@ export default function ErrorPage({
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-rose-300/10 text-rose-300">
           <AlertTriangle size={26} aria-hidden="true" />
         </div>
-        <h1 className="mt-5 text-3xl font-black tracking-[-0.04em] text-white">
+        <h1 className="neon-text mt-5 text-3xl font-black tracking-[-0.04em] text-white">
           Something went wrong.
         </h1>
         <p className="mt-3 text-sm leading-7 text-slate-400">

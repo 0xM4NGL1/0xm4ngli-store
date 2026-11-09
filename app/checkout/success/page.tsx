@@ -48,7 +48,7 @@ export default async function CheckoutSuccessPage({
   return (
     <div className="container-m4 py-12 md:py-20">
       <div className="mx-auto max-w-3xl">
-        <div className="rounded-3xl border border-white/10 bg-[#0a0d19] p-6 md:p-10">
+        <div className="neon-card rounded-3xl bg-[#0a0d19] p-6 md:p-10">
           <div
             className={
               paid
@@ -70,7 +70,7 @@ export default async function CheckoutSuccessPage({
           <p className="mt-5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
             {paid ? "Payment received" : pending ? "Bank transfer" : "Order closed"}
           </p>
-          <h1 className="mt-2 text-3xl font-black tracking-[-0.04em] text-white md:text-4xl">
+          <h1 className="neon-text mt-2 text-3xl font-black tracking-[-0.04em] text-white md:text-4xl">
             {paid
               ? "Payment received. Order confirmed."
               : pending
@@ -89,7 +89,7 @@ export default async function CheckoutSuccessPage({
 
           {pending && (
             <>
-              <div className="mt-6 rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.04] p-4">
+              <div className="neon-outline mt-6 rounded-2xl p-4">
                 <p className="flex items-center gap-2 text-sm font-bold text-cyan-100">
                   <Building2 size={16} aria-hidden="true" />
                   Send the bank transfer

@@ -122,7 +122,7 @@ export function CheckoutPanel({
               autoComplete="name"
               value={name}
               onChange={(event) => setName(event.target.value)}
-              className="h-10 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-cyan-300/60"
+              className="neon-outline h-10 w-full rounded-lg px-3 text-sm text-white outline-none focus:border-cyan-300/60"
             />
           </div>
           {!signedIn && (
@@ -138,7 +138,7 @@ export function CheckoutPanel({
                 autoComplete="email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="h-10 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-cyan-300/60"
+                className="neon-outline h-10 w-full rounded-lg px-3 text-sm text-white outline-none focus:border-cyan-300/60"
               />
             </div>
           )}
@@ -154,7 +154,7 @@ export function CheckoutPanel({
               autoComplete="address-line1"
               value={line1}
               onChange={(event) => setLine1(event.target.value)}
-              className="h-10 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-cyan-300/60"
+              className="neon-outline h-10 w-full rounded-lg px-3 text-sm text-white outline-none focus:border-cyan-300/60"
             />
           </div>
           <div>
@@ -167,7 +167,7 @@ export function CheckoutPanel({
               autoComplete="address-line2"
               value={line2}
               onChange={(event) => setLine2(event.target.value)}
-              className="h-10 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-cyan-300/60"
+              className="neon-outline h-10 w-full rounded-lg px-3 text-sm text-white outline-none focus:border-cyan-300/60"
             />
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -182,7 +182,7 @@ export function CheckoutPanel({
                 autoComplete="address-level2"
                 value={city}
                 onChange={(event) => setCity(event.target.value)}
-                className="h-10 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-cyan-300/60"
+                className="neon-outline h-10 w-full rounded-lg px-3 text-sm text-white outline-none focus:border-cyan-300/60"
               />
             </div>
             <div>
@@ -196,7 +196,7 @@ export function CheckoutPanel({
                 autoComplete="postal-code"
                 value={postalCode}
                 onChange={(event) => setPostalCode(event.target.value)}
-                className="h-10 w-full rounded-lg border border-white/15 bg-white/[0.03] px-3 text-sm text-white outline-none focus:border-cyan-300/60"
+                className="neon-outline h-10 w-full rounded-lg px-3 text-sm text-white outline-none focus:border-cyan-300/60"
               />
             </div>
           </div>
@@ -210,7 +210,7 @@ export function CheckoutPanel({
               autoComplete="country"
               value={country}
               onChange={(event) => setCountry(event.target.value)}
-              className="h-10 w-full rounded-lg border border-white/15 bg-[#0a0d19] px-3 text-sm text-slate-200"
+              className="neon-outline h-10 w-full rounded-lg bg-[#0a0d19] px-3 text-sm text-slate-200"
             >
               <option value="">Select country</option>
               {countries.map((entry) => (
@@ -324,7 +324,7 @@ export function CheckoutPanel({
         <button
           type="submit"
           disabled={disabled}
-          className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-300 via-cyan-200 to-fuchsia-300 px-6 py-4 text-sm font-black uppercase tracking-[0.12em] text-slate-950 shadow-[0_0_35px_-10px_rgba(34,211,238,0.6)] transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
+          className="neon-button mt-4 flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-black uppercase tracking-[0.12em] disabled:cursor-not-allowed disabled:opacity-50"
         >
           {loading ? (
             <LoaderCircle size={17} className="animate-spin" aria-hidden="true" />

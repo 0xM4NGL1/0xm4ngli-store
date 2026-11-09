@@ -77,7 +77,7 @@ export function NewsletterForm() {
         <button
           type="submit"
           disabled={state === "loading"}
-          className="flex shrink-0 items-center gap-1.5 bg-cyan-300 px-4 text-xs font-black uppercase tracking-wide text-slate-950 transition hover:bg-fuchsia-300 disabled:opacity-60"
+          className="neon-button flex shrink-0 items-center gap-1.5 px-4 text-xs font-black uppercase tracking-wide disabled:opacity-60"
         >
           {state === "loading" ? (
             <LoaderCircle size={16} className="animate-spin" aria-hidden="true" />

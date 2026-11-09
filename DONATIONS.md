@@ -3,7 +3,7 @@
 These are the official 0xm4ngli details. They are published intentionally so
 customers and contributors can verify where money goes.
 
-- **Account name:** 0xm4ngli
+- **Account name:** 0xm4ngli — update `config/donation.ts` to the exact legal account holder if your bank requires beneficiary-name matching.
 - **IBAN:** `GR81 0171 2010 0062 0116 8118 306`
 - **BIC / SWIFT:** not listed — add the BIC in `config/donation.ts` and in the deployment environment if you need SWIFT outside SEPA
 - **Country:** Greece

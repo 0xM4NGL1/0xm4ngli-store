@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 export default function SetupPage() {
   return (
     <div className="container-m4 py-16 md:py-24">
-      <div className="mx-auto max-w-2xl rounded-3xl border border-white/10 bg-[#0a0d19] p-8 md:p-10">
+      <div className="neon-card mx-auto max-w-2xl rounded-3xl bg-[#0a0d19] p-8 md:p-10">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-cyan-300/10 text-cyan-300">
           <Database size={26} aria-hidden="true" />
         </div>
         <p className="mt-5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
           Deployment setup
         </p>
-        <h1 className="mt-2 text-3xl font-black tracking-[-0.04em] text-white md:text-4xl">
+        <h1 className="neon-text mt-2 text-3xl font-black tracking-[-0.04em] text-white md:text-4xl">
           The store is deployed. The database is not connected yet.
         </h1>
         <p className="mt-3 text-sm leading-7 text-slate-400">

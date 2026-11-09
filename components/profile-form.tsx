@@ -140,7 +140,7 @@ export function ProfileForm({
       <button
         type="submit"
         disabled={loading}
-        className="inline-flex items-center gap-2 rounded-lg bg-cyan-300 px-5 py-2.5 text-xs font-black uppercase tracking-wide text-slate-950 transition hover:bg-fuchsia-300 disabled:opacity-60"
+        className="neon-button inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-xs font-black uppercase tracking-wide disabled:opacity-60"
       >
         {loading ? <LoaderCircle size={15} className="animate-spin" aria-hidden="true" /> : <Save size={15} aria-hidden="true" />}
         Save changes

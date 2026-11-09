@@ -8,7 +8,7 @@ export default function NotFound() {
         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
           404 · Not found
         </p>
-        <h1 className="mt-3 text-5xl font-black tracking-[-0.06em] text-white">
+        <h1 className="neon-text mt-3 text-5xl font-black tracking-[-0.06em] text-white">
           No signal here.
         </h1>
         <p className="mt-4 text-sm leading-7 text-slate-400">

@@ -115,7 +115,7 @@ export default async function ProductPage({ params }: PageProps) {
 
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-7">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10 bg-slate-900">
+          <div className="neon-card relative aspect-[4/3] overflow-hidden rounded-3xl bg-slate-900">
             <ProductImage
               src={product.image}
               alt={product.name}
@@ -149,7 +149,7 @@ export default async function ProductPage({ params }: PageProps) {
             ].map((item) => (
               <div
                 key={item.label}
-                className="rounded-xl border border-white/10 bg-white/[0.02] p-3"
+                className="neon-card rounded-xl bg-white/[0.02] p-3"
               >
                 <item.icon size={16} className="text-cyan-300" aria-hidden="true" />
                 <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">
@@ -221,7 +221,7 @@ export default async function ProductPage({ params }: PageProps) {
               <DropPill signal={signal} />
             </div>
 
-            <div className="mt-6 rounded-2xl border border-white/10 bg-[#0a0d19] p-4">
+            <div className="neon-card mt-6 rounded-2xl bg-[#0a0d19] p-4">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500">
@@ -323,7 +323,7 @@ export default async function ProductPage({ params }: PageProps) {
         </div>
 
         <div className="lg:col-span-4">
-          <div className="rounded-2xl border border-white/10 bg-[#0a0d19] p-5">
+          <div className="neon-card rounded-2xl bg-[#0a0d19] p-5">
             <h2 className="text-sm font-bold text-white">The numbers</h2>
             <dl className="mt-4 space-y-3 text-sm">
               {[
@@ -387,7 +387,7 @@ export default async function ProductPage({ params }: PageProps) {
           <h2 id="specs-heading" className="text-2xl font-black text-white">
             Specifications
           </h2>
-          <dl className="mt-4 overflow-hidden rounded-2xl border border-white/10">
+          <dl className="neon-card mt-4 overflow-hidden rounded-2xl">
             {Object.entries(product.specs).map(([key, value], index) => (
               <div
                 key={key}
@@ -431,7 +431,7 @@ export default async function ProductPage({ params }: PageProps) {
               manufacturer warranty.
             </p>
           </div>
-          <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs text-slate-500">
+          <div className="neon-outline mt-5 rounded-xl p-4 text-xs text-slate-500">
             Last checked {formatDate(product.updatedAt)} · SKU {product.sku}
             {product.sourceUrl && (
               <>

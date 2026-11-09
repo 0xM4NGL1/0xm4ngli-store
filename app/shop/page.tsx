@@ -146,7 +146,7 @@ export default async function ShopPage({
         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-cyan-300">
           {activeCategory ? "Category" : "Catalogue"}
         </p>
-        <h1 className="mt-2 text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">
+        <h1 className="neon-text mt-2 text-4xl font-black tracking-[-0.05em] text-white md:text-5xl">
           {query
             ? `Results for “${query}”`
             : activeCategory
@@ -162,7 +162,7 @@ export default async function ShopPage({
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[260px_1fr]">
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <details className="group rounded-2xl border border-white/10 bg-[#0a0d19] lg:open:border-white/10" open>
+          <details className="neon-card group rounded-2xl bg-[#0a0d19]" open>
             <summary className="flex cursor-pointer list-none items-center justify-between p-4 text-sm font-bold text-white lg:cursor-default">
               <span className="flex items-center gap-2">
                 <SlidersHorizontal size={16} className="text-cyan-300" aria-hidden="true" />
@@ -290,7 +290,7 @@ export default async function ShopPage({
               <div className="flex gap-2">
                 <button
                   type="submit"
-                  className="flex-1 rounded-lg bg-cyan-300 px-4 py-2.5 text-xs font-black uppercase tracking-wide text-slate-950 transition hover:bg-fuchsia-300"
+                  className="neon-button flex-1 rounded-lg px-4 py-2.5 text-xs font-black uppercase tracking-wide"
                 >
                   Apply
                 </button>
@@ -304,7 +304,7 @@ export default async function ShopPage({
             </form>
           </details>
 
-          <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-xs leading-6 text-slate-500">
+          <div className="neon-outline mt-4 rounded-2xl p-4 text-xs leading-6 text-slate-500">
             <p className="font-semibold text-slate-300">How sorting works</p>
             <p className="mt-1">
               &ldquo;Best buy signal&rdquo; uses price history, not sponsorship. No

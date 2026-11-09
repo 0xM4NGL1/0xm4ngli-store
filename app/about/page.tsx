@@ -47,7 +47,7 @@ export default async function AboutPage() {
               <Sparkles size={13} aria-hidden="true" />
               About 0xm4ngli
             </div>
-            <h1 className="mt-6 text-5xl font-black leading-[0.95] tracking-[-0.06em] text-white md:text-7xl">
+            <h1 className="neon-text-strong mt-6 text-5xl font-black leading-[0.95] tracking-[-0.06em] text-white md:text-7xl">
               I built the tech store
               <span className="text-gradient block">I wanted to use.</span>
             </h1>
@@ -103,7 +103,7 @@ export default async function AboutPage() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-2xl border border-white/10 bg-[#0a0d19] p-5"
+                  className="neon-card rounded-2xl bg-[#0a0d19] p-5"
                 >
                   <item.icon size={18} className="text-cyan-300" aria-hidden="true" />
                   <p className="mt-4 text-3xl font-black text-white">{item.value}</p>
@@ -113,7 +113,7 @@ export default async function AboutPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-3 rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-xs leading-6 text-slate-500">
+            <div className="neon-outline mt-3 rounded-2xl p-4 text-xs leading-6 text-slate-500">
               <p className="font-semibold text-slate-300">Current store state</p>
               <p className="mt-1">{stateLabel}</p>
               <p className="mt-2">
@@ -150,7 +150,7 @@ export default async function AboutPage() {
                 text: "The goal is a good decision at a fair price, not a checkout at any cost.",
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-2xl border border-white/10 bg-[#0a0d19] p-6">
+              <div key={item.title} className="neon-card rounded-2xl bg-[#0a0d19] p-6">
                 <item.icon size={22} className="text-cyan-300" aria-hidden="true" />
                 <h2 className="mt-4 text-lg font-bold text-white">{item.title}</h2>
                 <p className="mt-2 text-sm leading-7 text-slate-400">{item.text}</p>
@@ -208,7 +208,7 @@ export default async function AboutPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="rounded-2xl border border-white/10 bg-[#0a0d19] p-6">
+            <div className="neon-card rounded-2xl bg-[#0a0d19] p-6">
               <h3 className="text-sm font-bold text-white">The scoring model</h3>
               <pre className="mt-4 overflow-x-auto rounded-xl border border-white/10 bg-[#05060b] p-4 font-mono text-[11px] leading-6 text-cyan-100">
 {`position = (price - low90) / (high90 - low90)

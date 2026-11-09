@@ -57,7 +57,7 @@ export default async function OrdersPage() {
             return (
               <details
                 key={order.id}
-                className="group overflow-hidden rounded-2xl border border-white/10 bg-[#0a0d19]"
+                className="neon-card group overflow-hidden rounded-2xl bg-[#0a0d19]"
               >
                 <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-3 p-4">
                   <div>

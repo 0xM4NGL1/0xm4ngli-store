@@ -28,7 +28,7 @@ export function LogoutButton() {
       type="button"
       onClick={logout}
       disabled={loading}
-      className="inline-flex items-center gap-2 rounded-lg border border-white/15 px-3.5 py-2 text-xs font-semibold text-slate-400 transition hover:border-rose-300/30 hover:text-rose-200 disabled:opacity-60"
+      className="neon-outline inline-flex items-center gap-2 rounded-lg px-3.5 py-2 text-xs font-semibold text-slate-400 transition hover:text-rose-200 disabled:opacity-60"
     >
       {loading ? (
         <LoaderCircle size={14} className="animate-spin" aria-hidden="true" />
