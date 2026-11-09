@@ -53,8 +53,9 @@ export default function SetupPage() {
               <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">
                 APP_URL=https://0xm4ngli-store.vercel.app
               </code>
-              , <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">CART_SECRET</code>{" "}
-              and <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">ADMIN_TOKEN</code>.
+              , <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">CART_SECRET</code>,{" "}
+              <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">ADMIN_TOKEN</code>{" "}
+              and <code className="rounded bg-white/5 px-1.5 py-0.5 text-xs text-cyan-100">CRON_SECRET</code>.
             </span>
           </li>
           <li className="flex gap-3">
